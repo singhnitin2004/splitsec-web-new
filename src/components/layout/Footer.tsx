@@ -5,18 +5,20 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="w-full relative overflow-hidden border-t border-gray-200/50 ">
+        <footer className="w-full relative overflow-hidden border-t" style={{
+            background: 'linear-gradient(180deg, rgba(11,16,32,0.96), rgba(7,10,18,0.96))',
+            borderColor: 'rgba(233,236,248,0.08)'
+        }}>
             {/* Decorative Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* Gradient Orbs */}
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl"></div>
+                <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(80,140,255,0.1)' }}></div>
+                <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(255,80,170,0.1)' }}></div>
 
                 {/* Subtle Grid Pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-40"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+            <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 relative z-10">
                 {/* Main Footer Content */}
                 <div className="pt-12 pb-8 sm:pt-16 sm:pb-12">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
@@ -37,46 +39,49 @@ export default function Footer() {
                                     />
                                 </div>
                                 <span className="text-xl font-bold tracking-tight">
-                                    <span className="text-blue-600">SplitSec</span>
-                                    <span className="text-pink-500">.AI</span>
+                                    <span style={{ color: 'rgba(80,140,255,0.92)' }}>SplitSec</span>
+                                    <span style={{ color: 'rgba(255,80,170,0.86)' }}>.AI</span>
                                 </span>
                             </Link>
-                            <p className="text-gray-600 text-base leading-relaxed max-w-md">
+                            <p className="text-base leading-relaxed max-w-md" style={{ color: 'rgba(233,236,248,0.72)' }}>
                                 SplitSec AI isn't just an app—it's a movement for safer schools, neighborhoods, and public spaces. Together, we can build communities where everybody feels safe.
                             </p>
                         </div>
 
                         {/* Quick Links */}
                         <div className="lg:col-span-1">
-                            <h3 className="text-gray-900 font-bold text-sm uppercase tracking-wider mb-5">
+                            <h3 className="font-bold text-sm uppercase tracking-wider mb-5" style={{ color: '#E9ECF8' }}>
                                 Quick Links
                             </h3>
                             <nav className="flex flex-col gap-3.5">
                                 <Link
                                     href="/"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         Home
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                                 <Link
                                     href="/how-it-works"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         How it works
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                                 <Link
                                     href="/get-involved"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         Get involved
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                             </nav>
@@ -84,44 +89,48 @@ export default function Footer() {
 
                         {/* Company Links */}
                         <div className="lg:col-span-1">
-                            <h3 className="text-gray-900 font-bold text-sm uppercase tracking-wider mb-5">
+                            <h3 className="font-bold text-sm uppercase tracking-wider mb-5" style={{ color: '#E9ECF8' }}>
                                 Company
                             </h3>
                             <nav className="flex flex-col gap-3.5">
                                 <Link
                                     href="/about"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         About us
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                                 <Link
                                     href="/faq"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         FAQ
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                                 <Link
                                     href="/blog"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         Blog
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className="text-gray-600 hover:text-blue-600 transition-all duration-200 text-sm font-medium w-fit group"
+                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
+                                    style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >
                                     <span className="relative">
                                         Contact
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
                                     </span>
                                 </Link>
                             </nav>
@@ -129,7 +138,7 @@ export default function Footer() {
                     </div>
 
                     {/* Divider */}
-                    <div className="border-t border-gray-200 my-8"></div>
+                    <div className="border-t my-8" style={{ borderColor: 'rgba(233,236,248,0.08)' }}></div>
 
                     {/* Social Media & Copyright Section */}
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -141,7 +150,11 @@ export default function Footer() {
                                     href="https://linkedin.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-200 group"
+                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:text-white transition-all duration-200 group"
+                                    style={{
+                                        background: 'rgba(255,255,255,0.06)',
+                                        color: 'rgba(233,236,248,0.78)'
+                                    }}
                                     aria-label="LinkedIn"
                                 >
                                     <svg
@@ -158,7 +171,13 @@ export default function Footer() {
                                     href="https://instagram.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white transition-all duration-200 group"
+                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white transition-all duration-200 group"
+                                    style={{
+                                        background: 'rgba(255,255,255,0.06)',
+                                        color: 'rgba(233,236,248,0.78)'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
                                     aria-label="Instagram"
                                 >
                                     <svg
@@ -175,7 +194,13 @@ export default function Footer() {
                                     href="https://x.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition-all duration-200 group"
+                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 group"
+                                    style={{
+                                        background: 'rgba(255,255,255,0.06)',
+                                        color: 'rgba(233,236,248,0.78)'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
                                     aria-label="X (Twitter)"
                                 >
                                     <svg
@@ -192,7 +217,13 @@ export default function Footer() {
                                     href="https://youtube.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition-all duration-200 group"
+                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-200 group"
+                                    style={{
+                                        background: 'rgba(255,255,255,0.06)',
+                                        color: 'rgba(233,236,248,0.78)'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
                                     aria-label="YouTube"
                                 >
                                     <svg
@@ -209,7 +240,13 @@ export default function Footer() {
                                     href="https://facebook.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-200 group"
+                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-200 group"
+                                    style={{
+                                        background: 'rgba(255,255,255,0.06)',
+                                        color: 'rgba(233,236,248,0.78)'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
                                     aria-label="Facebook"
                                 >
                                     <svg
@@ -226,7 +263,13 @@ export default function Footer() {
                                     href="https://threads.net"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition-all duration-200 group"
+                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 group"
+                                    style={{
+                                        background: 'rgba(255,255,255,0.06)',
+                                        color: 'rgba(233,236,248,0.78)'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
                                     aria-label="Threads"
                                 >
                                     <svg
@@ -242,7 +285,7 @@ export default function Footer() {
 
                         {/* Copyright */}
                         <div className="text-center md:text-right">
-                            <p className="text-gray-600 text-sm">
+                            <p className="text-sm" style={{ color: 'rgba(233,236,248,0.72)' }}>
                                 © {new Date().getFullYear()} SplitSec.AI. All rights reserved.
                             </p>
                         </div>

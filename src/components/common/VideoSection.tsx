@@ -23,27 +23,27 @@ export default function VideoSection({
         if (!url.includes("youtube.com") && !url.includes("youtu.be")) {
             return url;
         }
-        
+
         // Extract ID from various YouTube URL formats
         const patterns = [
             /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
             /youtube\.com\/.*[?&]v=([^&\n?#]+)/,
         ];
-        
+
         for (const pattern of patterns) {
             const match = url.match(pattern);
             if (match && match[1]) {
                 return match[1];
             }
         }
-        
+
         return url; // Fallback to original if no match
     };
 
     const youtubeId = getYouTubeId(videoUrl);
 
     return (
-        <div className={`relative w-full pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white ${className}`}>
+        <div className={`relative w-full  overflow-hidden bg-white ${className}`}>
             <div className="sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center text-center">
                     {/* Badge - Optional */}
@@ -65,12 +65,12 @@ export default function VideoSection({
                     )}
 
                     {/* Title */}
-                    <h2 className="text-2xl sm:text-[32px] font-bold text-black leading-tight md:mb-6 mb-2">
+                    <h2 className="text-2xl sm:text-[32px] font-bold text-black leading-tight  mb-2">
                         {title}
                     </h2>
 
                     {/* Description */}
-                    <p className="text-md sm:text-[20px] text-gray-600 leading-relaxed mb-10 max-w-xl">
+                    <p className="text-md sm:text-[20px] text-gray-600 leading-relaxed mb-10 max-w-7xl">
                         {description}
                     </p>
 
