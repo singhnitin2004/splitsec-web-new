@@ -26,7 +26,7 @@ export default function HowItWorksPage() {
             background: 'radial-gradient(1200px 600px at 70% 15%, rgba(80,140,255,0.14), transparent 60%), radial-gradient(900px 550px at 20% 80%, rgba(255,80,170,0.10), transparent 60%), #0B1020'
         }}>
             {/* Hero Section */}
-            <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 pt-16 sm:pt-28 pb-8 sm:pb-12">
+            <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 pt-16 sm:pt-28 pb-6">
                 <div className="w-full max-w-[1800px] mx-auto">
                     <span className="inline-block text-[10px] sm:text-xs uppercase tracking-[0.12em] px-3 py-1.5 sm:py-2 rounded-full border backdrop-blur-[10px] font-medium"
                         style={{
@@ -36,7 +36,7 @@ export default function HowItWorksPage() {
                         }}>
                         How it works
                     </span>
-                    <h1 className="text-[34px] sm:text-[44px] lg:text-[56px] leading-[1.05] font-[760] mt-3.5 mb-2.5" style={{ letterSpacing: '-0.015em', color: '#E9ECF8' }}>
+                    <h1 className="text-[34px] sm:text-[44px]  leading-[1.05] font-[760] mt-3.5 mb-2.5" style={{ letterSpacing: '-0.015em', color: '#E9ECF8' }}>
                         Fast clarity when seconds matter
                     </h1>
                     <p className="text-base sm:text-lg leading-[1.55] max-w-[68ch] m-0" style={{ color: 'rgba(233,236,248,0.72)' }}>
