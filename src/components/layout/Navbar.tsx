@@ -108,6 +108,13 @@ export default function Navbar() {
                                 How It Works
                             </Link>
                             <Link
+                                href="/industries"
+                                style={{ color: pathname === "/industries" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                className="text-sm font-bold transition-colors hover:opacity-80"
+                            >
+                                Industries
+                            </Link>
+                            <Link
                                 href="/get-involved"
                                 style={{ color: pathname === "/get-involved" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
@@ -278,6 +285,17 @@ export default function Navbar() {
                                     }`}
                             >
                                 How It Works
+                            </Link>
+
+                            <Link
+                                href="/industries"
+                                onClick={closeMobileMenu}
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/industries"
+                                    ? "text-blue-400 bg-slate-800/50"
+                                    : "text-slate-300 active:bg-slate-800/30"
+                                    }`}
+                            >
+                                Industries
                             </Link>
 
                             <Link

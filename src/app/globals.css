@@ -28,6 +28,35 @@ body {
   color: transparent;
 }
 
+/* Wave ring animation - must be in global CSS so it's available before component mount */
+@keyframes cwRing {
+  0% {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    transform: translate(-50%, 50%) translate(0, 0);
+  }
+  10% {
+    transform: translate(-50%, 50%) translate(1px, -1px);
+  }
+  12% {
+    transform: translate(-50%, 50%) translate(-1px, 1px);
+  }
+  14% {
+    transform: translate(-50%, 50%) translate(0, 0);
+  }
+  70% {
+    width: 1200px;
+    height: 1200px;
+    opacity: 0.22;
+  }
+  100% {
+    width: 2000px;
+    height: 2000px;
+    opacity: 0;
+  }
+}
+
 /* Hero Section Animations */
 @keyframes ring {
   0% {

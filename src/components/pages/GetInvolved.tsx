@@ -28,7 +28,7 @@ export default function GetInvolvedPage() {
             background: 'radial-gradient(1200px 600px at 70% 15%, rgba(80,140,255,0.14), transparent 60%), radial-gradient(900px 550px at 20% 80%, rgba(255,80,170,0.10), transparent 60%), #0B1020'
         }}>
             {/* Page Hero */}
-            <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 pt-16 sm:pt-28 pb-6">
+            <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 pt-16 sm:pt-28 pb-6 sm:pb-14">
                 <div className="w-full max-w-[1800px] mx-auto">
                     <span className="inline-block text-[10px] sm:text-xs uppercase tracking-[0.12em] px-3 py-1.5 sm:py-2 rounded-full border backdrop-blur-[10px] font-medium"
                         style={{
@@ -38,7 +38,7 @@ export default function GetInvolvedPage() {
                         }}>
                         Get involved
                     </span>
-                    <h1 className="text-[34px] sm:text-[44px] leading-[1.08] font-[760] mt-3.5 mb-2.5" style={{ letterSpacing: '-0.015em', color: '#E9ECF8' }}>
+                    <h1 className="text-[28px] sm:text-[38px] lg:text-[50px] leading-[1.08] font-[760] mt-3.5 mb-2.5" style={{ letterSpacing: '-0.015em', color: '#E9ECF8' }}>
                         Help shape the product and the mission
                     </h1>
                     <p className="text-[15px] sm:text-base lg:text-lg leading-[1.55] max-w-[68ch] m-0" style={{ color: 'rgba(233,236,248,0.72)' }}>
@@ -884,7 +884,7 @@ export default function GetInvolvedPage() {
                             </h2>
 
                             {/* FAQ Items */}
-                            <div className="space-y-2.5 ">
+                            <div className="space-y-3 sm:space-y-4 ">
                                 {faqData.map((faq) => (
                                     <details
                                         key={faq.id}
