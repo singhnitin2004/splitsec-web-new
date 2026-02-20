@@ -1,16 +1,12 @@
 "use client";
 
-import { useState } from "react";
-
-export default function HowItWorksPage() {
+export default function Technology() {
     return (
-        <div className="w-full min-h-screen"
-            style={{
-                background: 'radial-gradient(1200px 600px at 70% 15%, rgba(80,140,255,0.14), transparent 60%), radial-gradient(900px 550px at 20% 80%, rgba(255,80,170,0.10), transparent 60%), #0B1020'
-            }}
-        >
-            {/* Hero Section */}
-            <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 sm:pt-24 lg:pt-28 pb-4">
+        <div className="w-full min-h-screen">
+            {/* Section 1: Hero - Black (same pattern as Home) */}
+            <section
+                className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 pt-24 sm:pt-24 lg:pt-28 pb-10 bg-black"
+            >
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-4 sm:gap-6 items-start">
                         {/* Left: Text Content */}
@@ -18,7 +14,12 @@ export default function HowItWorksPage() {
                             <p className="text-xs uppercase tracking-[0.16em] mb-3 font-bold m-0" style={{ color: 'rgba(243,246,255,0.60)' }}>
                                 How it works
                             </p>
-                            <h1 className="text-[clamp(26px,6.5vw,64px)] sm:text-[clamp(34px,5.2vw,64px)] font-bold leading-[1.1] sm:leading-[1.04] tracking-[-0.04em] m-0 mb-3 sm:mb-3.5 max-w-[20ch]" style={{ color: '#E9ECF8' }}>
+                            {/* <h1 className="text-[clamp(26px,6.5vw,64px)] sm:text-[clamp(34px,5.2vw,64px)] font-bold leading-[1.1] sm:leading-[1.04] tracking-[-0.04em] m-0 mb-3 sm:mb-3.5 max-w-[20ch]" style={{ color: '#E9ECF8' }}>
+                                From first acoustic signature to a confirmed alert in seconds
+                            </h1> */}
+
+                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,5vw,64px)] lg:text-[clamp(40px,4.5vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em] m-0 max-w-[20ch]"
+                                style={{ color: '#E9ECF8' }}>
                                 From first acoustic signature to a confirmed alert in seconds
                             </h1>
                             <p className="text-[15px] sm:text-base lg:text-lg leading-[1.5] sm:leading-[1.45] m-0 mb-4 sm:mb-5 max-w-[56ch]" style={{ color: 'rgba(243,246,248,0.80)' }}>
@@ -30,7 +31,7 @@ export default function HowItWorksPage() {
                                 <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
                                     <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.20))',
+                                            background: '#006eff',
                                             boxShadow: '0 14px 28px rgba(0,0,0,0.22)',
                                             border: '1px solid rgba(255,255,255,0.14)'
                                         }}>
@@ -43,7 +44,7 @@ export default function HowItWorksPage() {
                                 <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
                                     <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.18))',
+                                            background: '#006eff',
                                             boxShadow: '0 14px 28px rgba(0,0,0,0.22)',
                                             border: '1px solid rgba(255,255,255,0.14)'
                                         }}>
@@ -56,7 +57,7 @@ export default function HowItWorksPage() {
                                 <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
                                     <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(169,180,194,1), rgba(169,180,194,0.16))',
+                                            background: '#ff3dab',
                                             boxShadow: '0 14px 28px rgba(0,0,0,0.22)',
                                             border: '1px solid rgba(255,255,255,0.14)'
                                         }}>
@@ -94,20 +95,20 @@ export default function HowItWorksPage() {
                         </div>
 
                         {/* Right: Video Card */}
-                        <div className="rounded-[20px] sm:rounded-[30px] border p-2.5 sm:p-3.5"
-                            style={{
-                                background: 'rgba(20,24,36,0.70)',
-                                borderColor: 'rgba(243,246,255,0.12)',
-                                boxShadow: '0 26px 60px rgba(0,0,0,0.30)'
-                            }}>
-                            <iframe
+                        <div className="rounded-[20px] "
+                        >
+                            <video
                                 className="w-full block rounded-[16px] sm:rounded-[24px] bg-black"
-                                style={{ aspectRatio: '16/9' }}
-                                src="https://www.youtube.com/embed/FnESLsYEtys?start=5"
+                                style={{ aspectRatio: '16/9', objectFit: 'contain' }}
+                                src="/HowItWorks/viet-video.mp4"
                                 title="Viet walkthrough - Model flow and escalation"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                            />
+                                controls
+                                playsInline
+                                preload="metadata"
+                            >
+                                <track kind="captions" />
+                                Your browser does not support the video tag.
+                            </video>
                             <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-3 flex-wrap px-1.5 pt-2 pb-0.5 text-xs" style={{ color: 'rgba(243,246,255,0.60)' }}>
                                 <span>Viet walkthrough</span>
                                 <span>Model flow and escalation</span>
@@ -117,11 +118,11 @@ export default function HowItWorksPage() {
                 </div>
             </section>
 
-            {/* Privacy and Workflow Section */}
-            <section className="w-full mt-8 sm:mt-12 lg:mt-16 px-4 sm:px-6 lg:px-8 xl:px-12" id="privacy-workflow">
+            {/* Section 2: Privacy and Workflow - White (same pattern as Home) */}
+            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white" id="privacy-workflow">
                 <div className="w-full max-w-[1800px] mx-auto">
-                    <div className="rounded-xl sm:rounded-2xl border shadow-[0_12px_30px_rgba(0,0,0,0.06)] p-4 sm:p-6 lg:p-8"
-                        style={{ background: '#ffffff' }}>
+                    <div
+                        style={{ background: '#ffffff', borderColor: 'rgba(26,26,26,0.10)' }}>
                         <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(26,26,26,0.55)' }}>
                             Privacy and workflow
                         </p>
@@ -155,7 +156,7 @@ export default function HowItWorksPage() {
                                         }}>
                                         <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.18))',
+                                                background: '#006eff',
                                                 boxShadow: '0 10px 22px rgba(0,0,0,0.14)',
                                                 border: '1px solid rgba(255,255,255,0.22)',
                                                 color: '#fff'
@@ -179,7 +180,7 @@ export default function HowItWorksPage() {
                                         }}>
                                         <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.16))',
+                                                background: '#ff3dab',
                                                 boxShadow: '0 10px 22px rgba(0,0,0,0.14)',
                                                 border: '1px solid rgba(255,255,255,0.22)',
                                                 color: '#fff'
@@ -203,7 +204,7 @@ export default function HowItWorksPage() {
                                         }}>
                                         <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(169,180,194,1), rgba(169,180,194,0.14))',
+                                                background: '#ff3dab',
                                                 boxShadow: '0 10px 22px rgba(0,0,0,0.14)',
                                                 border: '1px solid rgba(255,255,255,0.22)',
                                                 color: '#fff'
@@ -244,7 +245,7 @@ export default function HowItWorksPage() {
                                     <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
                                         <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.28))',
+                                                background: '#006eff',
                                                 boxShadow: '0 14px 28px rgba(0,109,255,0.18)'
                                             }}>
                                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
@@ -266,7 +267,7 @@ export default function HowItWorksPage() {
                                     <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
                                         <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.26))',
+                                                background: '#ff3dab',
                                                 boxShadow: '0 14px 28px rgba(255,63,166,0.16)'
                                             }}>
                                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
@@ -289,7 +290,7 @@ export default function HowItWorksPage() {
                                     <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
                                         <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(26,26,26,0.65), rgba(26,26,26,0.18))',
+                                                background: '#006eff',
                                                 boxShadow: '0 14px 28px rgba(0,0,0,0.14)'
                                             }}>
                                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
@@ -311,8 +312,8 @@ export default function HowItWorksPage() {
                                     <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
                                         <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                             style={{
-                                                background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.28))',
-                                                boxShadow: '0 14px 28px rgba(0,109,255,0.18)'
+                                                background: '#ff3dab',
+                                                boxShadow: '0 14px 28px rgba(255,63,166,0.16)'
                                             }}>
                                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
                                                 style={{ filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.18))' }}>
@@ -334,33 +335,34 @@ export default function HowItWorksPage() {
                 </div>
             </section>
 
-            {/* Smart Escalation Section */}
-            <section className="w-full mt-8 sm:mt-12 lg:mt-16 px-4 sm:px-6 lg:px-8 xl:px-12" id="smart-escalation">
+            {/* Section 3: Smart Escalation - Black (same pattern as Home) */}
+            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black" id="smart-escalation">
                 <div className="w-full max-w-[1800px] mx-auto">
-                    <div className="rounded-xl sm:rounded-2xl border shadow-[0_12px_30px_rgba(0,0,0,0.06)] p-4 sm:p-6 lg:p-8"
-                        style={{ background: '#F7F9FF' }}>
-                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(26,26,26,0.55)' }}>
+                    <div
+                    >
+                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(243,246,255,0.60)' }}>
                             Smart escalation
                         </p>
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#1F2937' }}>
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#E9ECF8' }}>
                             L1, L2, L3 escalation that reduces false positives
                         </h2>
-                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(29,29,31,0.65)' }}>
+                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(233,236,248,0.88)' }}>
                             The goal is simple, move fast without noisy alerts. SplitSec starts conservative, then escalates as evidence stacks.
                         </p>
 
-                        {/* L1, L2, L3 Cards */}
+                        {/* L1, L2, L3 Cards - dark theme */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mt-4 sm:mt-6">
                             {/* L1 Detected */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5"
+                            <div className="rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5 border"
                                 style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
+                                    background: 'rgba(255,255,255,0.06)',
+                                    borderColor: 'rgba(255,255,255,0.12)',
+                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
                                 }}>
                                 <div className="flex gap-3 items-start mb-3">
                                     <div className="w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.22))',
+                                            background: '#006eff',
                                             boxShadow: '0 16px 34px rgba(0,109,255,0.18)'
                                         }}>
                                         <svg className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.9" strokeLinecap="round" strokeLinejoin="round"
@@ -369,11 +371,11 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#111' }}>L1 Detected</h3>
-                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(26,26,26,0.62)' }}>Single phone, not corroborated</div>
+                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L1 Detected</h3>
+                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>Single phone, not corroborated</div>
                                     </div>
                                 </div>
-                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(26,26,26,0.70)', lineHeight: '1.55' }}>
+                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(233,236,248,0.88)', lineHeight: '1.55' }}>
                                     <li className="my-1.5">One phone flags a gunshot candidate event</li>
                                     <li className="my-1.5">User can corroborate or dismiss with one tap</li>
                                     <li className="my-1.5">No outbound alert by default</li>
@@ -381,15 +383,16 @@ export default function HowItWorksPage() {
                             </div>
 
                             {/* L2 Corroborated */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5"
+                            <div className="rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5 border"
                                 style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
+                                    background: 'rgba(255,255,255,0.06)',
+                                    borderColor: 'rgba(255,255,255,0.12)',
+                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
                                 }}>
                                 <div className="flex gap-3 items-start mb-3">
                                     <div className="w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.20))',
+                                            background: '#ff3dab',
                                             boxShadow: '0 16px 34px rgba(255,63,166,0.16)'
                                         }}>
                                         <svg className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.9" strokeLinecap="round" strokeLinejoin="round"
@@ -399,11 +402,11 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#111' }}>L2 Corroborated</h3>
-                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(26,26,26,0.62)' }}>User confirms they heard it</div>
+                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L2 Corroborated</h3>
+                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>User confirms they heard it</div>
                                     </div>
                                 </div>
-                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(26,26,26,0.70)', lineHeight: '1.55' }}>
+                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(233,236,248,0.88)', lineHeight: '1.55' }}>
                                     <li className="my-1.5">User corroboration increases confidence</li>
                                     <li className="my-1.5">System prepares notifications and context</li>
                                     <li className="my-1.5">Admins see time, approximate location, device status</li>
@@ -411,15 +414,16 @@ export default function HowItWorksPage() {
                             </div>
 
                             {/* L3 Confirmed */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5"
+                            <div className="rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5 border"
                                 style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
+                                    background: 'rgba(255,255,255,0.06)',
+                                    borderColor: 'rgba(255,255,255,0.12)',
+                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
                                 }}>
                                 <div className="flex gap-3 items-start mb-3">
                                     <div className="w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(169,180,194,1), rgba(169,180,194,0.18))',
+                                            background: '#006eff',
                                             boxShadow: '0 16px 34px rgba(0,0,0,0.14)'
                                         }}>
                                         <svg className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.9" strokeLinecap="round" strokeLinejoin="round"
@@ -430,11 +434,11 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#111' }}>L3 Confirmed</h3>
-                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(26,26,26,0.62)' }}>Two phones report in a tight window</div>
+                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L3 Confirmed</h3>
+                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>Two phones report in a tight window</div>
                                     </div>
                                 </div>
-                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(26,26,26,0.70)', lineHeight: '1.55' }}>
+                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(233,236,248,0.88)', lineHeight: '1.55' }}>
                                     <li className="my-1.5">Multi phone confirmation triggers a confirmed alert</li>
                                     <li className="my-1.5">Alerts go to configured recipients and roles</li>
                                     <li className="my-1.5">Clear prompts help teams coordinate in the first minutes</li>
@@ -442,17 +446,18 @@ export default function HowItWorksPage() {
                             </div>
                         </div>
 
-                        {/* Pilot Card */}
-                        <div className="bg-white border rounded-[32px] p-4.5 mt-5.5"
+                        {/* Pilot Card - dark theme */}
+                        <div className="rounded-[32px] p-4.5 mt-5.5 border"
                             style={{
-                                borderColor: 'rgba(26,26,26,0.12)',
-                                boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
+                                background: 'rgba(255,255,255,0.06)',
+                                borderColor: 'rgba(255,255,255,0.12)',
+                                boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
                             }}>
                             <div className="flex justify-between gap-4 flex-wrap items-start mb-3.5">
                                 <div>
-                                    <div className="text-xs uppercase tracking-[0.16em] font-extrabold mb-1.5" style={{ color: 'rgba(26,26,26,0.55)' }}>Pilot in 14 days</div>
-                                    <div className="text-lg font-black mb-1.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>Low effort, measurable results</div>
-                                    <div className="text-[13px] font-extrabold max-w-[62ch]" style={{ color: 'rgba(26,26,26,0.70)' }}>Deploy, measure, and decide with clean pilot metrics.</div>
+                                    <div className="text-xs uppercase tracking-[0.16em] font-extrabold mb-1.5" style={{ color: 'rgba(243,246,255,0.60)' }}>Pilot in 14 days</div>
+                                    <div className="text-lg font-black mb-1.5" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Low effort, measurable results</div>
+                                    <div className="text-[13px] font-extrabold max-w-[62ch]" style={{ color: 'rgba(233,236,248,0.88)' }}>Deploy, measure, and decide with clean pilot metrics.</div>
                                 </div>
                                 <div className="flex gap-3 flex-wrap items-center">
                                     <a href="/#about"
@@ -472,54 +477,54 @@ export default function HowItWorksPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3.5">
                                 <div className="flex gap-3 items-start p-3 rounded-[18px] border min-h-[70px]"
                                     style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
+                                        background: 'rgba(0,0,0,0.16)',
+                                        borderColor: 'rgba(255,255,255,0.10)'
                                     }}>
                                     <div className="w-[34px] h-[34px] rounded-[14px] flex items-center justify-center font-black text-white flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.22))',
+                                            background: '#006eff',
                                             boxShadow: '0 14px 28px rgba(0,0,0,0.10)'
                                         }}>1</div>
                                     <div>
-                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#111' }}>Deploy</b>
-                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(26,26,26,0.70)' }}>Phones or preconfigured kit</span>
+                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Deploy</b>
+                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Phones or preconfigured kit</span>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-3 items-start p-3 rounded-[18px] border min-h-[70px]"
                                     style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
+                                        background: 'rgba(0,0,0,0.16)',
+                                        borderColor: 'rgba(255,255,255,0.10)'
                                     }}>
                                     <div className="w-[34px] h-[34px] rounded-[14px] flex items-center justify-center font-black text-white flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.20))',
+                                            background: '#ff3dab',
                                             boxShadow: '0 14px 28px rgba(0,0,0,0.10)'
                                         }}>2</div>
                                     <div>
-                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#111' }}>Measure</b>
-                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(26,26,26,0.70)' }}>Detection, false alerts, uptime</span>
+                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Measure</b>
+                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Detection, false alerts, uptime</span>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-3 items-start p-3 rounded-[18px] border min-h-[70px]"
                                     style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
+                                        background: 'rgba(0,0,0,0.16)',
+                                        borderColor: 'rgba(255,255,255,0.10)'
                                     }}>
                                     <div className="w-[34px] h-[34px] rounded-[14px] flex items-center justify-center font-black text-white flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(26,26,26,0.70), rgba(26,26,26,0.28))',
+                                            background: '#006eff',
                                             boxShadow: '0 14px 28px rgba(0,0,0,0.10)'
                                         }}>3</div>
                                     <div>
-                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#111' }}>Decide</b>
-                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(26,26,26,0.70)' }}>Report and next steps</span>
+                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Decide</b>
+                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Report and next steps</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <p className="text-xs font-extrabold mt-3" style={{ color: 'rgba(26,26,26,0.62)' }}>
+                            <p className="text-xs font-extrabold mt-3" style={{ color: 'rgba(243,246,255,0.62)' }}>
                                 No spam. We respond within 1 business day.
                             </p>
                         </div>
@@ -527,69 +532,63 @@ export default function HowItWorksPage() {
                 </div>
             </section>
 
-            {/* Behind the Scenes Section */}
-            <section className="w-full py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 xl:px-12" id="behind-the-scenes">
+            {/* Section 4: Behind the Scenes - White (same pattern as Home) */}
+            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white" id="behind-the-scenes">
                 <div className="w-full max-w-[1800px] mx-auto">
-                    <div className="rounded-xl sm:rounded-2xl overflow-hidden border shadow-[0_22px_70px_rgba(7,10,18,0.18)] p-4 sm:p-6 lg:p-8"
-                        style={{
-                            background: `radial-gradient(900px 420px at 70% 20%, rgba(0,109,255,0.18), transparent 60%),
-                                        radial-gradient(820px 420px at 25% 85%, rgba(255,63,166,0.14), transparent 62%),
-                                        linear-gradient(135deg, rgba(18,18,20,0.96), rgba(10,14,26,0.96))`,
-                            borderColor: 'rgba(245,248,255,0.10)'
-                        }}>
-                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(243,246,255,0.60)' }}>
+                    <div
+                    >
+                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(26,26,26,0.55)' }}>
                             Behind the scenes
                         </p>
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#E9ECF8' }}>
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#1F2937' }}>
                             Compact intelligence, designed for fast decisions
                         </h2>
-                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(233,236,248,0.88)' }}>
+                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(29,29,31,0.65)' }}>
                             Training happens offline. A compact model runs on the phone in real time, even when connectivity is limited.
                         </p>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
-                            {/* What you get */}
-                            <div className="rounded-2xl sm:rounded-[28px] border p-4 sm:p-5 lg:p-6.5 flex flex-col h-full"
+                            {/* What you get - light theme */}
+                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-5 lg:p-6.5 flex flex-col h-full"
                                 style={{
-                                    background: 'rgba(255,255,255,0.06)',
-                                    borderColor: 'rgba(255,255,255,0.12)',
-                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
+                                    borderColor: 'rgba(26,26,26,0.12)',
+                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
                                 }}>
-                                <h3 className="text-xl font-extrabold m-0 mb-3.5" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>What you get</h3>
+                                <h3 className="text-xl font-extrabold m-0 mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What you get</h3>
 
                                 <div className="flex gap-3.5 p-4 rounded-[18px] border mb-3"
                                     style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
+                                        background: 'rgba(26,26,26,0.03)',
+                                        borderColor: 'rgba(26,26,26,0.08)'
                                     }}>
                                     <div className="w-[40px] h-[40px] rounded-[14px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.18))',
+                                            background: '#006eff',
                                             boxShadow: '0 16px 34px rgba(0,109,255,0.18)',
-                                            border: '1px solid rgba(255,255,255,0.14)',
-                                            color: 'rgba(255,255,255,0.96)'
+                                            border: '1px solid rgba(255,255,255,0.22)',
+                                            color: '#fff'
                                         }}>
                                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M13 2L3 14h7l-1 8 12-14h-7l1-6z" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#E9ECF8' }}>Fast, quiet detection</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(233,236,248,0.92)' }}>Runs in the background and surfaces only high signal events.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Fast, quiet detection</div>
+                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Runs in the background and surfaces only high signal events.</div>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
                                     style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
+                                        background: 'rgba(26,26,26,0.03)',
+                                        borderColor: 'rgba(26,26,26,0.08)'
                                     }}>
                                     <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.16))',
+                                            background: '#ff3dab',
                                             boxShadow: '0 16px 34px rgba(255,63,166,0.16)',
-                                            border: '1px solid rgba(255,255,255,0.14)',
-                                            color: 'rgba(255,255,255,0.96)'
+                                            border: '1px solid rgba(255,255,255,0.22)',
+                                            color: '#fff'
                                         }}>
                                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M4 6h16" />
@@ -598,22 +597,22 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1" style={{ color: '#E9ECF8' }}>Lower false alerts</div>
-                                        <div className="leading-[1.45]" style={{ color: 'rgba(233,236,248,0.92)' }}>Escalates based on evidence, corroboration, and multi phone confirmation.</div>
+                                        <div className="font-extrabold m-0 mb-1" style={{ color: '#111' }}>Lower false alerts</div>
+                                        <div className="leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Escalates based on evidence, corroboration, and multi phone confirmation.</div>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-3.5 p-4 rounded-[18px] border mb-3"
                                     style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
+                                        background: 'rgba(26,26,26,0.03)',
+                                        borderColor: 'rgba(26,26,26,0.08)'
                                     }}>
                                     <div className="w-[40px] h-[40px] rounded-[14px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(243,246,255,0.28), rgba(243,246,255,0.10))',
-                                            boxShadow: '0 16px 34px rgba(0,0,0,0.22)',
-                                            border: '1px solid rgba(243,246,255,0.16)',
-                                            color: 'rgba(255,255,255,0.96)'
+                                            background: '#006eff',
+                                            boxShadow: '0 16px 34px rgba(0,0,0,0.14)',
+                                            border: '1px solid rgba(255,255,255,0.22)',
+                                            color: '#fff'
                                         }}>
                                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
@@ -621,8 +620,8 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#E9ECF8' }}>Operational coverage</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(233,236,248,0.92)' }}>Health signals like battery, connectivity, and armed status help maintain coverage.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Operational coverage</div>
+                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Health signals like battery, connectivity, and armed status help maintain coverage.</div>
                                     </div>
                                 </div>
 
@@ -641,26 +640,25 @@ export default function HowItWorksPage() {
                                 </div>
                             </div>
 
-                            {/* What makes it work */}
-                            <div className="rounded-2xl sm:rounded-[28px] border p-4 sm:p-5 lg:p-6.5 flex flex-col h-full"
+                            {/* What makes it work - light theme */}
+                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-5 lg:p-6.5 flex flex-col h-full"
                                 style={{
-                                    background: 'rgba(255,255,255,0.06)',
-                                    borderColor: 'rgba(255,255,255,0.12)',
-                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
+                                    borderColor: 'rgba(26,26,26,0.12)',
+                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
                                 }}>
-                                <h3 className="text-lg sm:text-xl font-extrabold m-0 mb-3 sm:mb-3.5" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>What makes it work</h3>
+                                <h3 className="text-lg sm:text-xl font-extrabold m-0 mb-3 sm:mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What makes it work</h3>
 
                                 <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
                                     style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
+                                        background: 'rgba(26,26,26,0.03)',
+                                        borderColor: 'rgba(26,26,26,0.08)'
                                     }}>
                                     <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(0,109,255,1), rgba(0,109,255,0.18))',
+                                            background: '#006eff',
                                             boxShadow: '0 16px 34px rgba(0,109,255,0.18)',
-                                            border: '1px solid rgba(255,255,255,0.14)',
-                                            color: 'rgba(255,255,255,0.96)'
+                                            border: '1px solid rgba(255,255,255,0.22)',
+                                            color: '#fff'
                                         }}>
                                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4z" />
@@ -668,22 +666,22 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#E9ECF8' }}>Privacy first architecture</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(233,236,248,0.92)' }}>On device decisions with minimal data movement and explicit opt in controls.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Privacy first architecture</div>
+                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>On device decisions with minimal data movement and explicit opt in controls.</div>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
                                     style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
+                                        background: 'rgba(26,26,26,0.03)',
+                                        borderColor: 'rgba(26,26,26,0.08)'
                                     }}>
                                     <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(255,63,166,1), rgba(255,63,166,0.16))',
+                                            background: '#ff3dab',
                                             boxShadow: '0 16px 34px rgba(255,63,166,0.16)',
-                                            border: '1px solid rgba(255,255,255,0.14)',
-                                            color: 'rgba(255,255,255,0.96)'
+                                            border: '1px solid rgba(255,255,255,0.22)',
+                                            color: '#fff'
                                         }}>
                                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M12 4l8 4-8 4-8-4 8-4z" />
@@ -692,22 +690,22 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#E9ECF8' }}>Escalation by evidence</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(233,236,248,0.92)' }}>Confidence rises through corroboration, and multi phone confirmation triggers a confirmed alert.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Escalation by evidence</div>
+                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Confidence rises through corroboration, and multi phone confirmation triggers a confirmed alert.</div>
                                     </div>
                                 </div>
 
                                 <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
                                     style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
+                                        background: 'rgba(26,26,26,0.03)',
+                                        borderColor: 'rgba(26,26,26,0.08)'
                                     }}>
                                     <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
                                         style={{
-                                            background: 'radial-gradient(circle at 30% 30%, rgba(243,246,255,0.28), rgba(243,246,255,0.10))',
-                                            boxShadow: '0 16px 34px rgba(0,0,0,0.22)',
-                                            border: '1px solid rgba(243,246,255,0.16)',
-                                            color: 'rgba(255,255,255,0.96)'
+                                            background: '#006eff',
+                                            boxShadow: '0 16px 34px rgba(0,0,0,0.14)',
+                                            border: '1px solid rgba(255,255,255,0.22)',
+                                            color: '#fff'
                                         }}>
                                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M9 9h6v6H9z" />
@@ -726,12 +724,12 @@ export default function HowItWorksPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#E9ECF8' }}>Compact model on the phone</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(233,236,248,0.92)' }}>Efficient runtime keeps detection latency low and supports continuous coverage.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Compact model on the phone</div>
+                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Efficient runtime keeps detection latency low and supports continuous coverage.</div>
                                     </div>
                                 </div>
 
-                                <div className="text-xs sm:text-[13px] leading-[1.5] mt-2.5" style={{ color: 'rgba(233,236,248,0.90)' }}>
+                                <div className="text-xs sm:text-[13px] leading-[1.5] mt-2.5" style={{ color: 'rgba(26,26,26,0.70)' }}>
                                     For deployments, you can use individual staff phones or preconfigured kits. Teams can tune sensitivity for the environment and role.
                                 </div>
                             </div>

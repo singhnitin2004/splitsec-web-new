@@ -109,19 +109,15 @@ const FAQ_ITEMS = [
 
 export default function IndustriesPage() {
   return (
-    <div
-      className="w-full min-h-screen"
-      style={{
-        background:
-          "radial-gradient(1200px 600px at 70% 15%, rgba(80,140,255,0.14), transparent 60%), radial-gradient(900px 550px at 20% 80%, rgba(255,80,170,0.10), transparent 60%), #0B1020",
-        color: "#F3F6FF",
-      }}
-    >
-      {/* Hero Section - Dark (same pattern as Home: section + inner max-w box) */}
+    <div className="w-full min-h-screen">
+      {/* Section 1: Hero - Black (same pattern as Home / HowItWorks) */}
       <section
         id="top"
-        className="w-full pt-20 sm:pt-24 lg:pt-28 px-4 sm:px-6 lg:px-8 xl:px-12"
-        style={{ scrollMarginTop: "calc(74px + 14px)" }}
+        className="w-full pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black"
+        style={{
+          scrollMarginTop: "calc(74px + 14px)",
+          color: "#F3F6FF",
+        }}
       >
         <div className="w-full max-w-[1800px] mx-auto">
           <div>
@@ -233,18 +229,14 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Deployment Guides - White card on dark (same as Home xRadius / Featured) */}
+      {/* Section 2: Deployment Guides - White (same pattern as Home / HowItWorks) */}
       <section
         id="guides"
-        className="w-full mt-10 sm:mt-16 px-4 sm:px-6 lg:px-8 xl:px-12"
+        className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white"
         style={{ scrollMarginTop: "calc(74px + 14px)" }}
       >
         <div
-          className="max-w-[1800px] mx-auto border rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-10 2xl:p-12"
-          style={{
-            background: "#FFFFFF",
-            borderColor: "#E5E7EB",
-          }}
+          className="max-w-[1800px] mx-auto "
         >
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.16em] mb-2 sm:mb-2.5 font-extrabold m-0" style={{ color: "rgba(26,26,26,0.55)" }}>
             Recommended setups
@@ -260,11 +252,8 @@ export default function IndustriesPage() {
             <div
               key={ind.id}
               id={ind.id}
-              className="pt-5 mt-5 sm:pt-7 sm:mt-7 border-t first:mt-0 first:pt-0 first:border-t-0"
-              style={{
-                borderColor: "rgba(26,26,26,0.08)",
-                scrollMarginTop: "calc(74px + 14px)",
-              }}
+              className="pt-5 mt-5 sm:pt-7 sm:mt-7 first:mt-0 first:pt-0"
+              style={{ scrollMarginTop: "calc(74px + 14px)" }}
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 sm:gap-3">
                 <h3 className="text-lg sm:text-[22px] font-bold tracking-[-0.02em] text-[#111] m-0">
@@ -388,13 +377,15 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Metrics Section - Dark (same pattern: section + inner box) */}
+      {/* Section 3: Metrics - Black (same pattern as Home / HowItWorks) */}
       <section
         id="metrics"
-        className="w-full mt-10 sm:mt-16 px-4 sm:px-6 lg:px-8 xl:px-12 pb-12 sm:pb-16"
+        className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black"
         style={{ scrollMarginTop: "calc(74px + 14px)" }}
       >
-        <div className="w-full max-w-[1800px] mx-auto border rounded-2xl p-4 sm:p-6 lg:p-8" style={{ borderColor: "rgba(243,246,255,0.08)" }}>
+        <div
+          className="w-full max-w-[1800px] mx-auto "
+        >
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.16em] mb-2 sm:mb-2.5 font-extrabold m-0" style={{ color: "rgba(243,246,255,0.60)" }}>
             Pilot
           </p>

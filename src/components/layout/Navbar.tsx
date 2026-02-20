@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -77,7 +77,7 @@ export default function Navbar() {
                 borderColor: 'rgba(233,236,248,0.08)'
             }}>
                 <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-10 xl:px-16 2xl:px-24">
-                    <div className="flex items-center sm:justify-evenly justify-between h-14 sm:h-16">
+                    <div className="flex items-center justify-between h-14 sm:h-16">
                         {/* Left: Brand Logo */}
                         <Link
                             href="/"
@@ -98,14 +98,14 @@ export default function Navbar() {
                             </span>
                         </Link>
 
-                        {/* Center: Navigation Links - Desktop */}
+                        {/* Right: Navigation Links + Book a demo - Desktop */}
                         <div className="hidden md:flex items-center gap-8">
                             <Link
-                                href="/how-it-works"
-                                style={{ color: pathname === "/how-it-works" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                href="/technology"
+                                style={{ color: pathname === "/technology" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
-                                How It Works
+                                Technology
                             </Link>
                             <Link
                                 href="/industries"
@@ -115,13 +115,27 @@ export default function Navbar() {
                                 Industries
                             </Link>
                             <Link
+                                href="/xradius-kit"
+                                style={{ color: pathname === "/xradius-kit" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                className="text-sm font-bold transition-colors hover:opacity-80"
+                            >
+                                xRadius Kit
+                            </Link>
+                            <Link
+                                href=""
+                                style={{ color: pathname === "/xmapper" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                className="text-sm font-bold transition-colors hover:opacity-80"
+                            >
+                                xMapper
+                            </Link>
+                            {/* <Link
                                 href="/get-involved"
                                 style={{ color: pathname === "/get-involved" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
                                 Get Involved
-                            </Link>
-                            <div
+                            </Link> */}
+                            {/* <div
                                 className="relative"
                                 onMouseEnter={handleResourcesMouseEnter}
                                 onMouseLeave={handleResourcesMouseLeave}
@@ -202,7 +216,7 @@ export default function Navbar() {
                                         </Link>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                             <Link
                                 href="/about"
                                 style={{ color: pathname === "/about" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
@@ -210,20 +224,19 @@ export default function Navbar() {
                             >
                                 About
                             </Link>
+                            <Link
+                                href="/schedule-demo"
+                                className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border"
+                                style={{
+                                    borderColor: '#006DFF',
+                                    background: 'rgba(0,0,0,0.4)',
+                                    color: '#006DFF'
+                                }}
+                            >
+                                Book a demo
+                                <ArrowRight size={16} style={{ color: 'rgba(80,140,255,0.92)' }} />
+                            </Link>
                         </div>
-
-                        {/* Right: Schedule Demo Button - Desktop */}
-                        <Link
-                            href="/schedule-demo"
-                            className="hidden md:block px-5 py-2.5 text-sm font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                            style={{
-                                borderColor: 'rgba(80,140,255,0.45)',
-                                background: 'linear-gradient(135deg, rgba(80,140,255,0.28), rgba(255,255,255,0.06))',
-                                color: 'rgba(233,236,248,0.92)'
-                            }}
-                        >
-                            Schedule A Demo
-                        </Link>
 
                         {/* Right: Mobile Menu Button */}
                         <div className="flex md:hidden">
@@ -277,14 +290,14 @@ export default function Navbar() {
                     >
                         <div className="py-4 space-y-1 border-t border-slate-800/50 mt-2">
                             <Link
-                                href="/how-it-works"
+                                href="/technology"
                                 onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/how-it-works"
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/technology"
                                     ? "text-blue-400 bg-slate-800/50"
                                     : "text-slate-300 active:bg-slate-800/30"
                                     }`}
                             >
-                                How It Works
+                                Technology
                             </Link>
 
                             <Link
@@ -297,8 +310,28 @@ export default function Navbar() {
                             >
                                 Industries
                             </Link>
-
                             <Link
+                                href="/xradius-kit"
+                                onClick={closeMobileMenu}
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/xradius-kit"
+                                    ? "text-blue-400 bg-slate-800/50"
+                                    : "text-slate-300 active:bg-slate-800/30"
+                                    }`}
+                            >
+                                xRadius Kit
+                            </Link>
+                            <Link
+                                href="/xmapper"
+                                onClick={closeMobileMenu}
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/xmapper"
+                                    ? "text-blue-400 bg-slate-800/50"
+                                    : "text-slate-300 active:bg-slate-800/30"
+                                    }`}
+                            >
+                                xMapper
+                            </Link>
+
+                            {/* <Link
                                 href="/get-involved"
                                 onClick={closeMobileMenu}
                                 className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/get-involved"
@@ -307,9 +340,9 @@ export default function Navbar() {
                                     }`}
                             >
                                 Get Involved
-                            </Link>
+                            </Link> */}
 
-                            <div>
+                            {/* <div>
                                 <button
                                     onClick={toggleMobileResources}
                                     className={`w-full flex items-center justify-between text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/resources" || pathname?.startsWith("/resources/")
@@ -383,7 +416,7 @@ export default function Navbar() {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
 
 

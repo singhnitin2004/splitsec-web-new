@@ -5,12 +5,12 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="w-full relative overflow-hidden border-t" style={{
-            background: 'linear-gradient(180deg, rgba(11,16,32,0.96), rgba(7,10,18,0.96))',
-            borderColor: 'rgba(233,236,248,0.08)'
+        <footer className="w-full relative overflow-hidden border-t border-white/10" style={{
+            background: 'black',
+            borderColor: 'black'
         }}>
             {/* Decorative Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none border-t">
                 {/* Gradient Orbs */}
                 <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(80,140,255,0.1)' }}></div>
                 <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(255,80,170,0.1)' }}></div>
@@ -65,7 +65,7 @@ export default function Footer() {
                                     </span>
                                 </Link>
                                 <Link
-                                    href="/how-it-works"
+                                    href="/technology"
                                     className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
                                     style={{ color: 'rgba(233,236,248,0.78)' }}
                                 >

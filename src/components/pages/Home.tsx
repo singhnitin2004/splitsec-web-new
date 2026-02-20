@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 // App screen sequence for right-side carousel: home → gunshot detected → alertcrew
 const APP_SCREENS = [
@@ -271,31 +272,31 @@ export default function HomePage() {
     return (
         <div className="w-full min-h-screen">
             {/* Section 1: Hero - Black */}
-            <section className="w-full min-h-screen sm:min-h-[calc(100vh-280px)] pt-15 flex items-center px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
+            <section className="w-full min-h-screen sm:min-h-[min(100vh,880px)] md:min-h-[calc(100vh-270px)] pt-20 sm:pt-24 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-black overflow-x-hidden">
                 <div className="w-full max-w-[1800px] mx-auto">
                     {/* Hero Grid: Text (left) + Visual (right) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-6 sm:gap-[18px] items-stretch">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-center lg:items-stretch">
 
-                        {/* Left: Hero Text */}
-                        <div className="flex flex-col justify-center gap-2.5 sm:gap-4">
-                            <h1 className="text-[clamp(28px,6.5vw,64px)] sm:text-[clamp(34px,5.2vw,64px)] font-bold leading-[1.08] sm:leading-[1.04] tracking-[-0.04em] m-0 max-w-[20ch]"
+                        {/* Left: Hero Text - left-aligned on all screens */}
+                        <div className="flex flex-col justify-center gap-2 sm:gap-3 md:gap-4 order-1 text-left">
+                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,5vw,64px)] lg:text-[clamp(40px,4.5vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em] m-0 max-w-[20ch]"
                                 style={{ color: '#E9ECF8' }}>
                                 Gunshot awareness in seconds
                             </h1>
 
-                            <div className="text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.10em] sm:tracking-[0.18em] mt-2.5 sm:mt-3.5 mb-2 sm:mb-3.5 leading-snug"
+                            <div className="text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.10em] sm:tracking-[0.18em] mt-2 sm:mt-2.5 md:mt-3.5 mb-1.5 sm:mb-3 leading-snug"
                                 style={{ color: 'rgba(243,246,255,0.62)' }}>
                                 DETECT. CONFIRM. NOTIFY. RESPOND.
                             </div>
 
-                            <p className="text-base sm:text-lg leading-[1.5] sm:leading-[1.45] m-0 mb-4 sm:mb-5 max-w-[56ch]"
+                            <p className="text-sm sm:text-base md:text-lg leading-[1.5] sm:leading-[1.45] m-0 mb-3 sm:mb-4 md:mb-5 max-w-[56ch]"
                                 style={{ color: 'rgba(243,246,248,0.80)' }}>
                                 Built on everyday smartphones for outdoor events, guard teams, ERs, and schools. Privacy first by design with on device detection and zero audio storage or transmission.
                             </p>
 
-                            <div className="flex gap-3 mt-3 sm:mt-[18px]">
+                            <div className="flex flex-col sm:flex-row gap-3 mt-2 sm:mt-[18px] justify-start">
                                 <button
-                                    className="w-full sm:w-auto min-h-[48px] sm:min-h-0 px-5 py-3.5 sm:py-3 rounded-[999px] font-black text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_22px_54px_rgba(0,109,255,0.32)] active:scale-[0.98]"
+                                    className="w-full sm:w-auto min-h-[44px] sm:min-h-[48px] px-4 sm:px-5 py-3 sm:py-3.5 rounded-[999px] font-black text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_22px_54px_rgba(0,109,255,0.32)] active:scale-[0.98]"
                                     style={{
                                         background: '#006dff',
                                         color: '#fff',
@@ -308,30 +309,35 @@ export default function HomePage() {
                             </div>
                         </div>
 
-                        {/* Right: Visual Split Panel */}
-                        <div className="relative overflow-hidden min-h-[300px] sm:min-h-[520px]"
+                        {/* Right: Visual Split Panel - min-h ensures proper fill at 1024px */}
+                        <div className="relative overflow-hidden min-h-[280px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[460px] xl:min-h-[520px] max-h-[85vh] lg:max-h-none order-2 w-full"
                             style={{
-                                borderRadius: '18px',
+                                borderRadius: '14px',
                                 border: '1px solid rgba(243,246,255,0.10)',
                                 background: 'rgba(20,24,36,0.92)',
                                 boxShadow: '0 24px 70px rgba(0,0,0,0.55)'
                             }}>
 
-                            {/* Gradient Overlay */}
+                            {/* Gradient Overlay - responsive size */}
                             <div className="absolute inset-0 pointer-events-none"
                                 style={{
-                                    background: 'radial-gradient(900px 520px at 22% 22%, rgba(0,109,255,0.06), transparent 58%)',
+                                    background: 'radial-gradient( clamp(400px, 80vw, 900px) clamp(300px, 50vh, 520px) at 22% 22%, rgba(0,109,255,0.06), transparent 58%)',
                                     opacity: 0.9
                                 }} />
 
-                            {/* Inner Container with Grid */}
-                            <div className="relative h-full p-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {/* Inner Container - equal height rows on mobile; min-h on desktop so phone has room */}
+                            <div className="relative h-full min-h-[400px] md:min-h-[420px] p-3 sm:p-4 md:p-5 lg:p-6 grid grid-cols-1 md:grid-cols-2 grid-rows-[minmax(220px,1fr)_minmax(220px,1fr)] md:grid-rows-1 gap-3 sm:gap-4 md:gap-5">
 
-                                {/* Single centered wave at bottom that spans both sections - z-10 so it shows on top of panels */}
+                                {/* Vertical divider - spans both sections, more visible on tablet/desktop */}
+                                <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 z-[5] pointer-events-none hidden md:block"
+                                    style={{ background: 'rgba(243,246,255,0.22)' }}
+                                    aria-hidden
+                                />
+                                {/* Single wave - one wing at a time, covers both sections; next starts when previous ends */}
                                 <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden" aria-hidden>
                                     {/* Center dot at bottom - pink gradient */}
                                     <div
-                                        className="absolute left-1/2 bottom-2 sm:bottom-4 w-4 h-4 rounded-full -translate-x-1/2 translate-y-1/2"
+                                        className="absolute left-1/2 bottom-2 sm:bottom-3 md:bottom-4 w-3 h-3 sm:w-4 sm:h-4 rounded-full -translate-x-1/2 translate-y-1/2"
                                         style={{
                                             background: 'radial-gradient(circle at 30% 30%, rgba(255,120,180,0.9), rgba(252,69,166,0.95) 60%)',
                                             boxShadow: '0 0 26px rgba(252,69,166,0.40)',
@@ -339,34 +345,27 @@ export default function HomePage() {
                                             zIndex: 3
                                         }}
                                     />
-                                    {/* Animated wave rings expanding from bottom center - pink - conditionally animated */}
-                                    {[0, 1.3, 2.6, 3.9].map((delay, i) => (
-                                        <div
-                                            key={i}
-                                            className="absolute left-1/2 bottom-0 rounded-full will-change-[width,height,transform,opacity]"
-                                            style={{
-                                                width: 24,
-                                                height: 24,
-                                                transform: 'translate(-50%, 50%)',
-                                                border: '3px solid rgba(252,69,166,0.45)',
-                                                animation: isWaveAnimated ? `cwRing 5.2s ease-out ${delay}s infinite` : 'none',
-                                                opacity: isWaveAnimated ? 1 : 0.3
-                                            }}
-                                        />
-                                    ))}
+                                    {/* Single wave ring - sequential: one completes, then next starts */}
+                                    <div
+                                        className="absolute left-1/2 bottom-0 rounded-full will-change-[width,height,transform,opacity]"
+                                        style={{
+                                            width: 24,
+                                            height: 24,
+                                            transform: 'translate(-50%, 50%)',
+                                            border: '3px solid rgba(252,69,166,0.45)',
+                                            animation: isWaveAnimated ? 'cwRingSingle 2.5s ease-out infinite' : 'none',
+                                            opacity: isWaveAnimated ? 1 : 0.3
+                                        }}
+                                    />
                                 </div>
 
-                                {/* LEFT COLUMN: Today */}
-                                <div className="relative rounded-[18px] border overflow-hidden p-3.5 min-h-[300px] sm:min-h-0"
-                                    style={{
-                                        border: '1px solid rgba(243,246,255,0.10)',
-                                        background: 'rgba(255,255,255,0.03)'
-                                    }}>
+                                {/* LEFT COLUMN: Today - equal height with With SplitSec on mobile */}
+                                <div className="relative p-3 sm:p-3.5 min-h-0 flex flex-col flex-1 min-w-0">
 
                                     {/* Label */}
-                                    <div className="flex items-center gap-2.5 text-[10px] sm:text-xs uppercase tracking-[0.12em] mb-3 z-[6] relative"
+                                    <div className="flex items-center gap-2 sm:gap-2.5 text-[10px] sm:text-xs uppercase tracking-[0.12em] mb-2 sm:mb-3 z-[6] relative"
                                         style={{ color: 'rgba(243,246,255,0.58)' }}>
-                                        <div className="w-2.5 h-2.5 rounded-full shrink-0"
+                                        <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0"
                                             style={{
                                                 background: '#006dff',
                                                 boxShadow: '0 0 0 10px rgba(0,109,255,0.10)'
@@ -386,10 +385,10 @@ export default function HomePage() {
                                                 key={i}
                                                 className="absolute text-[11px] sm:text-[13px] px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-full whitespace-nowrap opacity-0"
                                                 style={{
-                                                    left: bubble.left,
-                                                    right: bubble.right,
+                                                    left: (bubble as { left?: string; }).left,
+                                                    right: (bubble as { right?: string; }).right,
                                                     top: bubble.top,
-                                                    transform: bubble.transform,
+                                                    transform: (bubble as { transform?: string; }).transform,
                                                     background: 'rgba(0,0,0,0.28)',
                                                     border: '1px solid rgba(243,246,255,0.12)',
                                                     color: 'rgba(243,246,255,0.78)',
@@ -404,26 +403,26 @@ export default function HomePage() {
                                     </div>
                                 </div>
 
-                                {/* RIGHT COLUMN: With SplitSec */}
-                                <div className="relative rounded-[18px] border overflow-hidden p-3.5 min-h-[300px] sm:min-h-0"
-                                    style={{
-                                        border: '1px solid rgba(0,109,255,0.26)',
-                                        background: 'rgba(20,24,36,0.96)'
-                                    }}>
+                                {/* RIGHT COLUMN: With SplitSec - equal height with Today on mobile; border-top = divider when stacked; top padding for spacing */}
+                                <div className="relative overflow-hidden p-3 sm:p-3.5 pr-5 sm:pr-6 pt-5 sm:pt-4 md:pt-3.5 min-h-0 flex-1 min-w-0 border-t border-[rgba(243,246,255,0.15)] md:border-t-0">
 
-                                    {/* Label */}
-                                    <div className="flex items-center gap-2.5 text-[10px] sm:text-xs uppercase tracking-[0.12em] mb-3 z-[6] relative"
+                                    {/* Label - z-[20] above phone, padding to prevent clipping */}
+                                    <div className="flex items-center gap-2 sm:gap-2.5 text-[10px] sm:text-xs uppercase tracking-[0.12em] mb-2 sm:mb-3 pr-4 py-0.5 z-[20] relative shrink-0 min-h-[1.5em] overflow-visible"
                                         style={{ color: 'rgba(243,246,255,0.58)' }}>
-                                        <div className="w-2.5 h-2.5 rounded-full shrink-0"
+                                        <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0"
                                             style={{
                                                 background: '#006dff',
                                                 boxShadow: '0 0 0 10px rgba(0,109,255,0.10)'
                                             }} />
-                                        With SplitSec.AI
+                                        <span className="sm:hidden">SplitSec</span>
+                                        <span className="hidden sm:inline whitespace-nowrap">With SplitSec.AI</span>
                                     </div>
 
-                                    {/* Phone centered in column - carousel: preload all, smooth opacity transition, no conflicting animation */}
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(240px,64%)] h-[min(460px,78%)] pointer-events-none z-[10]">
+                                    {/* Phone - reduced size so label has breathing room above it */}
+                                    <div
+                                        className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 min-w-[110px] w-[min(145px,68vw)] md:w-[min(200px,85%)] lg:w-[min(220px,85%)] max-h-[calc(100%-3rem)] pointer-events-none z-[10]"
+                                        style={{ aspectRatio: '9/19.2' }}
+                                    >
                                         {APP_SCREENS.map((screen, i) => (
                                             <div
                                                 key={screen.src}
@@ -441,7 +440,7 @@ export default function HomePage() {
                                                     alt={screen.alt}
                                                     fill
                                                     className="object-contain"
-                                                    sizes="(max-width: 640px) 240px, (max-width: 1024px) 240px, 240px"
+                                                    sizes="(max-width: 480px) 145px, (max-width: 768px) 180px, (max-width: 1024px) 200px, 220px"
                                                     priority
                                                 />
                                             </div>
@@ -455,9 +454,9 @@ export default function HomePage() {
             </section>
 
             {/* Section 2: How it works - Full white */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+            <section className="w-full py-10 sm:py-12  px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
                 <div className="max-w-[1800px] mx-auto">
-                    <div className=" p-6 sm:p-8 bg-white">
+                    <div className="  bg-white">
                         {/* Header */}
                         <div className="mb-3">
                             <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"
@@ -596,7 +595,7 @@ export default function HomePage() {
             </section>
 
             {/* Section 3: Industries - Black */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
                 <div className="max-w-[1800px] mx-auto p-4">
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-center">
                         {/* Left: Heading and Description */}
@@ -636,8 +635,9 @@ export default function HomePage() {
                         {/* Right: 2x2 Grid of Cards */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                             {/* Card 1 - Outdoor events */}
-                            <div
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)]"
+                            <Link
+                                href="/industries#outdoor"
+                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)] cursor-pointer block"
                                 style={{
                                     background: 'rgba(11,16,32,0.85)',
                                     borderColor: 'rgba(233,236,248,0.12)',
@@ -663,11 +663,12 @@ export default function HomePage() {
                                 <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
                                     Gunshot awareness across flexible perimeters, no wiring and no cameras.
                                 </p>
-                            </div>
+                            </Link>
 
                             {/* Card 2 - Security patrols */}
-                            <div
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)]"
+                            <Link
+                                href="/industries#guards"
+                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)] cursor-pointer block"
                                 style={{
                                     background: 'rgba(11,16,32,0.85)',
                                     borderColor: 'rgba(233,236,248,0.12)',
@@ -692,11 +693,12 @@ export default function HomePage() {
                                 <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
                                     Portable coverage for patrol routes, lots, and temporary posts.
                                 </p>
-                            </div>
+                            </Link>
 
                             {/* Card 3 - Hospitals and ER */}
-                            <div
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)]"
+                            <Link
+                                href="/industries#health"
+                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)] cursor-pointer block"
                                 style={{
                                     background: 'rgba(11,16,32,0.85)',
                                     borderColor: 'rgba(233,236,248,0.12)',
@@ -721,11 +723,12 @@ export default function HomePage() {
                                 <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
                                     Faster recognition and escalation for staff and on-site security.
                                 </p>
-                            </div>
+                            </Link>
 
                             {/* Card 4 - Schools and campuses */}
-                            <div
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)]"
+                            <Link
+                                href="/industries#schools"
+                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)] cursor-pointer block"
                                 style={{
                                     background: 'rgba(11,16,32,0.85)',
                                     borderColor: 'rgba(233,236,248,0.12)',
@@ -751,14 +754,14 @@ export default function HomePage() {
                                 <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
                                     A simple awareness layer for staff, responders, and administrators.
                                 </p>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Section 4: xRadius Kit - White */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
                 <div className="max-w-[1800px] mx-auto  px-8 sm:px-10 lg:px-12 bg-white">
                     {/* Header with Title and Button */}
                     <div className="flex items-start justify-between mb-3 gap-4 flex-wrap">
@@ -871,7 +874,7 @@ export default function HomePage() {
             </section>
 
             {/* Section 5: xMapper - Black */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
                 <div className="max-w-[1800px] mx-auto px-8 sm:px-10 lg:px-12">
                     {/* Main Content Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-center">
@@ -931,10 +934,10 @@ export default function HomePage() {
 
                         {/* Right: Map Visualization */}
                         <div className="flex justify-center lg:justify-end w-full">
-                            <div className="relative w-full aspect-[4/3] min-h-[280px] rounded-[32px] p-2 overflow-hidden bg-black lg:max-w-[600px] lg:h-[540px] lg:aspect-auto"
+                            <div className="relative w-full aspect-[4/3] min-h-[280px] rounded-[32px] p-2 overflow-hidden bg-black lg:max-w-[540px] lg:h-[540px] lg:aspect-auto"
                             >
                                 <Image
-                                    src="/xMapper/xmapper.png"
+                                    src="/xMapper/xmapper-utils.png"
                                     alt="xMapper coverage map with phone placement visualization"
                                     fill
                                     className="object-cover bg-black"
@@ -947,7 +950,7 @@ export default function HomePage() {
             </section>
 
             {/* Section 6: Featured In - White */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
                 <div className="max-w-[1800px] mx-auto ">
                     {/* Outer wrapper: soft pink/purple gradient background */}
                     <div
