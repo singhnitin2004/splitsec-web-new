@@ -122,7 +122,7 @@ export default function Navbar() {
                                 xRadius Kit
                             </Link>
                             <Link
-                                href=""
+                                href="/xmapper"
                                 style={{ color: pathname === "/xmapper" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >

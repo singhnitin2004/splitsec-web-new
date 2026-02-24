@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 const PILOT_LOCATION_OPTIONS = [
     { value: "", label: "Select one" },
@@ -142,12 +142,21 @@ export default function Xradiuskit() {
         document.getElementById("request-xradius-kit")?.scrollIntoView({ behavior: "smooth" });
     }, []);
 
+    useEffect(() => {
+        if (typeof window !== "undefined" && window.location.hash === "#request-xradius-kit") {
+            const el = document.getElementById("request-xradius-kit");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+    }, []);
+
     return (
         <div className="w-full min-h-screen">
             {/* Section 1: Hero - Light grey (Portable Pilot Deployment) */}
             <section
                 className="w-full pt-20 sm:pt-28 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 overflow-x-hidden"
-
+                style={{
+                    background: '#000000',
+                }}
             >
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-center">
@@ -155,23 +164,23 @@ export default function Xradiuskit() {
                         <div className="flex flex-col justify-center gap-1 sm:gap-1.5 md:gap-2 order-1 text-left lg:min-w-0">
                             <p
                                 className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest sm:tracking-[0.18em] m-0 leading-snug"
-                                style={{ color: "#6b7280" }}
+                                style={{ color: "#9ca3af" }}
                             >
                                 Portable pilot deployment
                             </p>
 
-                            <h1 className="text-[clamp(28px,5.5vw,56px)] sm:text-[clamp(34px,4.6vw,56px)] font-bold leading-[1.08] sm:leading-[1.05] tracking-[-0.04em] m-0">
+                            <h1 className="text-[clamp(28px,5.5vw,56px)] sm:text-[clamp(34px,4.6vw,56px)] font-bold leading-[1.08] sm:leading-[1.05] tracking-[-0.04em] m-0 text-white">
                                 xRadius Kit
                             </h1>
                             <p
                                 className="text-sm sm:text-base leading-normal sm:leading-[1.45] m-0 mb-0.5 sm:mb-1 max-w-[56ch]"
-                                style={{ color: "#374151" }}
+                                style={{ color: "#d1d5db" }}
                             >
                                 A rugged, grab-and-go kit that turns included, preconfigured phones into a portable gunshot awareness layer. Distribute phones, power on, and begin coverage in minutes.
                             </p>
                             <p
                                 className="text-sm sm:text-base font-semibold m-0 mb-1 sm:mb-2 max-w-[52ch]"
-                                style={{ color: "#1f2937" }}
+                                style={{ color: "#f3f4f6" }}
                             >
                                 Rent it for a pilot or event, or buy it for ongoing coverage.
                             </p>
@@ -230,20 +239,31 @@ export default function Xradiuskit() {
                             </div>
                         </div>
 
-                        {/* Right: Image - card background, even gapping on all sides including bottom */}
+                        {/* Right: Image - card with rounded corners; inner wrapper clips to roundness */}
                         <div className="order-2 w-full flex flex-col justify-center items-center min-w-0">
                             <div className="w-full flex justify-center items-center p-3 sm:p-4 md:p-5 lg:p-6">
                                 <div
-                                    className="relative w-full max-w-lg sm:max-w-xl lg:max-w-2xl aspect-4/3 sm:aspect-5/4 lg:aspect-4/3 min-h-[220px] sm:min-h-[280px] lg:min-h-[320px] max-h-[320px] sm:max-h-[380px] lg:max-h-[480px] overflow-hidden rounded-2xl sm:rounded-3xl"
+                                    className="relative w-full max-w-lg sm:max-w-xl min-h-[220px] sm:min-h-[280px] lg:min-h-[320px] max-h-[320px] sm:max-h-[380px] lg:max-h-[480px]"
+                                    style={{
+                                        aspectRatio: "4 / 3",
+                                        overflow: "hidden",
+                                        borderRadius: "1rem",
+                                    }}
                                 >
-                                    <Image
-                                        src="/xRadius/xradius.png"
-                                        alt="xRadius kit with preconfigured phones"
-                                        fill
-                                        className="object-contain object-center"
-                                        priority
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 480px"
-                                    />
+                                    <div
+                                        className="absolute inset-0 w-full h-full"
+                                        style={{
+                                            overflow: "hidden",
+                                            borderRadius: "1rem",
+                                        }}
+                                    >
+                                        <Image
+                                            src="/xRadius/xradius-kit.png"
+                                            alt="xRadius kit with preconfigured phones"
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -251,13 +271,13 @@ export default function Xradiuskit() {
                 </div>
             </section>
 
-            {/* Section 2: From Intake to Live Pilot - Dark theme (same width as hero) */}
-            <section className="w-full py-10 sm:py-14 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-[#0a0a0b]">
+            {/* Section 2: From Intake to Live Pilot - White background */}
+            <section className="w-full py-10 sm:py-14 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-white">
                 <div className="w-full max-w-[1800px] mx-auto ">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-[-0.04em] m-0 mb-2 sm:mb-3" style={{ color: "#ffffff" }}>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-[-0.04em] m-0 mb-2 sm:mb-3" style={{ color: "#1f2937" }}>
                         From Intake to Live Pilot
                     </h2>
-                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed m-0 mb-6 sm:mb-8 mx-auto" style={{ color: "rgba(255,255,255,0.85)" }}>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed m-0 mb-6 sm:mb-8 mx-auto" style={{ color: "#4b5563" }}>
                         Share core details once, then launch with a role-based workflow designed for fast activation and measurable results.
                     </p>
 
@@ -271,42 +291,42 @@ export default function Xradiuskit() {
                                 <div
                                     className="rounded-2xl p-4 sm:p-5 w-full"
                                     style={{
-                                        background: "#1a1a1d",
-                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        background: "#f9fafb",
+                                        border: "1px solid rgba(0,0,0,0.06)",
                                     }}
                                 >
-                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#ffffff" }}>
+                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#1f2937" }}>
                                         Share Contacts
                                     </h4>
-                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "#4b5563" }}>
                                         Provide names, phone numbers, and one primary admin contact.
                                     </p>
                                 </div>
                                 <div
                                     className="rounded-2xl p-4 sm:p-5 w-full"
                                     style={{
-                                        background: "#1a1a1d",
-                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        background: "#f9fafb",
+                                        border: "1px solid rgba(0,0,0,0.06)",
                                     }}
                                 >
-                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#ffffff" }}>
+                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#1f2937" }}>
                                         Assign Key Roles
                                     </h4>
-                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "#4b5563" }}>
                                         Tag leadership roles like Admin, SRO, Principal, or Wing Leader. Most users remain Staff.
                                     </p>
                                 </div>
                                 <div
                                     className="rounded-2xl p-4 sm:p-5 w-full"
                                     style={{
-                                        background: "#1a1a1d",
-                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        background: "#f9fafb",
+                                        border: "1px solid rgba(0,0,0,0.06)",
                                     }}
                                 >
-                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#ffffff" }}>
+                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#1f2937" }}>
                                         Confirm Site Basics
                                     </h4>
-                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "#4b5563" }}>
                                         Share location details, pilot window, and any perimeter or schedule constraints.
                                     </p>
                                 </div>
@@ -322,42 +342,42 @@ export default function Xradiuskit() {
                                 <div
                                     className="rounded-2xl p-4 sm:p-5 w-full"
                                     style={{
-                                        background: "#1a1a1d",
-                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        background: "#f9fafb",
+                                        border: "1px solid rgba(0,0,0,0.06)",
                                     }}
                                 >
-                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#ffffff" }}>
+                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#1f2937" }}>
                                         Kickoff and Scope Lock
                                     </h4>
-                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "#4b5563" }}>
                                         We validate users, coverage zone, and success criteria in one focused call.
                                     </p>
                                 </div>
                                 <div
                                     className="rounded-2xl p-4 sm:p-5 w-full"
                                     style={{
-                                        background: "#1a1a1d",
-                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        background: "#f9fafb",
+                                        border: "1px solid rgba(0,0,0,0.06)",
                                     }}
                                 >
-                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#ffffff" }}>
+                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#1f2937" }}>
                                         Deploy and Authenticate
                                     </h4>
-                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "#4b5563" }}>
                                         Preconfigured phones arrive, are distributed, and users sign in with organization code and phone verification.
                                     </p>
                                 </div>
                                 <div
                                     className="rounded-2xl p-4 sm:p-5 w-full"
                                     style={{
-                                        background: "#1a1a1d",
-                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        background: "#f9fafb",
+                                        border: "1px solid rgba(0,0,0,0.06)",
                                     }}
                                 >
-                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#ffffff" }}>
+                                    <h4 className="text-base sm:text-lg font-bold m-0 mb-2" style={{ color: "#1f2937" }}>
                                         Run, Measure, and Decide
                                     </h4>
-                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "rgba(255,255,255,0.75)" }}>
+                                    <p className="text-sm sm:text-[15px] leading-normal m-0" style={{ color: "#4b5563" }}>
                                         You run the pilot, review outcomes, and choose next-step rollout with clear data.
                                     </p>
                                 </div>
@@ -367,16 +387,16 @@ export default function Xradiuskit() {
                 </div>
             </section>
 
-            {/* Section 3: Request xRadius Kit - 3-step form with sequential unlock */}
+            {/* Section 3: Request xRadius Kit - Black background, 3-step form */}
             <section
                 id="request-xradius-kit"
-                className="w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12"
+                className="w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-black"
             >
                 <div className="w-full max-w-[1800px] mx-auto">
-                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.04em] m-0 mb-2" style={{ color: "#1f2937" }}>
+                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.04em] m-0 mb-2" style={{ color: "#ffffff" }}>
                         Request xRadius Kit
                     </h2>
-                    <p className="text-sm sm:text-base m-0 mb-8" style={{ color: "#6b7280" }}>
+                    <p className="text-sm sm:text-base m-0 mb-8" style={{ color: "rgba(255,255,255,0.85)" }}>
                         Complete this short intake flow. We will recommend kit sizing, purchase option, and deployment setup.
                     </p>
 

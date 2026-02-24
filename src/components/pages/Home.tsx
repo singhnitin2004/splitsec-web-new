@@ -574,7 +574,8 @@ export default function HomePage() {
                                         See the on device pipeline in real time. L1 quick screen, L2 verify, L3 confirm and alert. See exactly what users see at each step.
                                     </p>
                                 </div>
-                                <button
+                                <Link
+                                    href="/technology"
                                     className="w-full sm:w-auto mt-6 px-6 py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                                     style={{
                                         background: '#007AFF',
@@ -587,7 +588,7 @@ export default function HomePage() {
                                         <line x1="5" y1="12" x2="19" y2="12"></line>
                                         <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -596,7 +597,7 @@ export default function HomePage() {
 
             {/* Section 3: Industries - Black */}
             <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
-                <div className="max-w-[1800px] mx-auto p-4">
+                <div className="max-w-[1800px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-center">
                         {/* Left: Heading and Description */}
                         <div className="flex flex-col justify-center md:px-6 xl:px-10">
@@ -610,7 +611,8 @@ export default function HomePage() {
                             </p>
 
                             <div className="flex flex-col gap-3 items-start">
-                                <button
+                                <Link
+                                    href="/industries"
                                     className="rounded-full px-6 py-3 font-semibold text-sm transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
                                     style={{
                                         background: '#006dff',
@@ -618,8 +620,9 @@ export default function HomePage() {
                                     }}
                                 >
                                     Open industry playbooks →
-                                </button>
-                                <button
+                                </Link>
+                                <Link
+                                    href="/schedule-demo"
                                     className="rounded-full px-6 py-3 font-semibold text-sm transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2 border"
                                     style={{
                                         background: 'transparent',
@@ -628,7 +631,7 @@ export default function HomePage() {
                                     }}
                                 >
                                     Book 15 min walkthrough →
-                                </button>
+                                </Link>
                             </div>
                         </div>
 
@@ -771,7 +774,8 @@ export default function HomePage() {
                                 xRadius Kit
                             </h2>
                         </div>
-                        <button
+                        <Link
+                            href="/xradius-kit#request-xradius-kit"
                             className="rounded-full px-5 py-2.5 font-medium text-md transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
                             style={{
                                 background: '#006dff',
@@ -779,7 +783,7 @@ export default function HomePage() {
                             }}
                         >
                             Request xRadius Kit →
-                        </button>
+                        </Link>
                     </div>
 
                     {/* First description line */}
@@ -798,12 +802,12 @@ export default function HomePage() {
                     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,520px)_1fr] gap-8 lg:gap-5 items-center">
                         {/* Left: Image */}
                         <div className="flex justify-center lg:justify-start w-full">
-                            <div className="relative w-full aspect-square rounded-[32px] overflow-hidden lg:max-w-[420px] lg:max-h-[500px] lg:w-full"
+                            <div className="relative w-full aspect-square rounded-[32px] overflow-hidden lg:max-w-[460px] lg:max-h-[500px] lg:w-full"
                                 style={{
                                     background: '#000000',
                                 }}>
                                 <Image
-                                    src="/xRadius/xradius.png"
+                                    src="/xRadius/xradius-kit.png"
                                     alt="RadiX Kit with phone showing SplitSec app"
                                     fill
                                     className="object-cover"
@@ -924,11 +928,12 @@ export default function HomePage() {
 
                             {/* Button */}
                             <div className="pt-2">
-                                <button
-                                    className="rounded-full px-5 bg-transparent text-[#006dff] border border-white py-2.5 font-medium text-lg transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.4)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
+                                <Link
+                                    href="/xmapper"
+                                    className="rounded-full px-5 bg-transparent text-[#006dff] border border-white py-2.5 font-medium text-lg transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.4)] hover:scale-105 whitespace-nowrap inline-flex items-center gap-2"
                                 >
                                     Launch xMapper utility →
-                                </button>
+                                </Link>
                             </div>
                         </div>
 

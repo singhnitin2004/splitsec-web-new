@@ -346,7 +346,7 @@ export default function IndustriesPage() {
                   </ol>
                   <div className="mt-auto pt-3 sm:pt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
                     <Link
-                      href="/#about"
+                      href="/schedule-demo"
                       className="inline-flex items-center justify-center gap-2 min-h-[44px] sm:min-h-0 px-4 py-2.5 rounded-full font-extrabold text-sm whitespace-nowrap transition-all hover:brightness-105 w-full sm:w-auto"
                       style={{
                         background: "#006DFF",
@@ -510,7 +510,7 @@ export default function IndustriesPage() {
               </div>
               <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
                 <Link
-                  href="/#about"
+                  href="/schedule-demo"
                   className="inline-flex items-center justify-center gap-2 min-h-[44px] sm:min-h-0 px-4 py-2.5 rounded-full font-extrabold text-sm whitespace-nowrap transition-all hover:brightness-105 w-full sm:w-auto"
                   style={{
                     background: "#006DFF",

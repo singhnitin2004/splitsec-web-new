@@ -75,7 +75,7 @@ export default function Technology() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center">
-                                <a href="/#about"
+                                <a href="/schedule-demo"
                                     className="inline-flex items-center justify-center gap-2.5 px-3.5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-300 hover:brightness-105 w-full sm:w-auto min-h-[44px] sm:min-h-0"
                                     style={{
                                         border: '1px solid rgba(0,109,255,0.30)',
@@ -460,7 +460,7 @@ export default function Technology() {
                                     <div className="text-[13px] font-extrabold max-w-[62ch]" style={{ color: 'rgba(233,236,248,0.88)' }}>Deploy, measure, and decide with clean pilot metrics.</div>
                                 </div>
                                 <div className="flex gap-3 flex-wrap items-center">
-                                    <a href="/#about"
+                                    <a href="/schedule-demo"
                                         className="inline-flex items-center justify-center gap-2.5 px-3.5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-300 hover:brightness-105 w-full sm:w-auto min-h-[44px] sm:min-h-0"
                                         style={{
                                             border: '1px solid rgba(0,109,255,0.30)',
@@ -626,7 +626,7 @@ export default function Technology() {
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center mt-4 sm:mt-4.5">
-                                    <a href="/#about"
+                                    <a href="/schedule-demo"
                                         className="inline-flex items-center justify-center gap-2.5 px-3.5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-300 hover:brightness-105 w-full sm:w-auto"
                                         style={{
                                             border: '1px solid rgba(0,109,255,0.30)',

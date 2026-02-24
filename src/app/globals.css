@@ -165,3 +165,14 @@ body {
 .animate-scaleIn {
   animation: scaleIn 0.3s ease-out;
 }
+
+/* Xmapper coverage radius: hide default number spinner for cleaner look */
+.xmapper-radius-input::-webkit-inner-spin-button,
+.xmapper-radius-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.xmapper-radius-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
