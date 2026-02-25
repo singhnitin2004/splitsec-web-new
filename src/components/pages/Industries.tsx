@@ -415,37 +415,15 @@ export default function IndustriesPage() {
                   borderColor: "rgba(255,255,255,0.14)",
                   background: "rgba(0,0,0,0.18)",
                 }}
-                aria-label="SplitSec branded pilot report image"
+                aria-label="SplitSec pilot report image"
               >
-                <svg viewBox="0 0 960 540" role="img" aria-hidden="true" className="w-full h-auto block min-w-0">
-                  <defs>
-                    <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stopColor="#0b1630" />
-                      <stop offset="1" stopColor="#17244a" />
-                    </linearGradient>
-                    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stopColor="#006DFF" />
-                      <stop offset="1" stopColor="#FF3FA6" />
-                    </linearGradient>
-                  </defs>
-                  <rect x="0" y="0" width="960" height="540" fill="url(#pg)" />
-                  <rect x="88" y="86" width="390" height="360" rx="20" fill="#ffffff" />
-                  <rect x="478" y="94" width="394" height="352" rx="20" fill="#f7f9ff" />
-                  <rect x="98" y="96" width="370" height="50" rx="12" fill="url(#acc)" />
-                  <text x="120" y="128" fill="#ffffff" fontFamily="Segoe UI, Arial, sans-serif" fontSize="22" fontWeight="700">SplitSec Pilot Report</text>
-                  <rect x="120" y="170" width="312" height="10" rx="5" fill="#c6d1e9" />
-                  <rect x="120" y="194" width="260" height="10" rx="5" fill="#c6d1e9" />
-                  <rect x="120" y="250" width="120" height="120" rx="16" fill="#e8efff" />
-                  <rect x="258" y="250" width="170" height="20" rx="10" fill="#d2ddf5" />
-                  <rect x="258" y="284" width="150" height="20" rx="10" fill="#d2ddf5" />
-                  <rect x="258" y="318" width="110" height="20" rx="10" fill="#d2ddf5" />
-                  <circle cx="674" cy="248" r="76" fill="#e9f0ff" />
-                  <path d="M674 248 L674 186 A62 62 0 1 1 621 279 Z" fill="#006DFF" />
-                  <path d="M674 248 L621 279 A62 62 0 0 1 674 186 Z" fill="#FF3FA6" />
-                  <rect x="566" y="352" width="218" height="16" rx="8" fill="#c5d2eb" />
-                  <rect x="566" y="378" width="180" height="16" rx="8" fill="#c5d2eb" />
-                  <rect x="566" y="404" width="145" height="16" rx="8" fill="#c5d2eb" />
-                </svg>
+                <Image
+                  src="/xMapper/book-report.png"
+                  alt="Book pilot report"
+                  width={960}
+                  height={540}
+                  className="w-full h-[340px] object-contain"
+                />
               </div>
               <div className="mt-2.5 sm:mt-3 grid gap-2 sm:gap-2.5">
                 {[
