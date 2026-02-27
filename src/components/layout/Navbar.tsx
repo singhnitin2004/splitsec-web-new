@@ -76,7 +76,7 @@ export default function Navbar() {
                 background: 'rgba(7,10,18,0.58)',
                 borderColor: 'rgba(233,236,248,0.08)'
             }}>
-                <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-10 xl:px-16 2xl:px-24">
+                <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-26">
                     <div className="flex items-center justify-between h-14 sm:h-16">
                         {/* Left: Brand Logo */}
                         <Link
@@ -115,18 +115,18 @@ export default function Navbar() {
                                 Industries
                             </Link>
                             <Link
-                                href="/xradius-kit"
-                                style={{ color: pathname === "/xradius-kit" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                href="/split-pak"
+                                style={{ color: pathname === "/split-pak" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
-                                xRadius Kit
+                                splitPAK
                             </Link>
                             <Link
                                 href="/xmapper"
                                 style={{ color: pathname === "/xmapper" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
-                                xMapper
+                                Mapper
                             </Link>
                             {/* <Link
                                 href="/get-involved"
@@ -225,6 +225,13 @@ export default function Navbar() {
                                 About
                             </Link>
                             <Link
+                                href="/press-kit"
+                                style={{ color: pathname === "/press-kit" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                className="text-sm font-bold transition-colors hover:opacity-80"
+                            >
+                                Press Kit
+                            </Link>
+                            <Link
                                 href="/schedule-demo"
                                 className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border"
                                 style={{
@@ -311,14 +318,14 @@ export default function Navbar() {
                                 Industries
                             </Link>
                             <Link
-                                href="/xradius-kit"
+                                href="/split-pak"
                                 onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/xradius-kit"
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/split-pak"
                                     ? "text-blue-400 bg-slate-800/50"
                                     : "text-slate-300 active:bg-slate-800/30"
                                     }`}
                             >
-                                xRadius Kit
+                                splitPAK
                             </Link>
                             <Link
                                 href="/xmapper"
@@ -328,7 +335,7 @@ export default function Navbar() {
                                     : "text-slate-300 active:bg-slate-800/30"
                                     }`}
                             >
-                                xMapper
+                                Mapper
                             </Link>
 
                             {/* <Link
@@ -429,6 +436,17 @@ export default function Navbar() {
                                     }`}
                             >
                                 About
+                            </Link>
+
+                            <Link
+                                href="/press-kit"
+                                onClick={closeMobileMenu}
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/press-kit"
+                                    ? "text-blue-400 bg-slate-800/50"
+                                    : "text-slate-300 active:bg-slate-800/30"
+                                    }`}
+                            >
+                                Press Kit
                             </Link>
 
                             <Link

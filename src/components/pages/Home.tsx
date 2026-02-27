@@ -104,6 +104,38 @@ const environments: EnvironmentCard[] = [
     },
 ];
 
+/** Wrapper that adds scroll-reveal--inview when the section enters the viewport so animations run on scroll */
+function ScrollReveal({
+    children,
+    className = "",
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) setInView(true);
+            },
+            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+    return (
+        <div
+            ref={ref}
+            className={`scroll-reveal ${inView ? "scroll-reveal--inview" : ""} ${className}`.trim()}
+        >
+            {children}
+        </div>
+    );
+}
+
 export default function HomePage() {
     // Featured In carousel refs (container + second set position for perfect loop)
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -272,26 +304,26 @@ export default function HomePage() {
     return (
         <div className="w-full min-h-screen">
             {/* Section 1: Hero - Black */}
-            <section className="w-full min-h-screen sm:min-h-[min(100vh,880px)] md:min-h-[calc(100vh-270px)] pt-20 sm:pt-24 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-black overflow-x-hidden">
+            <section className="w-full min-h-[min(100vh,270px)] md:min-h-[calc(100vh-530px)] pt-20 sm:pt-24 pb-10 flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115] overflow-x-hidden">
                 <div className="w-full max-w-[1800px] mx-auto">
                     {/* Hero Grid: Text (left) + Visual (right) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-center lg:items-stretch">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-5 items-center lg:items-stretch">
 
                         {/* Left: Hero Text - left-aligned on all screens */}
-                        <div className="flex flex-col justify-center gap-2 sm:gap-3 md:gap-4 order-1 text-left">
-                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,5vw,64px)] lg:text-[clamp(40px,4.5vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em] m-0 max-w-[20ch]"
+                        <div className="flex flex-col justify-center gap-2 sm:gap-3  order-1 text-left">
+                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,4vw,64px)] lg:text-[clamp(40px,4vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em] m-0 max-w-[20ch]"
                                 style={{ color: '#E9ECF8' }}>
                                 Gunshot awareness in seconds
                             </h1>
 
-                            <div className="text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.10em] sm:tracking-[0.18em] mt-2 sm:mt-2.5 md:mt-3.5 mb-1.5 sm:mb-3 leading-snug"
+                            <div className="text-[10px] font-extrabold uppercase tracking-[0.10em] sm:tracking-[0.18em] mt-0  leading-snug"
                                 style={{ color: 'rgba(243,246,255,0.62)' }}>
                                 DETECT. CONFIRM. NOTIFY. RESPOND.
                             </div>
 
-                            <p className="text-sm sm:text-base md:text-lg leading-[1.5] sm:leading-[1.45] m-0 mb-3 sm:mb-4 md:mb-5 max-w-[56ch]"
-                                style={{ color: 'rgba(243,246,248,0.80)' }}>
-                                Built on everyday smartphones for outdoor events, guard teams, ERs, and schools. Privacy first by design with on device detection and zero audio storage or transmission.
+                            <p className="text-sm sm:text-[17px] leading-[1.5] sm:leading-[1.45] text-gray-400"
+                            >
+                                On everyday smartphones for outdoor events, guard teams, ERs, and schools. Privacy first. On device detection. No audio stored or transmitted.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-3 mt-2 sm:mt-[18px] justify-start">
@@ -310,7 +342,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Right: Visual Split Panel - min-h ensures proper fill at 1024px */}
-                        <div className="relative overflow-hidden min-h-[280px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[460px] xl:min-h-[520px] max-h-[85vh] lg:max-h-none order-2 w-full"
+                        <div className="relative overflow-hidden min-h-[280px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[460px] xl:min-h-[420px] max-h-[85vh] lg:max-h-none order-2 w-full"
                             style={{
                                 borderRadius: '14px',
                                 border: '1px solid rgba(243,246,255,0.10)',
@@ -420,7 +452,7 @@ export default function HomePage() {
 
                                     {/* Phone - reduced size so label has breathing room above it */}
                                     <div
-                                        className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 min-w-[110px] w-[min(145px,68vw)] md:w-[min(200px,85%)] lg:w-[min(220px,85%)] max-h-[calc(100%-3rem)] pointer-events-none z-[10]"
+                                        className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 min-w-[110px] w-[min(145px,68vw)] md:w-[min(110px,85%)] max-h-[calc(100%-3rem)] pointer-events-none z-[10]"
                                         style={{ aspectRatio: '9/19.2' }}
                                     >
                                         {APP_SCREENS.map((screen, i) => (
@@ -454,576 +486,596 @@ export default function HomePage() {
             </section>
 
             {/* Section 2: How it works - Full white */}
-            <section className="w-full py-10 sm:py-12  px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
-                <div className="max-w-[1800px] mx-auto">
-                    <div className="  bg-white">
-                        {/* Header */}
-                        <div className="mb-3">
-                            <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"
-                                style={{ color: '#1D1D1F' }}>
-                                How it works
-                            </h2>
-                            <p className="text-sm sm:text-base m-0"
-                                style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                Privacy first on device detection that escalates from suspected to confirmed in seconds.
-                            </p>
-                        </div>
-
-                        {/* Main Grid: 4 cards on left, "See the model flow" box on right */}
-                        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 sm:gap-5 mt-6">
-                            {/* Left: 2x2 Grid of 4 cards */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {/* Card 1 - Detect */}
-                                <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border  border-gray-200">
-                                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
-                                        style={{
-                                            background: 'rgba(0,122,255,0.12)',
-                                        }}>
-                                        <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#007AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
-                                        style={{ color: '#1D1D1F' }}>
-                                        Detect
-                                    </h3>
-                                    <p className="text-sm sm:text-base leading-relaxed m-0"
-                                        style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                        On-device AI flags suspected gunshots in seconds with no audio stored.
-                                    </p>
-                                </div>
-
-                                {/* Card 2 - Confirm */}
-                                <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border border-gray-200">
-                                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
-                                        style={{
-                                            background: 'rgba(0,122,255,0.12)',
-                                        }}>
-                                        <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#007AFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                        </svg>
-                                    </div>
-                                    <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
-                                        style={{ color: '#1D1D1F' }}>
-                                        Confirm
-                                    </h3>
-                                    <p className="text-sm sm:text-base leading-relaxed m-0"
-                                        style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                        Escalates fast when a person confirms or two phones detect at once.
-                                    </p>
-                                </div>
-
-                                {/* Card 3 - Notify */}
-                                <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border border-gray-200">
-                                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
-                                        style={{
-                                            background: 'rgba(0,122,255,0.12)',
-                                        }}>
-                                        <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#007AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                                        </svg>
-                                    </div>
-                                    <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
-                                        style={{ color: '#1D1D1F' }}>
-                                        Notify
-                                    </h3>
-                                    <p className="text-sm sm:text-base leading-relaxed m-0"
-                                        style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                        Alerts reach responders and admins with time and location context.
-                                    </p>
-                                </div>
-
-                                {/* Card 4 - Respond */}
-                                <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border border-gray-200">
-                                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
-                                        style={{
-                                            background: 'rgba(0,122,255,0.12)',
-                                        }}>
-                                        <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#007AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <circle cx="12" cy="12" r="3"></circle>
-                                            <path d="M12 1v6m0 6v6m7.07-17.07l-4.24 4.24m0 8.49l4.24 4.24M1 12h6m6 0h6M5.93 5.93l4.24 4.24m0 8.49l-4.24 4.24"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
-                                        style={{ color: '#1D1D1F' }}>
-                                        Respond
-                                    </h3>
-                                    <p className="text-sm sm:text-base leading-relaxed m-0"
-                                        style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                        Clear, immediate prompts help teams act fast and cut confusion.
-                                    </p>
-                                </div>
+            <section className="w-full py-10 sm:py-12  px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white">
+                <ScrollReveal>
+                    <div className="max-w-[1800px] mx-auto">
+                        <div className="  bg-white">
+                            {/* Header - fade in up */}
+                            <div className="mb-3 reveal-up" style={{ animationDelay: '0.1s' }}>
+                                <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"
+                                    style={{ color: '#1D1D1F' }}>
+                                    How it works
+                                </h2>
+                                <p className="text-sm sm:text-base m-0"
+                                    style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                    Privacy first on device detection that escalates from suspected to confirmed in seconds.
+                                </p>
                             </div>
 
-                            {/* Right: "See the model flow" box */}
-                            <div className="relative rounded-2xl overflow-hidden p-6 sm:p-8 flex flex-col justify-between"
-                                style={{
-                                    background: 'white',
-                                    border: '1px solid #E0E0E0',
-                                    minHeight: '280px'
-                                }}>
-                                <div>
-                                    <h3 className="text-lg sm:text-xl font-bold leading-tight m-0 mb-3"
-                                        style={{ color: '#1D1D1F' }}>
-                                        See the model flow
-                                    </h3>
-                                    <p className="text-sm sm:text-base leading-relaxed m-0"
-                                        style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                        See the on device pipeline in real time. L1 quick screen, L2 verify, L3 confirm and alert. See exactly what users see at each step.
-                                    </p>
+                            {/* Main Grid: 4 cards on left, "See the model flow" box on right */}
+                            <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 sm:gap-5 mt-6">
+                                {/* Left: 2x2 Grid of 4 cards - fade in up with stagger */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {/* Card 1 - Detect */}
+                                    <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border  border-gray-200 reveal-up" style={{ animationDelay: '0.2s' }}>
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
+                                            style={{
+                                                background: 'rgba(0,122,255,0.12)',
+                                            }}>
+                                            <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#007AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
+                                            style={{ color: '#1D1D1F' }}>
+                                            Detect
+                                        </h3>
+                                        <p className="text-sm sm:text-base leading-relaxed m-0"
+                                            style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                            On-device AI flags suspected gunshots in seconds with no audio stored.
+                                        </p>
+                                    </div>
+
+                                    {/* Card 2 - Confirm */}
+                                    <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border border-gray-200 reveal-up" style={{ animationDelay: '0.3s' }}>
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
+                                            style={{
+                                                background: 'rgba(0,122,255,0.12)',
+                                            }}>
+                                            <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#007AFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
+                                            style={{ color: '#1D1D1F' }}>
+                                            Confirm
+                                        </h3>
+                                        <p className="text-sm sm:text-base leading-relaxed m-0"
+                                            style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                            Escalates fast when a person confirms or two phones detect at once.
+                                        </p>
+                                    </div>
+
+                                    {/* Card 3 - Notify (pink) */}
+                                    <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border border-gray-200 reveal-up" style={{ animationDelay: '0.4s' }}>
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
+                                            style={{
+                                                background: '#fce7f3',
+                                            }}>
+                                            <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#ff3dab" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
+                                            style={{ color: '#1D1D1F' }}>
+                                            Notify
+                                        </h3>
+                                        <p className="text-sm sm:text-base leading-relaxed m-0"
+                                            style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                            Alerts reach responders and admins with time and location context.
+                                        </p>
+                                    </div>
+
+                                    {/* Card 4 - Respond (pink, shield with tick) */}
+                                    <div className="relative rounded-2xl overflow-hidden p-5 sm:p-6 bg-white border border-gray-200 reveal-up" style={{ animationDelay: '0.5s' }}>
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-4"
+                                            style={{
+                                                background: '#fce7f3',
+                                            }}>
+                                            <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#ff3dab" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                                <polyline points="9 12 11 14 15 10"></polyline>
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-base sm:text-lg font-bold leading-tight m-0 mb-2"
+                                            style={{ color: '#1D1D1F' }}>
+                                            Respond
+                                        </h3>
+                                        <p className="text-sm sm:text-base leading-relaxed m-0"
+                                            style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                            Clear, immediate prompts help teams act fast and cut confusion.
+                                        </p>
+                                    </div>
                                 </div>
-                                <Link
-                                    href="/technology"
-                                    className="w-full sm:w-auto mt-6 px-6 py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+
+                                {/* Right: "See the model flow" box - fade in down */}
+                                <div className="relative rounded-2xl overflow-hidden p-6 sm:p-8 flex flex-col justify-between reveal-down"
                                     style={{
-                                        background: '#007AFF',
-                                        color: 'white',
-                                        boxShadow: '0 4px 12px rgba(0,122,255,0.25)'
-                                    }}
-                                >
-                                    Open How it Works
-                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </Link>
+                                        background: 'white',
+                                        border: '1px solid #E0E0E0',
+                                        minHeight: '280px',
+                                        animationDelay: '0.35s'
+                                    }}>
+                                    <div>
+                                        <h3 className="text-lg sm:text-xl font-bold leading-tight m-0 mb-3"
+                                            style={{ color: '#1D1D1F' }}>
+                                            See the model flow
+                                        </h3>
+                                        <p className="text-sm sm:text-base leading-relaxed m-0"
+                                            style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                            See the on device pipeline in real time. L1 quick screen, L2 verify, L3 confirm and alert. See exactly what users see at each step.
+                                        </p>
+                                    </div>
+                                    <Link
+                                        href="/technology"
+                                        className="w-full sm:w-auto mt-6 px-6 py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                                        style={{
+                                            background: '#007AFF',
+                                            color: 'white',
+                                            boxShadow: '0 4px 12px rgba(0,122,255,0.25)'
+                                        }}
+                                    >
+                                        Open How it Works
+                                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </section>
 
             {/* Section 3: Industries - Black */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
-                <div className="max-w-[1800px] mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-center">
-                        {/* Left: Heading and Description */}
-                        <div className="flex flex-col justify-center md:px-6 xl:px-10">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight m-0 mb-4"
-                                style={{ color: '#E9ECF8' }}>
-                                Industries
-                            </h2>
-                            <p className="text-base sm:text-lg leading-relaxed m-0 mb-8"
-                                style={{ color: 'rgba(233,236,248,0.60)' }}>
-                                Built for mobile footprints where fixed infrastructure is hard, slow, or expensive. Open a playbook to see recommended setups, roles, and pilot metrics.
-                            </p>
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115]">
+                <ScrollReveal>
+                    <div className="max-w-[1800px] mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12 items-center">
+                            {/* Left: Heading and Description - fade in up */}
+                            <div className="flex flex-col justify-center md:px-6 xl:px-10 reveal-up" style={{ animationDelay: '0.1s' }}>
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight m-0 mb-4"
+                                    style={{ color: '#E9ECF8' }}>
+                                    Industries
+                                </h2>
+                                <p className="text-base sm:text-lg leading-relaxed m-0 mb-8"
+                                    style={{ color: 'rgba(233,236,248,0.60)' }}>
+                                    Built for mobile footprints where fixed infrastructure is hard, slow, or expensive. Open a playbook to see recommended setups, roles, and pilot metrics.
+                                </p>
 
-                            <div className="flex flex-col gap-3 items-start">
+                                <div className="flex flex-col gap-3 items-start">
+                                    <Link
+                                        href="/industries"
+                                        className="rounded-full px-6 py-3 font-semibold text-sm transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
+                                        style={{
+                                            background: '#006dff',
+                                            color: '#FFFFFF',
+                                        }}
+                                    >
+                                        Open industry playbooks →
+                                    </Link>
+                                    <Link
+                                        href="/schedule-demo"
+                                        className="rounded-full px-6 py-3 font-semibold text-sm transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2 border"
+                                        style={{
+                                            background: 'transparent',
+                                            color: '#006dff',
+                                            borderColor: 'rgba(233,236,248,0.20)',
+                                        }}
+                                    >
+                                        Book 15 min walkthrough →
+                                    </Link>
+                                </div>
+                            </div>
+
+                            {/* Right: 2x2 Grid of Cards - fade in up with stagger */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                                {/* Card 1 - Outdoor events */}
                                 <Link
-                                    href="/industries"
-                                    className="rounded-full px-6 py-3 font-semibold text-sm transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
+                                    href="/industries#outdoor"
+                                    className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)] cursor-pointer block reveal-up"
                                     style={{
-                                        background: '#006dff',
-                                        color: '#FFFFFF',
+                                        background: 'rgba(11,16,32,0.85)',
+                                        borderColor: 'rgba(233,236,248,0.12)',
+                                        animationDelay: '0.2s',
                                     }}
                                 >
-                                    Open industry playbooks →
+                                    {/* Icon */}
+                                    <div className="mb-4">
+                                        <div
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center"
+                                            style={{ background: '#006dff' }}
+                                        >
+                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="white" />
+                                                <path d="M12 11.5C13.38 11.5 14.5 10.38 14.5 9C14.5 7.62 13.38 6.5 12 6.5C10.62 6.5 9.5 7.62 9.5 9C9.5 10.38 10.62 11.5 12 11.5Z" fill="#006dff" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {/* Title */}
+                                    <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
+                                        Outdoor events
+                                    </h3>
+                                    {/* Description */}
+                                    <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
+                                        Gunshot awareness across flexible perimeters, no wiring and no cameras.
+                                    </p>
                                 </Link>
+
+                                {/* Card 2 - Security patrols */}
                                 <Link
-                                    href="/schedule-demo"
-                                    className="rounded-full px-6 py-3 font-semibold text-sm transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2 border"
+                                    href="/industries#guards"
+                                    className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)] cursor-pointer block reveal-up"
                                     style={{
-                                        background: 'transparent',
-                                        color: '#006dff',
-                                        borderColor: 'rgba(233,236,248,0.20)',
+                                        background: 'rgba(11,16,32,0.85)',
+                                        borderColor: 'rgba(233,236,248,0.12)',
+                                        animationDelay: '0.3s',
                                     }}
                                 >
-                                    Book 15 min walkthrough →
+                                    {/* Icon */}
+                                    <div className="mb-4">
+                                        <div
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center"
+                                            style={{ background: '#FC45A6' }}
+                                        >
+                                            <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                                <polyline points="9 12 11 14 15 10"></polyline>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {/* Title */}
+                                    <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
+                                        Security patrols
+                                    </h3>
+                                    {/* Description */}
+                                    <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
+                                        Portable coverage for patrol routes, lots, and temporary posts.
+                                    </p>
+                                </Link>
+
+                                {/* Card 3 - Hospitals and ER */}
+                                <Link
+                                    href="/industries#health"
+                                    className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)] cursor-pointer block reveal-up"
+                                    style={{
+                                        background: 'rgba(11,16,32,0.85)',
+                                        borderColor: 'rgba(233,236,248,0.12)',
+                                        animationDelay: '0.4s',
+                                    }}
+                                >
+                                    {/* Icon */}
+                                    <div className="mb-4">
+                                        <div
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center"
+                                            style={{ background: '#FC45A6' }}
+                                        >
+                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13 2H11V11H2V13H11V22H13V13H22V11H13V2Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {/* Title */}
+                                    <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
+                                        Hospitals and ER
+                                    </h3>
+                                    {/* Description */}
+                                    <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
+                                        Faster recognition and escalation for staff and on-site security.
+                                    </p>
+                                </Link>
+
+                                {/* Card 4 - Schools and campuses */}
+                                <Link
+                                    href="/industries#schools"
+                                    className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)] cursor-pointer block reveal-up"
+                                    style={{
+                                        background: 'rgba(11,16,32,0.85)',
+                                        borderColor: 'rgba(233,236,248,0.12)',
+                                        animationDelay: '0.5s',
+                                    }}
+                                >
+                                    {/* Icon */}
+                                    <div className="mb-4">
+                                        <div
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center"
+                                            style={{ background: '#006dff' }}
+                                        >
+                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="white" />
+                                                <path d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {/* Title */}
+                                    <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
+                                        Schools and campuses
+                                    </h3>
+                                    {/* Description */}
+                                    <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
+                                        A simple awareness layer for staff, responders, and administrators.
+                                    </p>
                                 </Link>
                             </div>
                         </div>
-
-                        {/* Right: 2x2 Grid of Cards */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                            {/* Card 1 - Outdoor events */}
-                            <Link
-                                href="/industries#outdoor"
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)] cursor-pointer block"
-                                style={{
-                                    background: 'rgba(11,16,32,0.85)',
-                                    borderColor: 'rgba(233,236,248,0.12)',
-                                }}
-                            >
-                                {/* Icon */}
-                                <div className="mb-4">
-                                    <div
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                        style={{ background: '#006dff' }}
-                                    >
-                                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2L3 6V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V6L12 2Z" fill="white" />
-                                            <path d="M9 12L11 14L15 10" stroke="#006dff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                {/* Title */}
-                                <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
-                                    Outdoor events
-                                </h3>
-                                {/* Description */}
-                                <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
-                                    Gunshot awareness across flexible perimeters, no wiring and no cameras.
-                                </p>
-                            </Link>
-
-                            {/* Card 2 - Security patrols */}
-                            <Link
-                                href="/industries#guards"
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)] cursor-pointer block"
-                                style={{
-                                    background: 'rgba(11,16,32,0.85)',
-                                    borderColor: 'rgba(233,236,248,0.12)',
-                                }}
-                            >
-                                {/* Icon */}
-                                <div className="mb-4">
-                                    <div
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                        style={{ background: '#FC45A6' }}
-                                    >
-                                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2L3 6V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V6L12 2Z" fill="white" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                {/* Title */}
-                                <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
-                                    Security patrols
-                                </h3>
-                                {/* Description */}
-                                <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
-                                    Portable coverage for patrol routes, lots, and temporary posts.
-                                </p>
-                            </Link>
-
-                            {/* Card 3 - Hospitals and ER */}
-                            <Link
-                                href="/industries#health"
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(252,69,166,0.4)] hover:shadow-[0_12px_40px_rgba(252,69,166,0.15)] cursor-pointer block"
-                                style={{
-                                    background: 'rgba(11,16,32,0.85)',
-                                    borderColor: 'rgba(233,236,248,0.12)',
-                                }}
-                            >
-                                {/* Icon */}
-                                <div className="mb-4">
-                                    <div
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                        style={{ background: '#FC45A6' }}
-                                    >
-                                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13 2H11V11H2V13H11V22H13V13H22V11H13V2Z" fill="white" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                {/* Title */}
-                                <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
-                                    Hospitals and ER
-                                </h3>
-                                {/* Description */}
-                                <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
-                                    Faster recognition and escalation for staff and on-site security.
-                                </p>
-                            </Link>
-
-                            {/* Card 4 - Schools and campuses */}
-                            <Link
-                                href="/industries#schools"
-                                className="rounded-2xl p-6 border transition-all duration-300 hover:border-[rgba(0,109,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,109,255,0.15)] cursor-pointer block"
-                                style={{
-                                    background: 'rgba(11,16,32,0.85)',
-                                    borderColor: 'rgba(233,236,248,0.12)',
-                                }}
-                            >
-                                {/* Icon */}
-                                <div className="mb-4">
-                                    <div
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                        style={{ background: '#006dff' }}
-                                    >
-                                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="white" />
-                                            <path d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="white" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                {/* Title */}
-                                <h3 className="text-xl font-bold mb-2 m-0" style={{ color: '#E9ECF8' }}>
-                                    Schools and campuses
-                                </h3>
-                                {/* Description */}
-                                <p className="text-sm leading-relaxed m-0" style={{ color: 'rgba(233,236,248,0.65)' }}>
-                                    A simple awareness layer for staff, responders, and administrators.
-                                </p>
-                            </Link>
-                        </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </section>
 
-            {/* Section 4: xRadius Kit - White */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
-                <div className="max-w-[1800px] mx-auto  px-8 sm:px-10 lg:px-12 bg-white">
-                    {/* Header with Title and Button */}
-                    <div className="flex items-start justify-between mb-3 gap-4 flex-wrap">
-                        <div>
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight m-0 mb-4"
-                                style={{ color: '#1F2937' }}>
-                                xRadius Kit
-                            </h2>
-                        </div>
-                        <Link
-                            href="/xradius-kit#request-xradius-kit"
-                            className="rounded-full px-5 py-2.5 font-medium text-md transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
-                            style={{
-                                background: '#006dff',
-                                color: '#FFFFFF',
-                            }}
-                        >
-                            Request xRadius Kit →
-                        </Link>
-                    </div>
-
-                    {/* First description line */}
-                    <p className="text-base sm:text-lg leading-relaxed m-0 mb-1"
-                    >
-                        A rugged grab and go pilot kit that turns phones into a portable gunshot awareness layer.
-                    </p>
-
-                    {/* Second description line */}
-                    <p className="text-sm sm:text-[16px] leading-relaxed m-0 mb-10"
-                    >
-                        We provide the phones with the app preloaded and configured. Your setup is simple: distribute the phones, power them on, and get coverage in minutes.
-                    </p>
-
-                    {/* Main Content Grid - narrow image column + small gap so image sits close to text */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,520px)_1fr] gap-8 lg:gap-5 items-center">
-                        {/* Left: Image */}
-                        <div className="flex justify-center lg:justify-start w-full">
-                            <div className="relative w-full aspect-square rounded-[32px] overflow-hidden lg:max-w-[460px] lg:max-h-[500px] lg:w-full"
+            {/* Section 4: splitPAK - White */}
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white">
+                <ScrollReveal>
+                    <div className="max-w-[1800px] mx-auto  bg-white">
+                        {/* Header with Title and Button - fade in up */}
+                        <div className="flex items-start justify-between mb-3 gap-4 flex-wrap reveal-up" style={{ animationDelay: '0.1s' }}>
+                            <div>
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight m-0 mb-4"
+                                    style={{ color: '#1F2937' }}>
+                                    splitPAK
+                                </h2>
+                            </div>
+                            <Link
+                                href="/split-pak#request-split-pak"
+                                className="rounded-full px-5 py-2.5 font-medium text-md transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.3)] hover:scale-105 whitespace-nowrap flex items-center gap-2"
                                 style={{
-                                    background: '#000000',
-                                }}>
-                                <Image
-                                    src="/xRadius/xradius-kit.png"
-                                    alt="RadiX Kit with phone showing SplitSec app"
-                                    fill
-                                    className="object-cover"
-                                    sizes="(max-width: 1024px) 100vw, 500px"
-                                />
-                            </div>
+                                    background: '#006dff',
+                                    color: '#FFFFFF',
+                                }}
+                            >
+                                Request splitPAK →
+                            </Link>
                         </div>
 
-                        {/* Right: Features */}
-                        <div className="space-y-8 lg:pt-2">
-                            {/* Deploy anywhere */}
-                            <div>
-                                <h3 className="text-xl sm:text-[24px] font-bold mb-2.5 m-0"
-                                    style={{ color: '#1F2937' }}>
-                                    Deploy anywhere
-                                </h3>
-                                <p className="text-[16px] sm:text-md leading-relaxed m-0"
-                                    style={{ color: '#4B5563' }}>
-                                    No wiring. No cameras. No permanent installs. Ideal for events, patrols, and temporary footprints.
-                                </p>
+                        {/* First description line - fade in up */}
+                        <p className="text-base sm:text-lg leading-relaxed m-0 mb-1 reveal-up"
+                            style={{ animationDelay: '0.15s' }}
+                        >
+                            A rugged grab and go pilot kit that turns phones into a portable gunshot awareness layer.
+                        </p>
+
+                        {/* Second description line - fade in up */}
+                        <p className="text-sm sm:text-[16px] leading-relaxed m-0 mb-10 reveal-up"
+                            style={{ animationDelay: '0.2s' }}
+                        >
+                            We provide the phones with the app preloaded and configured. Your setup is simple: distribute the phones, power them on, and get coverage in minutes.
+                        </p>
+
+                        {/* Main Content Grid - narrow image column + small gap so image sits close to text */}
+                        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,520px)_1fr] gap-8 lg:gap-5 items-center">
+                            {/* Left: Image - fade in up */}
+                            <div className="flex justify-center lg:justify-start w-full reveal-up" style={{ animationDelay: '0.25s' }}>
+                                <div className="relative w-full aspect-square rounded-[32px] overflow-hidden lg:max-w-[460px] lg:max-h-[500px] lg:w-full"
+                                    style={{
+                                        background: '#000000',
+                                    }}>
+                                    <Image
+                                        src="/xRadius/splitPAK.png"
+                                        alt="splitPAK with phone showing SplitSec app"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 1024px) 100vw, 500px"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Pilot ready package */}
-                            <div>
-                                <h3 className="text-xl sm:text-[22px] font-bold mb-2.5 m-0"
-                                    style={{ color: '#1F2937' }}>
-                                    Pilot ready package
-                                </h3>
-                                <p className="text-[15px] sm:text-base leading-relaxed m-0 mb-5"
-                                    style={{ color: '#4B5563' }}>
-                                    Preconfigured Android phones, labels, quick start steps, and a simple placement plan so you can test fast and learn.
-                                </p>
+                            {/* Right: Features - fade in down */}
+                            <div className="space-y-8 lg:pt-2 reveal-down" style={{ animationDelay: '0.3s' }}>
+                                {/* Deploy anywhere */}
+                                <div>
+                                    <h3 className="text-xl sm:text-[24px] font-bold mb-2.5 m-0"
+                                        style={{ color: '#1F2937' }}>
+                                        Deploy anywhere
+                                    </h3>
+                                    <p className="text-[16px] sm:text-md leading-relaxed m-0"
+                                        style={{ color: '#4B5563' }}>
+                                        No wiring. No cameras. No permanent installs. Ideal for events, patrols, and temporary footprints.
+                                    </p>
+                                </div>
 
-                                {/* Bullet Points */}
-                                <div className="space-y-3.5">
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-2 h-2 rounded-full mt-2"
-                                            style={{ background: '#006dff' }}>
+                                {/* Pilot ready package */}
+                                <div>
+                                    <h3 className="text-xl sm:text-[22px] font-bold mb-2.5 m-0"
+                                        style={{ color: '#1F2937' }}>
+                                        Pilot ready package
+                                    </h3>
+                                    <p className="text-[15px] sm:text-base leading-relaxed m-0 mb-5"
+                                        style={{ color: '#4B5563' }}>
+                                        Preconfigured Android phones, labels, quick start steps, and a simple placement plan so you can test fast and learn.
+                                    </p>
+
+                                    {/* Bullet Points */}
+                                    <div className="space-y-3.5">
+                                        <div className="flex items-start gap-3">
+                                            <div className="shrink-0 w-2 h-2 rounded-full mt-2"
+                                                style={{ background: '#006dff' }}>
+                                            </div>
+                                            <p className="text-[15px] sm:text-base m-0 leading-relaxed"
+                                                style={{ color: '#1F2937' }}>
+                                                <span className="font-semibold">Fast setup</span> in minutes with a simple checklist.
+                                            </p>
                                         </div>
-                                        <p className="text-[15px] sm:text-base m-0 leading-relaxed"
-                                            style={{ color: '#1F2937' }}>
-                                            <span className="font-semibold">Fast setup</span> in minutes with a simple checklist.
-                                        </p>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-2 h-2 rounded-full mt-2"
-                                            style={{ background: '#006dff' }}>
+                                        <div className="flex items-start gap-3">
+                                            <div className="shrink-0 w-2 h-2 rounded-full mt-2"
+                                                style={{ background: '#006dff' }}>
+                                            </div>
+                                            <p className="text-[15px] sm:text-base m-0 leading-relaxed"
+                                                style={{ color: '#1F2937' }}>
+                                                <span className="font-semibold">Move coverage</span> as your perimeter changes.
+                                            </p>
                                         </div>
-                                        <p className="text-[15px] sm:text-base m-0 leading-relaxed"
-                                            style={{ color: '#1F2937' }}>
-                                            <span className="font-semibold">Move coverage</span> as your perimeter changes.
-                                        </p>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-2 h-2 rounded-full mt-2"
-                                            style={{ background: '#006dff' }}>
+                                        <div className="flex items-start gap-3">
+                                            <div className="shrink-0 w-2 h-2 rounded-full mt-2"
+                                                style={{ background: '#006dff' }}>
+                                            </div>
+                                            <p className="text-[15px] sm:text-base m-0 leading-relaxed"
+                                                style={{ color: '#1F2937' }}>
+                                                <span className="font-semibold">Measure results</span> with clean pilot metrics.
+                                            </p>
                                         </div>
-                                        <p className="text-[15px] sm:text-base m-0 leading-relaxed"
-                                            style={{ color: '#1F2937' }}>
-                                            <span className="font-semibold">Measure results</span> with clean pilot metrics.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </section>
 
             {/* Section 5: xMapper - Black */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
-                <div className="max-w-[1800px] mx-auto px-8 sm:px-10 lg:px-12">
-                    {/* Main Content Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-center">
-                        {/* Left: Text Content */}
-                        <div className="space-y-6">
-                            {/* Title */}
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight m-0 mb-4"
-                                style={{ color: '#FFFFFF' }}>
-                                xMapper
-                            </h2>
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115]">
+                <ScrollReveal>
+                    <div className="max-w-[1800px] mx-auto">
+                        {/* Main Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-center">
+                            {/* Left: Text Content - fade in up */}
+                            <div className="space-y-6 reveal-up" style={{ animationDelay: '0.1s' }}>
+                                {/* Title */}
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight m-0 mb-4"
+                                    style={{ color: '#FFFFFF' }}>
+                                    Mapper
+                                </h2>
 
-                            {/* Main Description */}
-                            <p className="text-base sm:text-lg leading-relaxed m-0"
-                                style={{ color: 'rgba(255,255,255,0.75)' }}>
-                                Design coverage for your footprint in seconds. Map a perimeter, get a recommended phone count and spacing, and export a placement and quick test plan.
-                            </p>
+                                {/* Main Description */}
+                                <p className="text-base sm:text-lg leading-relaxed m-0"
+                                    style={{ color: 'rgba(255,255,255,0.75)' }}>
+                                    Design coverage for your footprint in seconds. Map a perimeter, get a recommended phone count and spacing, and export a placement and quick test plan.
+                                </p>
 
-                            {/* Feature Points */}
-                            <div className="space-y-3 pt-4">
-                                {/* Map your footprint */}
-                                <div className="flex items-start gap-3">
-                                    <span className="w-2 h-2 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: '#006dff' }} aria-hidden />
-                                    <p className="text-[15px] sm:text-base m-0 leading-relaxed"
-                                        style={{ color: 'rgba(255,255,255,0.75)' }}>
-                                        <span className="font-bold" style={{ color: '#FFFFFF' }}>Map your footprint</span> by dropping a perimeter directly on a map.
-                                    </p>
+                                {/* Feature Points */}
+                                <div className="space-y-3 pt-4">
+                                    {/* Map your footprint */}
+                                    <div className="flex items-start gap-3">
+                                        <span className="w-2 h-2 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: '#006dff' }} aria-hidden />
+                                        <p className="text-[15px] sm:text-base m-0 leading-relaxed"
+                                            style={{ color: 'rgba(255,255,255,0.75)' }}>
+                                            <span className="font-bold" style={{ color: '#FFFFFF' }}>Map your footprint</span> by dropping a perimeter directly on a map.
+                                        </p>
+                                    </div>
+
+                                    {/* Get a recommended phone count */}
+                                    <div className="flex items-start gap-3">
+                                        <span className="w-2 h-2 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: '#006dff' }} aria-hidden />
+                                        <p className="text-[15px] sm:text-base m-0 leading-relaxed"
+                                            style={{ color: 'rgba(255,255,255,0.75)' }}>
+                                            <span className="font-bold" style={{ color: '#FFFFFF' }}>Get a recommended phone count</span> with suggested spacing based on your footprint and environment, including trees and buildings.
+                                        </p>
+                                    </div>
+
+                                    {/* Generate a placement and test plan */}
+                                    <div className="flex items-start gap-3">
+                                        <span className="w-2 h-2 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: '#006dff' }} aria-hidden />
+                                        <p className="text-[15px] sm:text-base m-0 leading-relaxed"
+                                            style={{ color: 'rgba(255,255,255,0.75)' }}>
+                                            <span className="font-bold" style={{ color: '#FFFFFF' }}>Generate a placement and test plan</span> and export a quick checklist to validate coverage and document results.
+                                        </p>
+                                    </div>
                                 </div>
 
-                                {/* Get a recommended phone count */}
-                                <div className="flex items-start gap-3">
-                                    <span className="w-2 h-2 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: '#006dff' }} aria-hidden />
-                                    <p className="text-[15px] sm:text-base m-0 leading-relaxed"
-                                        style={{ color: 'rgba(255,255,255,0.75)' }}>
-                                        <span className="font-bold" style={{ color: '#FFFFFF' }}>Get a recommended phone count</span> with suggested spacing based on your footprint and environment, including trees and buildings.
-                                    </p>
-                                </div>
-
-                                {/* Generate a placement and test plan */}
-                                <div className="flex items-start gap-3">
-                                    <span className="w-2 h-2 rounded-full shrink-0 mt-1.5" style={{ backgroundColor: '#006dff' }} aria-hidden />
-                                    <p className="text-[15px] sm:text-base m-0 leading-relaxed"
-                                        style={{ color: 'rgba(255,255,255,0.75)' }}>
-                                        <span className="font-bold" style={{ color: '#FFFFFF' }}>Generate a placement and test plan</span> and export a quick checklist to validate coverage and document results.
-                                    </p>
+                                {/* Button */}
+                                <div className="pt-2">
+                                    <Link
+                                        href="/xmapper"
+                                        className="rounded-full px-5 bg-transparent text-[#006dff] border border-white py-2.5 font-medium text-lg transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.4)] hover:scale-105 whitespace-nowrap inline-flex items-center gap-2"
+                                    >
+                                        Launch Mapper utility →
+                                    </Link>
                                 </div>
                             </div>
 
-                            {/* Button */}
-                            <div className="pt-2">
-                                <Link
-                                    href="/xmapper"
-                                    className="rounded-full px-5 bg-transparent text-[#006dff] border border-white py-2.5 font-medium text-lg transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,109,255,0.4)] hover:scale-105 whitespace-nowrap inline-flex items-center gap-2"
+                            {/* Right: Map Visualization - fade in down */}
+                            <div className="flex justify-center lg:justify-end w-full reveal-down" style={{ animationDelay: '0.2s' }}>
+                                <div className="relative w-full min-h-[280px] h-[320px] sm:h-[380px] md:h-[420px] rounded-[32px] p-2 overflow-hidden bg-black lg:max-w-[540px] lg:w-[540px] lg:h-[540px]"
                                 >
-                                    Launch xMapper utility →
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* Right: Map Visualization */}
-                        <div className="flex justify-center lg:justify-end w-full">
-                            <div className="relative w-full aspect-[4/3] min-h-[280px] rounded-[32px] p-2 overflow-hidden bg-black lg:max-w-[540px] lg:h-[540px] lg:aspect-auto"
-                            >
-                                <Image
-                                    src="/xMapper/xmapper-utils.png"
-                                    alt="xMapper coverage map with phone placement visualization"
-                                    fill
-                                    className="object-cover bg-black"
-                                    sizes="(max-width: 1024px) 100vw, 600px"
-                                />
+                                    <Image
+                                        src="/xMapper/xmapper-utils.png"
+                                        alt="Mapper coverage map with phone placement visualization"
+                                        fill
+                                        className="object-contain lg:object-cover bg-black"
+                                        sizes="(max-width: 1024px) 100vw, 600px"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </section>
 
             {/* Section 6: Featured In - White */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
-                <div className="max-w-[1800px] mx-auto ">
-                    {/* Outer wrapper: soft pink/purple gradient background */}
-                    <div
-                        className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 min-h-[200px]  "
-                        style={{
-                            background: 'white',
-                        }}
-                    >
-                        <div className="items-baseline justify-between gap-4 mb-4 sm:mb-5 flex-wrap">
-                            <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"
-                            >
-                                Featured
-                            </h2>
-                            <p className="text-md ">
-                                Early momentum from partners and pilots. More coming soon.
-                            </p>
-                        </div>
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 bg-white">
+                <ScrollReveal>
+                    <div className="max-w-[1800px] mx-auto ">
+                        {/* Outer wrapper: soft pink/purple gradient background */}
+                        <div
+                            className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 min-h-[200px]  "
+                            style={{
+                                background: 'white',
+                            }}
+                        >
+                            {/* Header - fade in up */}
+                            <div className="items-baseline justify-between gap-4 mb-4 sm:mb-5 flex-wrap reveal-up" style={{ animationDelay: '0.1s' }}>
+                                <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"
+                                >
+                                    Featured
+                                </h2>
+                                <p className="text-md ">
+                                    Early momentum from partners and pilots. More coming soon.
+                                </p>
+                            </div>
 
-                        <div className="relative overflow-hidden py-1">
-                            <div
-                                ref={scrollRef}
-                                className="flex gap-5 overflow-x-scroll py-4 px-2 rounded-2xl bg-neutral-100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-                                style={{
-                                    scrollBehavior: 'auto',
-                                    pointerEvents: 'auto',
-                                    willChange: 'scroll-position',
-                                    overflowX: 'scroll',
-                                    overflowY: 'hidden'
-                                }}
-                            >
-                                {/* First set */}
-                                <div className="flex gap-5 shrink-0">
-                                    {publications.map((pub) => (
-                                        <div
-                                            key={`a-${pub.src}`}
-                                            className="flex items-center justify-center px-8 sm:px-20 py-4 sm:py-5 rounded-full border border-neutral-200 bg-white text-neutral-800 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] select-none h-[72px] sm:h-[88px] min-w-[180px] sm:min-w-[210px]"
-                                        >
-                                            <Image
-                                                src={pub.src}
-                                                alt={pub.alt}
-                                                width={120}
-                                                height={40}
-                                                className="object-contain w-auto sm:w-20 h-8 sm:h-20"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                                {/* Second set - identical (reset to 0 when this reaches viewport start) */}
-                                <div ref={secondSetRef} className="flex gap-5 shrink-0">
-                                    {publications.map((pub) => (
-                                        <div
-                                            key={`b-${pub.src}`}
-                                            className="flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 rounded-full border border-neutral-200 bg-white text-neutral-800 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] select-none h-[72px] sm:h-[88px] min-w-[180px] sm:min-w-[210px]"
-                                        >
-                                            <Image
-                                                src={pub.src}
-                                                alt={pub.alt}
-                                                width={120}
-                                                height={40}
-                                                className="object-contain w-auto sm:w-20 h-8 sm:h-20"
-                                            />
-                                        </div>
-                                    ))}
+                            {/* Carousel - fade in up */}
+                            <div className="relative overflow-hidden py-1 reveal-up" style={{ animationDelay: '0.2s' }}>
+                                <div
+                                    ref={scrollRef}
+                                    className="flex gap-5 overflow-x-scroll py-4 px-2 rounded-2xl bg-neutral-100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                                    style={{
+                                        scrollBehavior: 'auto',
+                                        pointerEvents: 'auto',
+                                        willChange: 'scroll-position',
+                                        overflowX: 'scroll',
+                                        overflowY: 'hidden'
+                                    }}
+                                >
+                                    {/* First set */}
+                                    <div className="flex gap-5 shrink-0">
+                                        {publications.map((pub) => (
+                                            <div
+                                                key={`a-${pub.src}`}
+                                                className="flex items-center justify-center px-8 sm:px-20 py-4 sm:py-5 rounded-full border border-neutral-200 bg-white text-neutral-800 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] select-none h-[72px] sm:h-[88px] min-w-[180px] sm:min-w-[210px]"
+                                            >
+                                                <Image
+                                                    src={pub.src}
+                                                    alt={pub.alt}
+                                                    width={120}
+                                                    height={40}
+                                                    className="object-contain w-auto sm:w-20 h-8 sm:h-20"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {/* Second set - identical (reset to 0 when this reaches viewport start) */}
+                                    <div ref={secondSetRef} className="flex gap-5 shrink-0">
+                                        {publications.map((pub) => (
+                                            <div
+                                                key={`b-${pub.src}`}
+                                                className="flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 rounded-full border border-neutral-200 bg-white text-neutral-800 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] select-none h-[72px] sm:h-[88px] min-w-[180px] sm:min-w-[210px]"
+                                            >
+                                                <Image
+                                                    src={pub.src}
+                                                    alt={pub.alt}
+                                                    width={120}
+                                                    height={40}
+                                                    className="object-contain w-auto sm:w-20 h-8 sm:h-20"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </section >
         </div >
     );

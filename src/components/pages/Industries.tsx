@@ -113,7 +113,7 @@ export default function IndustriesPage() {
       {/* Section 1: Hero - Black (same pattern as Home / HowItWorks) */}
       <section
         id="top"
-        className="w-full pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black"
+        className="w-full pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115]"
         style={{
           scrollMarginTop: "calc(74px + 14px)",
           color: "#F3F6FF",
@@ -131,7 +131,7 @@ export default function IndustriesPage() {
               Gunshot detection you can deploy in minutes
             </h1>
             <p
-              className="mt-3 sm:mt-3.5 text-sm sm:text-base leading-[1.55] m-0 max-w-[78ch]"
+              className="mt-3 sm:mt-3.5 text-sm sm:text-base leading-[1.55] m-0 "
               style={{ color: "rgba(243,246,255,0.78)" }}
             >
               No cameras. No wiring. Audio stays private by default. Pick an industry to open a clear recommended setup and pilot plan.
@@ -161,7 +161,7 @@ export default function IndustriesPage() {
                   href={t.href}
                   className="relative flex gap-3 sm:gap-3.5 items-start p-4 rounded-xl sm:rounded-2xl min-h-[140px] sm:min-h-[165px] overflow-hidden transition-all duration-150 hover:-translate-y-0.5 active:scale-[0.99] focus-visible:outline-[3px] focus-visible:outline-[rgba(0,109,255,0.55)] focus-visible:outline-offset-2"
                   style={{
-                    background: "rgba(20,24,36,0.72)",
+                    background: "#000000",
                     border: "1px solid rgba(243,246,255,0.14)",
                     boxShadow: "0 20px 46px rgba(0,0,0,0.26)",
                   }}
@@ -169,20 +169,11 @@ export default function IndustriesPage() {
                   {/* Decorative gradient */}
                   <div
                     className="absolute -top-16 -right-16 sm:-top-20 sm:-right-20 w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] opacity-55 rotate-18 pointer-events-none"
-                    style={{
-                      background:
-                        t.iconColor === "pink"
-                          ? "radial-gradient(circle at 30% 30%, rgba(255,63,166,0.38), transparent 58%)"
-                          : t.iconColor === "gray"
-                            ? "radial-gradient(circle at 30% 30%, rgba(169,180,194,0.30), transparent 60%)"
-                            : "radial-gradient(circle at 30% 30%, rgba(0,109,255,0.42), transparent 58%)",
-                    }}
                   />
                   <div
-                    className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-xl sm:rounded-[20px] flex items-center justify-center shrink-0 border shadow-[0_16px_34px_rgba(0,0,0,0.24)]"
+                    className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-xl sm:rounded-[20px] flex items-center justify-center shrink-0 border-2 shadow-[0_16px_34px_rgba(0,0,0,0.24)]"
                     style={{
-                      background: t.iconColor === "pink" ? "#FF3FA6" : t.iconColor === "blue" ? "#006DFF" : "#0F1115",
-                      borderColor: "rgba(255,255,255,0.20)",
+                      borderColor: t.iconColor === "pink" ? "#FF3FA6" : t.iconColor === "blue" ? "#006DFF" : "#0F1115",
                     }}
                   >
                     {t.icon === "outdoor" && (
@@ -232,7 +223,7 @@ export default function IndustriesPage() {
       {/* Section 2: Deployment Guides - White (same pattern as Home / HowItWorks) */}
       <section
         id="guides"
-        className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white"
+        className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white"
         style={{ scrollMarginTop: "calc(74px + 14px)" }}
       >
         <div
@@ -315,11 +306,11 @@ export default function IndustriesPage() {
                   <h3 className="text-sm sm:text-base font-bold tracking-[-0.01em] text-[#111] m-0">
                     Pilot setup
                   </h3>
-                  <ol className="mt-2.5 sm:mt-3 grid gap-2 sm:gap-2.5 list-none p-0 m-0">
+                  <ol className="mt-2.5 sm:mt-3 grid gap-2 sm:gap-4 list-none p-0 m-0">
                     {ind.steps.map((s, i) => (
                       <li
                         key={i}
-                        className="flex gap-2.5 sm:gap-3 items-start p-2.5 sm:p-3 rounded-2xl sm:rounded-[18px]"
+                        className="flex gap-2.5 sm:gap-5 items-start px-2.5 sm:px-5 py-2.5 sm:py-5 rounded-2xl sm:rounded-[18px]"
                         style={{
                           background: "rgba(26,26,26,0.03)",
                           border: "1px solid rgba(26,26,26,0.08)",
@@ -367,7 +358,7 @@ export default function IndustriesPage() {
                         boxShadow: "0 10px 22px rgba(0,0,0,0.06)",
                       }}
                     >
-                      Pilot metrics <span className="opacity-95">→</span>
+                      Download Whitepaper <span className="opacity-95">→</span>
                     </Link>
                   </div>
                 </div>
@@ -380,7 +371,7 @@ export default function IndustriesPage() {
       {/* Section 3: Metrics - Black (same pattern as Home / HowItWorks) */}
       <section
         id="metrics"
-        className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black"
+        className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115]"
         style={{ scrollMarginTop: "calc(74px + 14px)" }}
       >
         <div

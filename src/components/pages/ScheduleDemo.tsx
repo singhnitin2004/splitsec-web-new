@@ -63,7 +63,7 @@ const ScheduleDemo = () => {
     return (
         <div className="w-full min-h-screen">
             {/* Section 1: Hero — same layout as Home, demo card is the star */}
-            <section className="relative w-full min-h-[calc(100vh-120px)] sm:min-h-[min(100vh,880px)] pt-20 sm:pt-16 lg:pt-20 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-black overflow-x-hidden">
+            <section className="relative w-full min-h-[calc(100vh-120px)] sm:min-h-[min(100vh,880px)] pt-20 sm:pt-16 lg:pt-20 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-black overflow-x-hidden">
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start lg:items-center">
 
@@ -186,7 +186,7 @@ const ScheduleDemo = () => {
             </section>
 
             {/* Section 2: Who this is for + Why schedule - White */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white">
                 <div className="max-w-[1800px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                         {/* Who this is for */}
@@ -258,7 +258,7 @@ const ScheduleDemo = () => {
             </section>
 
             {/* Section 3: Feature Cards - Black (Industries pattern) */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black">
+            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-black">
                 <div className="max-w-[1800px] mx-auto">
                     <div className="mb-6 sm:mb-8">
                         <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"

@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function Footer() {
     return (
         <footer className="w-full relative overflow-hidden border-t border-white/10" style={{
-            background: 'black',
-            borderColor: 'black'
+            background: '#0f1115',
+            borderColor: '#0f1115'
         }}>
             {/* Decorative Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none border-t">
@@ -18,7 +18,7 @@ export default function Footer() {
                 {/* Subtle Grid Pattern */}
             </div>
 
-            <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 relative z-10">
+            <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 relative z-10">
                 {/* Main Footer Content */}
                 <div className="pt-12 pb-8 sm:pt-16 sm:pb-12">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">

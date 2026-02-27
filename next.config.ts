@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/vi/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.splitsec.ai',
+        port: '',
+        pathname: '/images/**',
+      },
     ],
   },
 };

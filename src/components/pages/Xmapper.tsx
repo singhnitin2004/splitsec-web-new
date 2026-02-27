@@ -807,9 +807,9 @@ export default function XmapperPage() {
       />
 
       <main
-        className="w-full pt-20 sm:pt-28 pb-12 px-4 sm:px-6"
+        className="w-full pt-20 sm:pt-28 pb-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28"
         style={{
-          background: "#000000",
+          background: "#0f1115",
           fontFamily: '"Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif',
           color: "#eef1ff",
         }}
@@ -821,7 +821,7 @@ export default function XmapperPage() {
           <section
             className="rounded-2xl p-5 sm:p-6 min-h-[700px] flex flex-col gap-4"
             style={{
-              background: "#000000",
+              background: "#0f1115",
               border: "1px solid rgba(255,255,255,0.14)",
               borderRadius: 16,
               boxShadow: "0 14px 40px rgba(0,0,0,.35)",
@@ -840,7 +840,7 @@ export default function XmapperPage() {
               {/* Step 0: Choose vertical */}
               {step === 0 && (
                 <div className="flex flex-col">
-                  <h3 className="m-0 text-[22px]">xMapper</h3>
+                  <h3 className="m-0 text-[22px]">Mapper</h3>
                   <p className="mt-1 text-sm" style={{ color: "#aab3d0" }}>
                     Quick sizing in minutes.
                   </p>

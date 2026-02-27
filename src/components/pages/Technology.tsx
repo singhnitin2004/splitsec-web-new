@@ -5,7 +5,7 @@ export default function Technology() {
         <div className="w-full min-h-screen">
             {/* Section 1: Hero - Black (same pattern as Home) */}
             <section
-                className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 pt-24 sm:pt-24 lg:pt-28 pb-10 bg-black"
+                className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 pt-24 sm:pt-24 lg:pt-28 pb-10 bg-[#0f1115]"
             >
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-4 sm:gap-6 items-start">
@@ -18,12 +18,12 @@ export default function Technology() {
                                 From first acoustic signature to a confirmed alert in seconds
                             </h1> */}
 
-                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,5vw,64px)] lg:text-[clamp(40px,4.5vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em] m-0 max-w-[20ch]"
+                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,3.7vw,64px)] lg:text-[clamp(40px,3.2vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em]"
                                 style={{ color: '#E9ECF8' }}>
                                 From first acoustic signature to a confirmed alert in seconds
                             </h1>
-                            <p className="text-[15px] sm:text-base lg:text-lg leading-[1.5] sm:leading-[1.45] m-0 mb-4 sm:mb-5 max-w-[56ch]" style={{ color: 'rgba(243,246,248,0.80)' }}>
-                                SplitSec runs on everyday phones. It listens locally, scores the sound, and escalates only when evidence stacks. Corroboration and multi phone confirmation reduce false alerts. No raw audio is stored or uploaded.
+                            <p className="text-sm sm:text-[17px] text-gray-400 leading-[1.5] sm:leading-[1.45] m-0 mb-4 sm:mb-5 max-w-[56ch]" >
+                                On everyday smartphones for outdoor events, guard teams, ERs, and schools. Privacy first. On device detection. No audio stored or transmitted.
                             </p>
 
                             {/* Key Outcomes */}
@@ -119,7 +119,7 @@ export default function Technology() {
             </section>
 
             {/* Section 2: Privacy and Workflow - White (same pattern as Home) */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white" id="privacy-workflow">
+            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white" id="privacy-workflow">
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div
                         style={{ background: '#ffffff', borderColor: 'rgba(26,26,26,0.10)' }}>
@@ -336,7 +336,7 @@ export default function Technology() {
             </section>
 
             {/* Section 3: Smart Escalation - Black (same pattern as Home) */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-black" id="smart-escalation">
+            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115]" id="smart-escalation">
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div
                     >
@@ -371,11 +371,11 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L1 Detected</h3>
+                                        <h3 className="text-base font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L1 Detected</h3>
                                         <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>Single phone, not corroborated</div>
                                     </div>
                                 </div>
-                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(233,236,248,0.88)', lineHeight: '1.55' }}>
+                                <ul className="m-0 mt-3 pl-4.5 text-sm leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>
                                     <li className="my-1.5">One phone flags a gunshot candidate event</li>
                                     <li className="my-1.5">User can corroborate or dismiss with one tap</li>
                                     <li className="my-1.5">No outbound alert by default</li>
@@ -402,11 +402,11 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L2 Corroborated</h3>
+                                        <h3 className="text-base font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L2 Corroborated</h3>
                                         <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>User confirms they heard it</div>
                                     </div>
                                 </div>
-                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(233,236,248,0.88)', lineHeight: '1.55' }}>
+                                <ul className="m-0 mt-3 pl-4.5 text-sm leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>
                                     <li className="my-1.5">User corroboration increases confidence</li>
                                     <li className="my-1.5">System prepares notifications and context</li>
                                     <li className="my-1.5">Admins see time, approximate location, device status</li>
@@ -434,11 +434,11 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L3 Confirmed</h3>
+                                        <h3 className="text-base font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L3 Confirmed</h3>
                                         <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>Two phones report in a tight window</div>
                                     </div>
                                 </div>
-                                <ul className="m-0 mt-3 pl-4.5" style={{ color: 'rgba(233,236,248,0.88)', lineHeight: '1.55' }}>
+                                <ul className="m-0 mt-3 pl-4.5 text-sm leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>
                                     <li className="my-1.5">Multi phone confirmation triggers a confirmed alert</li>
                                     <li className="my-1.5">Alerts go to configured recipients and roles</li>
                                     <li className="my-1.5">Clear prompts help teams coordinate in the first minutes</li>
@@ -456,8 +456,8 @@ export default function Technology() {
                             <div className="flex justify-between gap-4 flex-wrap items-start mb-3.5">
                                 <div>
                                     <div className="text-xs uppercase tracking-[0.16em] font-extrabold mb-1.5" style={{ color: 'rgba(243,246,255,0.60)' }}>Pilot in 14 days</div>
-                                    <div className="text-lg font-black mb-1.5" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Low effort, measurable results</div>
-                                    <div className="text-[13px] font-extrabold max-w-[62ch]" style={{ color: 'rgba(233,236,248,0.88)' }}>Deploy, measure, and decide with clean pilot metrics.</div>
+                                    <div className="text-base font-extrabold mb-1.5" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Low effort, measurable results</div>
+                                    <div className="text-sm max-w-[62ch] leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>Deploy, measure, and decide with clean pilot metrics.</div>
                                 </div>
                                 <div className="flex gap-3 flex-wrap items-center">
                                     <a href="/schedule-demo"
@@ -487,7 +487,7 @@ export default function Technology() {
                                         }}>1</div>
                                     <div>
                                         <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Deploy</b>
-                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Phones or preconfigured kit</span>
+                                        <span className="text-sm leading-[1.45] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Phones or preconfigured kit</span>
                                     </div>
                                 </div>
 
@@ -503,7 +503,7 @@ export default function Technology() {
                                         }}>2</div>
                                     <div>
                                         <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Measure</b>
-                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Detection, false alerts, uptime</span>
+                                        <span className="text-sm leading-[1.45] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Detection, false alerts, uptime</span>
                                     </div>
                                 </div>
 
@@ -519,7 +519,7 @@ export default function Technology() {
                                         }}>3</div>
                                     <div>
                                         <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Decide</b>
-                                        <span className="text-[13px] leading-[1.35] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Report and next steps</span>
+                                        <span className="text-sm leading-[1.45] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Report and next steps</span>
                                     </div>
                                 </div>
                             </div>
@@ -533,7 +533,7 @@ export default function Technology() {
             </section>
 
             {/* Section 4: Behind the Scenes - White (same pattern as Home) */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white" id="behind-the-scenes">
+            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white" id="behind-the-scenes">
                 <div className="w-full max-w-[1800px] mx-auto">
                     <div
                     >
@@ -554,7 +554,7 @@ export default function Technology() {
                                     borderColor: 'rgba(26,26,26,0.12)',
                                     boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
                                 }}>
-                                <h3 className="text-xl font-extrabold m-0 mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What you get</h3>
+                                <h3 className="text-base font-extrabold m-0 mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What you get</h3>
 
                                 <div className="flex gap-3.5 p-4 rounded-[18px] border mb-3"
                                     style={{
@@ -573,8 +573,8 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Fast, quiet detection</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Runs in the background and surfaces only high signal events.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Fast, quiet detection</div>
+                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Runs in the background and surfaces only high signal events.</div>
                                     </div>
                                 </div>
 
@@ -597,8 +597,8 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1" style={{ color: '#111' }}>Lower false alerts</div>
-                                        <div className="leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Escalates based on evidence, corroboration, and multi phone confirmation.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Lower false alerts</div>
+                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Escalates based on evidence, corroboration, and multi phone confirmation.</div>
                                     </div>
                                 </div>
 
@@ -620,8 +620,8 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Operational coverage</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Health signals like battery, connectivity, and armed status help maintain coverage.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Operational coverage</div>
+                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Health signals like battery, connectivity, and armed status help maintain coverage.</div>
                                     </div>
                                 </div>
 
@@ -646,7 +646,7 @@ export default function Technology() {
                                     borderColor: 'rgba(26,26,26,0.12)',
                                     boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
                                 }}>
-                                <h3 className="text-lg sm:text-xl font-extrabold m-0 mb-3 sm:mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What makes it work</h3>
+                                <h3 className="text-base font-extrabold m-0 mb-3 sm:mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What makes it work</h3>
 
                                 <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
                                     style={{
@@ -666,8 +666,8 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Privacy first architecture</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>On device decisions with minimal data movement and explicit opt in controls.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Privacy first architecture</div>
+                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>On device decisions with minimal data movement and explicit opt in controls.</div>
                                     </div>
                                 </div>
 
@@ -690,8 +690,8 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Escalation by evidence</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Confidence rises through corroboration, and multi phone confirmation triggers a confirmed alert.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Escalation by evidence</div>
+                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Confidence rises through corroboration, and multi phone confirmation triggers a confirmed alert.</div>
                                     </div>
                                 </div>
 
@@ -724,12 +724,12 @@ export default function Technology() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm sm:text-base" style={{ color: '#111' }}>Compact model on the phone</div>
-                                        <div className="text-sm sm:text-base leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Efficient runtime keeps detection latency low and supports continuous coverage.</div>
+                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Compact model on the phone</div>
+                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Efficient runtime keeps detection latency low and supports continuous coverage.</div>
                                     </div>
                                 </div>
 
-                                <div className="text-xs sm:text-[13px] leading-[1.5] mt-2.5" style={{ color: 'rgba(26,26,26,0.70)' }}>
+                                <div className="text-sm leading-[1.45] mt-2.5" style={{ color: 'rgba(26,26,26,0.70)' }}>
                                     For deployments, you can use individual staff phones or preconfigured kits. Teams can tune sensitivity for the environment and role.
                                 </div>
                             </div>
