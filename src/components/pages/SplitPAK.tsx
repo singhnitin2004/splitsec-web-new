@@ -153,12 +153,12 @@ export default function SplitPAK() {
         <div className="w-full min-h-screen">
             {/* Section 1: Hero - Light grey (Portable Pilot Deployment) */}
             <section
-                className="w-full pt-20 sm:pt-28 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 overflow-x-hidden bg-[#0f1115]"
+                className="w-full pt-20 sm:pt-28 pb-10 sm:pb-12 flex items-center px-4 sm:px-6 md:px-8  xl:px-28 overflow-x-hidden bg-[#0f1115]"
             >
                 <div className="w-full max-w-[1800px] mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 items-center">
-                        {/* Left: Text + CTA + Feature cards - same visual weight as right */}
-                        <div className="flex flex-col justify-center gap-1 sm:gap-1.5 md:gap-2 order-1 text-left lg:min-w-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-4 lg:gap-2 items-stretch">
+                        {/* Left: Text + CTA + Feature cards - same height as right image */}
+                        <div className="flex flex-col justify-center gap-1 sm:gap-1.5 md:gap-2 order-1 text-left lg:min-w-0 lg:h-full">
                             <p
                                 className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest sm:tracking-[0.18em] m-0 leading-snug"
                                 style={{ color: "#9ca3af" }}
@@ -236,13 +236,12 @@ export default function SplitPAK() {
                             </div>
                         </div>
 
-                        {/* Right: Image - card with rounded corners; inner wrapper clips to roundness */}
-                        <div className="order-2 w-full flex flex-col justify-center items-center min-w-0">
-                            <div className="w-full flex justify-center items-center p-3 sm:p-4 md:p-5 lg:p-6">
+                        {/* Right: Image - same height as left content, fills column */}
+                        <div className="order-2 w-full flex flex-col justify-center items-center min-w-0 lg:h-full lg:min-h-0">
+                            <div className="w-full h-full flex justify-center items-stretch p-3 sm:p-4 md:p-5 lg:p-6 lg:min-h-0">
                                 <div
-                                    className="relative w-full max-w-lg sm:max-w-xl min-h-[220px] sm:min-h-[280px] lg:min-h-[320px] max-h-[320px] sm:max-h-[380px] lg:max-h-[480px]"
+                                    className="relative w-full  max-w-full min-h-[360px] lg:min-h-0 lg:h-full lg:w-full lg:max-w-xl"
                                     style={{
-                                        aspectRatio: "4 / 3",
                                         overflow: "hidden",
                                         borderRadius: "1rem",
                                     }}
@@ -255,7 +254,7 @@ export default function SplitPAK() {
                                         }}
                                     >
                                         <Image
-                                            src="/xRadius/splitPAK.png"
+                                            src="/xRadius/Pelican case pink foam (1).png"
                                             alt="splitPAK with preconfigured phones"
                                             fill
                                             className="object-cover"

@@ -2,21 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
-    const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
-    const [resourcesHoverTimeout, setResourcesHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+    const [isDeployDropdownOpen, setIsDeployDropdownOpen] = useState(false);
+    const [isMobileDeployOpen, setIsMobileDeployOpen] = useState(false);
+    const deployDropdownRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
 
     // Close mobile menu when route changes
     useEffect(() => {
         setIsMobileMenuOpen(false);
-        setIsMobileResourcesOpen(false);
+        setIsMobileDeployOpen(false);
     }, [pathname]);
 
     // Prevent body scroll when mobile menu is open
@@ -34,33 +34,35 @@ export default function Navbar() {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
         if (isMobileMenuOpen) {
-            setIsMobileResourcesOpen(false);
+            setIsMobileDeployOpen(false);
         }
     };
 
     const closeMobileMenu = () => {
         setIsMobileMenuOpen(false);
-        setIsMobileResourcesOpen(false);
+        setIsMobileDeployOpen(false);
     };
 
-    const toggleMobileResources = () => {
-        setIsMobileResourcesOpen(!isMobileResourcesOpen);
+    const toggleMobileDeploy = () => {
+        setIsMobileDeployOpen(!isMobileDeployOpen);
     };
 
-    const handleResourcesMouseEnter = () => {
-        if (resourcesHoverTimeout) {
-            clearTimeout(resourcesHoverTimeout);
-            setResourcesHoverTimeout(null);
+    const toggleDeployDropdown = () => {
+        setIsDeployDropdownOpen((prev) => !prev);
+    };
+
+    // Close deploy dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (deployDropdownRef.current && !deployDropdownRef.current.contains(event.target as Node)) {
+                setIsDeployDropdownOpen(false);
+            }
+        };
+        if (isDeployDropdownOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
         }
-        setIsResourcesDropdownOpen(true);
-    };
-
-    const handleResourcesMouseLeave = () => {
-        const timeout = setTimeout(() => {
-            setIsResourcesDropdownOpen(false);
-        }, 150); // 150ms delay
-        setResourcesHoverTimeout(timeout);
-    };
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [isDeployDropdownOpen]);
 
     return (
         <>
@@ -77,11 +79,11 @@ export default function Navbar() {
                 borderColor: 'rgba(233,236,248,0.08)'
             }}>
                 <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-26">
-                    <div className="flex items-center justify-between h-14 sm:h-16">
+                    <div className="flex items-center justify-between h-14 sm:h-16 w-full">
                         {/* Left: Brand Logo */}
                         <Link
                             href="/"
-                            className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity"
+                            className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity shrink-0"
                             onClick={closeMobileMenu}
                         >
                             <Image
@@ -98,125 +100,102 @@ export default function Navbar() {
                             </span>
                         </Link>
 
-                        {/* Right: Navigation Links + Book a demo - Desktop */}
-                        <div className="hidden md:flex items-center gap-8">
+                        {/* Center: Navigation Links - Desktop */}
+                        <div className="hidden md:flex flex-1 justify-center items-center gap-6 lg:gap-5">
                             <Link
-                                href="/technology"
-                                style={{ color: pathname === "/technology" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                href="/#how-it-works"
+                                onClick={(e) => {
+                                    if (pathname === "/") {
+                                        e.preventDefault();
+                                        document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                }}
+                                style={{ color: 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
-                                Technology
+                                How it works
                             </Link>
                             <Link
-                                href="/industries"
-                                style={{ color: pathname === "/industries" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                href="/#solutions"
+                                onClick={(e) => {
+                                    if (pathname === "/") {
+                                        e.preventDefault();
+                                        document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                }}
+                                style={{ color: 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
-                                Industries
+                                Solutions
                             </Link>
-                            <Link
-                                href="/split-pak"
-                                style={{ color: pathname === "/split-pak" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
-                                className="text-sm font-bold transition-colors hover:opacity-80"
+                            <div
+                                ref={deployDropdownRef}
+                                className="relative flex flex-col items-center"
                             >
-                                splitPAK
-                            </Link>
-                            <Link
-                                href="/xmapper"
-                                style={{ color: pathname === "/xmapper" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
-                                className="text-sm font-bold transition-colors hover:opacity-80"
-                            >
-                                Mapper
-                            </Link>
-                            {/* <Link
-                                href="/get-involved"
-                                style={{ color: pathname === "/get-involved" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
-                                className="text-sm font-bold transition-colors hover:opacity-80"
-                            >
-                                Get Involved
-                            </Link> */}
-                            {/* <div
-                                className="relative"
-                                onMouseEnter={handleResourcesMouseEnter}
-                                onMouseLeave={handleResourcesMouseLeave}
-                            >
-                                <div className="flex items-center space-x-1">
-                                    <Link
-                                        href="/resources"
-                                        style={{ color: (pathname === "/resources" || pathname?.startsWith("/resources/")) ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
-                                        className="text-sm font-bold transition-colors hover:opacity-80"
-                                    >
-                                        Resources
-                                    </Link>
-                                    <ChevronDown
-                                        size={16}
-                                        className={`transition-transform ${isResourcesDropdownOpen ? 'rotate-180' : ''}`}
-                                        style={{ color: 'rgba(233,236,248,0.78)' }}
-                                    />
-                                </div>
-                                {isResourcesDropdownOpen && (
-                                    <div
-                                        className="absolute top-full left-0 mt-2 w-64 border rounded-lg shadow-2xl py-2 z-50 backdrop-blur-md"
-                                        style={{
-                                            background: 'linear-gradient(180deg, rgba(11,16,32,0.96), rgba(7,10,18,0.96))',
-                                            borderColor: 'rgba(233,236,248,0.08)'
-                                        }}
-                                        onMouseEnter={handleResourcesMouseEnter}
-                                        onMouseLeave={handleResourcesMouseLeave}
-                                    >
-                                        <Link
-                                            href="/resources/school-leaders-guide"
-                                            onClick={() => setIsResourcesDropdownOpen(false)}
-                                            className={`block px-4 py-2 text-sm font-semibold transition-colors ${pathname === "/resources/school-leaders-guide"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-300 hover:text-blue-400 hover:bg-slate-800/30"
-                                                }`}
+                                <button
+                                    type="button"
+                                    onClick={toggleDeployDropdown}
+                                    className="flex items-center gap-1 text-sm cursor-pointer font-bold transition-colors hover:opacity-80"
+                                    style={{ color: (pathname === "/split-pak" || pathname === "/xmapper") ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                >
+                                    Deploy
+
+                                </button>
+                                {isDeployDropdownOpen && (
+                                    <>
+                                        {/* Connecting line from Deploy to submenu */}
+                                        <div
+                                            className="absolute top-full left-1/2 -translate-x-1/2 w-px h-2 z-50"
+                                            style={{ background: 'rgba(233,236,248,0.25)' }}
+                                        />
+                                        <div
+                                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 flex items-center gap-1 py-2 px-2 rounded-full shadow-2xl z-50"
+                                            style={{
+                                                background: 'rgba(25,32,48,0.98)',
+                                                border: '1px solid rgba(233,236,248,0.12)'
+                                            }}
                                         >
-                                            School Leaders Guide
-                                        </Link>
-                                        <Link
-                                            href="/resources/events-parks-guide"
-                                            onClick={() => setIsResourcesDropdownOpen(false)}
-                                            className={`block px-4 py-2 text-sm font-semibold transition-colors ${pathname === "/resources/events-parks-guide"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-300 hover:text-blue-400 hover:bg-slate-800/30"
-                                                }`}
-                                        >
-                                            Events & Parks Guide
-                                        </Link>
-                                        <Link
-                                            href="/resources/security-firms-guide"
-                                            onClick={() => setIsResourcesDropdownOpen(false)}
-                                            className={`block px-4 py-2 text-sm font-semibold transition-colors ${pathname === "/resources/security-firms-guide"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-300 hover:text-blue-400 hover:bg-slate-800/30"
-                                                }`}
-                                        >
-                                            Security Firms Guide
-                                        </Link>
-                                        <Link
-                                            href="/blog"
-                                            onClick={() => setIsResourcesDropdownOpen(false)}
-                                            className={`block px-4 py-2 text-sm font-semibold transition-colors ${pathname === "/blog"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-300 hover:text-blue-400 hover:bg-slate-800/30"
-                                                }`}
-                                        >
-                                            Blog
-                                        </Link>
-                                        <Link
-                                            href="/faq"
-                                            onClick={() => setIsResourcesDropdownOpen(false)}
-                                            className={`block px-4 py-2 text-sm font-semibold transition-colors ${pathname === "/faq"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-300 hover:text-blue-400 hover:bg-slate-800/30"
-                                                }`}
-                                        >
-                                            FAQ
-                                        </Link>
-                                    </div>
+                                            <Link
+                                                href="/split-pak"
+                                                onClick={() => setIsDeployDropdownOpen(false)}
+                                                className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors whitespace-nowrap ${pathname === "/split-pak"
+                                                    ? "bg-slate-700/60"
+                                                    : "hover:bg-slate-700/50"
+                                                    }`}
+                                                style={{ color: 'rgba(233,236,248,0.9)' }}
+                                            >
+                                                PerimeterPAK
+                                            </Link>
+                                            <Link
+                                                href="/xmapper"
+                                                onClick={() => setIsDeployDropdownOpen(false)}
+                                                className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors whitespace-nowrap ${pathname === "/xmapper"
+                                                    ? "bg-slate-700/60"
+                                                    : "hover:bg-slate-700/50"
+                                                    }`}
+                                                style={{ color: 'rgba(233,236,248,0.9)' }}
+                                            >
+                                                GridMapper
+                                            </Link>
+                                            <Link
+                                                href="/schedule-demo"
+                                                onClick={() => setIsDeployDropdownOpen(false)}
+                                                className="px-5 py-2 text-sm font-semibold rounded-full transition-colors whitespace-nowrap hover:bg-slate-700/50"
+                                                style={{ color: 'rgba(233,236,248,0.9)' }}
+                                            >
+                                                Try Android App
+                                            </Link>
+                                        </div>
+                                    </>
                                 )}
-                            </div> */}
+                            </div>
+                            <Link
+                                href="/schedule-demo"
+                                style={{ color: pathname === "/schedule-demo" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
+                                className="text-sm font-bold transition-colors hover:opacity-80"
+                            >
+                                Pricing
+                            </Link>
                             <Link
                                 href="/about"
                                 style={{ color: pathname === "/about" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
@@ -224,20 +203,17 @@ export default function Navbar() {
                             >
                                 About
                             </Link>
-                            <Link
-                                href="/press-kit"
-                                style={{ color: pathname === "/press-kit" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
-                                className="text-sm font-bold transition-colors hover:opacity-80"
-                            >
-                                Press Kit
-                            </Link>
+                        </div>
+
+                        {/* Right: Book a demo - Desktop */}
+                        <div className="hidden md:flex items-center shrink-0">
                             <Link
                                 href="/schedule-demo"
                                 className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border"
                                 style={{
-                                    borderColor: '#006DFF',
+                                    borderColor: 'rgba(80,140,255,0.92)',
                                     background: 'rgba(0,0,0,0.4)',
-                                    color: '#006DFF'
+                                    color: 'rgba(80,140,255,0.92)'
                                 }}
                             >
                                 Book a demo
@@ -297,135 +273,96 @@ export default function Navbar() {
                     >
                         <div className="py-4 space-y-1 border-t border-slate-800/50 mt-2">
                             <Link
-                                href="/technology"
-                                onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/technology"
-                                    ? "text-blue-400 bg-slate-800/50"
-                                    : "text-slate-300 active:bg-slate-800/30"
-                                    }`}
+                                href="/#how-it-works"
+                                onClick={(e) => {
+                                    if (pathname === "/") {
+                                        e.preventDefault();
+                                        document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                    closeMobileMenu();
+                                }}
+                                className="block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation text-slate-300 active:bg-slate-800/30"
                             >
-                                Technology
+                                How it works
                             </Link>
 
                             <Link
-                                href="/industries"
-                                onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/industries"
-                                    ? "text-blue-400 bg-slate-800/50"
-                                    : "text-slate-300 active:bg-slate-800/30"
-                                    }`}
+                                href="/#solutions"
+                                onClick={(e) => {
+                                    if (pathname === "/") {
+                                        e.preventDefault();
+                                        document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                    closeMobileMenu();
+                                }}
+                                className="block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation text-slate-300 active:bg-slate-800/30"
                             >
-                                Industries
-                            </Link>
-                            <Link
-                                href="/split-pak"
-                                onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/split-pak"
-                                    ? "text-blue-400 bg-slate-800/50"
-                                    : "text-slate-300 active:bg-slate-800/30"
-                                    }`}
-                            >
-                                splitPAK
-                            </Link>
-                            <Link
-                                href="/xmapper"
-                                onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/xmapper"
-                                    ? "text-blue-400 bg-slate-800/50"
-                                    : "text-slate-300 active:bg-slate-800/30"
-                                    }`}
-                            >
-                                Mapper
+                                Solutions
                             </Link>
 
-                            {/* <Link
-                                href="/get-involved"
-                                onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/50 touch-manipulation ${pathname === "/get-involved"
-                                    ? "text-blue-400 bg-slate-800/50"
-                                    : "text-slate-300 active:bg-slate-800/30"
-                                    }`}
-                            >
-                                Get Involved
-                            </Link> */}
-
-                            {/* <div>
+                            <div>
                                 <button
-                                    onClick={toggleMobileResources}
-                                    className={`w-full flex items-center justify-between text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/resources" || pathname?.startsWith("/resources/")
+                                    type="button"
+                                    onClick={toggleMobileDeploy}
+                                    className={`w-full flex items-center justify-between text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/split-pak" || pathname === "/xmapper"
                                         ? "text-blue-400"
                                         : "text-slate-300"
                                         }`}
                                 >
-                                    <span>Resources</span>
+                                    <span>Deploy</span>
                                     <ChevronDown
                                         size={18}
-                                        className={`transition-transform duration-200 ${isMobileResourcesOpen ? 'rotate-180' : ''
-                                            }`}
+                                        className={`transition-transform duration-200 ${isMobileDeployOpen ? 'rotate-180' : ''}`}
                                     />
                                 </button>
                                 <div
-                                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileResourcesOpen
+                                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileDeployOpen
                                         ? "max-h-96 opacity-100"
                                         : "max-h-0 opacity-0"
                                         }`}
                                 >
                                     <div className="pl-4 pt-1 pb-2 space-y-1">
                                         <Link
-                                            href="/resources/school-leaders-guide"
+                                            href="/split-pak"
                                             onClick={closeMobileMenu}
-                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/resources/school-leaders-guide"
+                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/split-pak"
                                                 ? "text-blue-400 bg-slate-800/50"
                                                 : "text-slate-400 active:bg-slate-800/30"
                                                 }`}
                                         >
-                                            School Leaders Guide
+                                            PerimeterPAK
                                         </Link>
                                         <Link
-                                            href="/resources/events-parks-guide"
+                                            href="/xmapper"
                                             onClick={closeMobileMenu}
-                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/resources/events-parks-guide"
+                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/xmapper"
                                                 ? "text-blue-400 bg-slate-800/50"
                                                 : "text-slate-400 active:bg-slate-800/30"
                                                 }`}
                                         >
-                                            Events & Parks Guide
+                                            GridMapper
                                         </Link>
                                         <Link
-                                            href="/resources/security-firms-guide"
+                                            href="/schedule-demo"
                                             onClick={closeMobileMenu}
-                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/resources/security-firms-guide"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-400 active:bg-slate-800/30"
-                                                }`}
+                                            className="block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg text-slate-400 active:bg-slate-800/30 touch-manipulation"
                                         >
-                                            Security Firms Guide
-                                        </Link>
-                                        <Link
-                                            href="/blog"
-                                            onClick={closeMobileMenu}
-                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/blog"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-400 active:bg-slate-800/30"
-                                                }`}
-                                        >
-                                            Blog
-                                        </Link>
-                                        <Link
-                                            href="/faq"
-                                            onClick={closeMobileMenu}
-                                            className={`block text-sm font-semibold transition-colors py-2.5 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/faq"
-                                                ? "text-blue-400 bg-slate-800/50"
-                                                : "text-slate-400 active:bg-slate-800/30"
-                                                }`}
-                                        >
-                                            FAQ
+                                            Try Android App
                                         </Link>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
 
-
+                            <Link
+                                href="/schedule-demo"
+                                onClick={closeMobileMenu}
+                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/schedule-demo"
+                                    ? "text-blue-400 bg-slate-800/50"
+                                    : "text-slate-300 active:bg-slate-800/30"
+                                    }`}
+                            >
+                                Pricing
+                            </Link>
 
                             <Link
                                 href="/about"
@@ -439,22 +376,17 @@ export default function Navbar() {
                             </Link>
 
                             <Link
-                                href="/press-kit"
-                                onClick={closeMobileMenu}
-                                className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/press-kit"
-                                    ? "text-blue-400 bg-slate-800/50"
-                                    : "text-slate-300 active:bg-slate-800/30"
-                                    }`}
-                            >
-                                Press Kit
-                            </Link>
-
-                            <Link
                                 href="/schedule-demo"
                                 onClick={closeMobileMenu}
-                                className="block text-sm font-bold transition-colors py-3 px-4 rounded-lg bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 touch-manipulation text-center mt-4 shadow-lg"
+                                className="flex items-center justify-center gap-2 text-sm font-bold transition-colors py-3 px-4 rounded-full mt-4 border touch-manipulation"
+                                style={{
+                                    borderColor: 'rgba(80,140,255,0.92)',
+                                    background: 'rgba(0,0,0,0.4)',
+                                    color: 'rgba(80,140,255,0.92)'
+                                }}
                             >
-                                Schedule Demo
+                                Book a demo
+                                <ArrowRight size={16} />
                             </Link>
                         </div>
                     </div>
