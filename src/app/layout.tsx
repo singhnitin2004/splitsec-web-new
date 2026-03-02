@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import BottomActionBar from "@/components/layout/BottomActionBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +33,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <BottomActionBar />
         <Script id="chatbase-config" strategy="afterInteractive">
           {`
             (function(){

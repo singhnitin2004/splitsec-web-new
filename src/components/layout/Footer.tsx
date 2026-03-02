@@ -2,294 +2,148 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+// Social links with label and icon abbreviation (matching HTML soc-ico design)
+const SOCIAL_LINKS = [
+    { href: "https://linkedin.com", label: "LinkedIn", icon: "in", ariaLabel: "LinkedIn" },
+    { href: "https://instagram.com", label: "Instagram", icon: "ig", ariaLabel: "Instagram" },
+    { href: "https://threads.net", label: "Threads", icon: "@", ariaLabel: "Threads" },
+    { href: "https://facebook.com", label: "Facebook", icon: "f", ariaLabel: "Facebook" },
+    { href: "https://youtube.com", label: "YouTube", icon: "▶", ariaLabel: "YouTube" },
+    { href: "https://x.com", label: "X", icon: "x", ariaLabel: "X" },
+];
+
+// Quick links matching HTML structure (same behavior as Navbar for How it Works & Solutions)
+const QUICK_LINKS = [
+    { href: "/", label: "Home" },
+    { href: "/#how-it-works", label: "How it Works", scrollId: "how-it-works" },
+    { href: "/#solutions", label: "Solutions", scrollId: "solutions" },
+    { href: "/xradius-kit", label: "PerimeterPAK" },
+    { href: "/xmapper", label: "GridMapper" },
+    { href: "/about", label: "About" },
+];
 
 export default function Footer() {
+    const pathname = usePathname();
+
+    const handleQuickLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, scrollId?: string) => {
+        if (pathname === "/" && scrollId) {
+            e.preventDefault();
+            document.getElementById(scrollId)?.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
-        <footer className="w-full relative overflow-hidden border-t border-white/10" style={{
-            background: '#0f1115',
-            borderColor: '#0f1115'
-        }}>
-            {/* Decorative Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none border-t">
-                {/* Gradient Orbs */}
-                <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(80,140,255,0.1)' }}></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl" style={{ background: 'rgba(255,80,170,0.1)' }}></div>
-
-                {/* Subtle Grid Pattern */}
-            </div>
-
-            <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 relative z-10">
-                {/* Main Footer Content */}
-                <div className="pt-12 pb-8 sm:pt-16 sm:pb-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
-                        {/* Brand Section */}
-                        <div className="lg:col-span-1 space-y-5">
-                            <Link
-                                href="/"
-                                className="flex items-center gap-2.5 hover:opacity-90 transition-all duration-300 w-fit group"
-                            >
-                                <div className="relative">
-                                    <Image
-                                        src="/logo.png"
-                                        alt="SplitSec.AI"
-                                        width={40}
-                                        height={40}
-                                        className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
-                                        priority
-                                    />
-                                </div>
-                                <span className="text-xl font-bold tracking-tight">
-                                    <span style={{ color: 'rgba(80,140,255,0.92)' }}>SplitSec</span>
-                                    <span style={{ color: 'rgba(255,80,170,0.86)' }}>.AI</span>
-                                </span>
-                            </Link>
-                            <p className="text-base leading-relaxed max-w-md" style={{ color: 'rgba(233,236,248,0.72)' }}>
-                                SplitSec AI isn't just an app—it's a movement for safer schools, neighborhoods, and public spaces. Together, we can build communities where everybody feels safe.
-                            </p>
+        <footer
+            className="w-full bg-[#0B0F1A] text-[#F3F6FF] border-t border-[rgba(243,246,255,0.10)] pt-14 pb-8 pl-4 pr-2 sm:pl-6 sm:pr-3"
+            id="site-footer"
+        >
+            <div className="max-w-[1800px] mx-auto pl-4 pr-2 sm:pl-6 sm:pr-3 lg:pl-8 lg:pr-4 xl:pl-16 xl:pr-8 2xl:pl-24 2xl:pr-12">
+                {/* Footer Top: Brand | Quick Links | Follow Us */}
+                <div className="grid grid-cols-1 gap-7 sm:gap-8 min-[981px]:grid-cols-[1.2fr_0.9fr_0.9fr] min-[981px]:gap-7 items-start">
+                    {/* Brand Section */}
+                    <div className="flex flex-col">
+                        <div className="flex items-center gap-3 mb-2.5">
+                            <Image
+                                src="/logo.png"
+                                alt="SplitSec.AI"
+                                width={36}
+                                height={36}
+                                className="h-9 w-9 object-contain shrink-0"
+                            />
+                            <span className="text-xl font-bold tracking-[-0.02em] text-[#F3F6FF]">
+                                SplitSec.AI
+                            </span>
                         </div>
-
-                        {/* Quick Links */}
-                        <div className="lg:col-span-1">
-                            <h3 className="font-bold text-sm uppercase tracking-wider mb-5" style={{ color: '#E9ECF8' }}>
-                                Quick Links
-                            </h3>
-                            <nav className="flex flex-col gap-3.5">
-                                <Link
-                                    href="/"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        Home
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                                <Link
-                                    href="/technology"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        How it works
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                                <Link
-                                    href="/get-involved"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        Get involved
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                            </nav>
-                        </div>
-
-                        {/* Company Links */}
-                        <div className="lg:col-span-1">
-                            <h3 className="font-bold text-sm uppercase tracking-wider mb-5" style={{ color: '#E9ECF8' }}>
-                                Company
-                            </h3>
-                            <nav className="flex flex-col gap-3.5">
-                                <Link
-                                    href="/about"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        About us
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                                <Link
-                                    href="/faq"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        FAQ
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                                <Link
-                                    href="/blog"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        Blog
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                                <Link
-                                    href="/contact"
-                                    className="transition-all duration-200 text-sm font-medium w-fit group hover:opacity-80"
-                                    style={{ color: 'rgba(233,236,248,0.78)' }}
-                                >
-                                    <span className="relative">
-                                        Contact
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full" style={{ background: 'rgba(80,140,255,0.92)' }}></span>
-                                    </span>
-                                </Link>
-                            </nav>
-                        </div>
+                        <p className="mt-2 mb-2 text-[rgba(243,246,255,0.72)] leading-[1.55] max-w-[44ch]">
+                            SplitSec.AI helps teams recognize suspected gunfire fast, with privacy first on device detection.
+                        </p>
+                        <p className="mb-0 text-[rgba(243,246,255,0.72)] leading-[1.55] max-w-[44ch]">
+                            Get involved and be part of the change.
+                        </p>
+                        <Link
+                            href="/get-involved"
+                            className="mt-3.5 inline-flex items-center justify-center px-[18px] py-3 rounded-xl bg-[#FF3FA6] text-white font-bold text-[15px] no-underline hover:opacity-90 transition-opacity w-fit"
+                        >
+                            Get involved
+                        </Link>
                     </div>
 
-                    {/* Divider */}
-                    <div className="border-t my-8" style={{ borderColor: 'rgba(233,236,248,0.08)' }}></div>
-
-                    {/* Social Media & Copyright Section */}
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                        {/* Social Media Links */}
-                        <div className="flex items-center gap-1">
-                            <div className="flex items-center gap-2">
-                                {/* LinkedIn */}
-                                <a
-                                    href="https://linkedin.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:text-white transition-all duration-200 group"
-                                    style={{
-                                        background: 'rgba(255,255,255,0.06)',
-                                        color: 'rgba(233,236,248,0.78)'
-                                    }}
-                                    aria-label="LinkedIn"
+                    {/* Quick Links */}
+                    <div>
+                        <h4 className="mb-2.5 mt-1 text-[15px] font-medium tracking-[-0.01em] text-[rgba(243,246,255,0.86)]">
+                            Quick Links
+                        </h4>
+                        <nav className="flex flex-col gap-0">
+                            {QUICK_LINKS.map((link) => (
+                                <Link
+                                    key={link.href + link.label}
+                                    href={link.href}
+                                    onClick={(e) => handleQuickLinkClick(e, link.scrollId)}
+                                    className="flex items-center gap-2.5 py-1.5 text-[rgba(243,246,255,0.74)] no-underline text-[15px] hover:text-[rgba(0,109,255,0.95)] transition-colors"
                                 >
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                    </svg>
-                                </a>
-
-                                {/* Instagram */}
-                                <a
-                                    href="https://instagram.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white transition-all duration-200 group"
-                                    style={{
-                                        background: 'rgba(255,255,255,0.06)',
-                                        color: 'rgba(233,236,248,0.78)'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                                    aria-label="Instagram"
-                                >
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                    </svg>
-                                </a>
-
-                                {/* X (Twitter) */}
-                                <a
-                                    href="https://x.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 group"
-                                    style={{
-                                        background: 'rgba(255,255,255,0.06)',
-                                        color: 'rgba(233,236,248,0.78)'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                                    aria-label="X (Twitter)"
-                                >
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                    </svg>
-                                </a>
-
-                                {/* YouTube */}
-                                <a
-                                    href="https://youtube.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-200 group"
-                                    style={{
-                                        background: 'rgba(255,255,255,0.06)',
-                                        color: 'rgba(233,236,248,0.78)'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                                    aria-label="YouTube"
-                                >
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                                    </svg>
-                                </a>
-
-                                {/* Facebook */}
-                                <a
-                                    href="https://facebook.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-200 group"
-                                    style={{
-                                        background: 'rgba(255,255,255,0.06)',
-                                        color: 'rgba(233,236,248,0.78)'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                                    aria-label="Facebook"
-                                >
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                                    </svg>
-                                </a>
-
-                                {/* Threads */}
-                                <a
-                                    href="https://threads.net"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 group"
-                                    style={{
-                                        background: 'rgba(255,255,255,0.06)',
-                                        color: 'rgba(233,236,248,0.78)'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(80,140,255,0.28)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                                    aria-label="Threads"
-                                >
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-200 group-hover:scale-110"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M12.186 8.302c1.161 0 2.191.49 2.93 1.27.738.78 1.184 1.82 1.184 2.93 0 1.11-.446 2.15-1.184 2.93-.739.78-1.769 1.27-2.93 1.27-1.161 0-2.191-.49-2.93-1.27-.738-.78-1.184-1.82-1.184-2.93 0-1.11.446-2.15 1.184-2.93.739-.78 1.769-1.27 2.93-1.27zm0-1.302c-1.5 0-2.9.63-3.9 1.73-1 1.1-1.6 2.6-1.6 4.27 0 1.67.6 3.17 1.6 4.27 1 1.1 2.4 1.73 3.9 1.73s2.9-.63 3.9-1.73c1-1.1 1.6-2.6 1.6-4.27 0-1.67-.6-3.17-1.6-4.27-1-1.1-2.4-1.73-3.9-1.73z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Copyright */}
-                        <div className="text-center md:text-right">
-                            <p className="text-sm" style={{ color: 'rgba(233,236,248,0.72)' }}>
-                                © {new Date().getFullYear()} SplitSec.AI. All rights reserved.
-                            </p>
-                        </div>
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
                     </div>
+
+                    {/* Follow Us / Social */}
+                    <div>
+                        <h4 className="mb-2.5 mt-1 text-[15px] font-medium tracking-[-0.01em] text-[rgba(243,246,255,0.86)]">
+                            Follow Us
+                        </h4>
+                        <nav className="flex flex-col gap-0">
+                            {SOCIAL_LINKS.map((social) => (
+                                <a
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2.5 py-1.5 text-[rgba(243,246,255,0.74)] no-underline text-[15px] hover:text-[rgba(0,109,255,0.95)] transition-colors"
+                                    aria-label={social.ariaLabel}
+                                >
+                                    <span
+                                        className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium shrink-0 border border-[rgba(243,246,255,0.16)] text-[rgba(243,246,255,0.70)] bg-[rgba(243,246,255,0.06)]"
+                                        aria-hidden
+                                    >
+                                        {social.icon}
+                                    </span>
+                                    {social.label}
+                                </a>
+                            ))}
+                        </nav>
+                    </div>
+                </div>
+
+                {/* Disclaimer */}
+                <div className="mt-8 pt-6 border-t border-[rgba(243,246,255,0.10)] text-center">
+                    <h4 className="mb-2.5 text-base font-medium text-[rgba(243,246,255,0.86)]">
+                        Disclaimer
+                    </h4>
+                    <p className="max-w-[92ch] mx-auto text-[rgba(243,246,255,0.70)] leading-relaxed text-sm sm:text-base">
+                        SplitSec.AI is designed to assist in detecting potential gunshot sounds. It does not contact 911 and does not replace local emergency protocols or law enforcement response. Always follow official guidance in an emergency.
+                    </p>
+                </div>
+
+                {/* Footer Bottom */}
+                <div className="mt-5 pt-5 border-t border-[rgba(243,246,255,0.10)] flex flex-wrap justify-center items-center gap-4 sm:gap-5 text-[rgba(243,246,255,0.60)] text-sm">
+                    <Link
+                        href="/privacy"
+                        className="text-[rgba(243,246,255,0.60)] no-underline hover:text-[rgba(0,109,255,0.9)] transition-colors"
+                    >
+                        Privacy Policy
+                    </Link>
+                    <Link
+                        href="/terms"
+                        className="text-[rgba(243,246,255,0.60)] no-underline hover:text-[rgba(0,109,255,0.9)] transition-colors"
+                    >
+                        Terms of Service
+                    </Link>
+                    <span className="text-[rgba(243,246,255,0.60)]">
+                        © {new Date().getFullYear()} SplitSec.AI. All rights reserved.
+                    </span>
                 </div>
             </div>
         </footer>
