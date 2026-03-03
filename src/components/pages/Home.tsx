@@ -10,14 +10,14 @@ const APP_SCREENS = [
     { src: "/home/GS Detected screen.png", alt: "Gunshot detected screen", duration: 5000 },
 ];
 
-// Publications for Featured section (logos from public/publications)
+// Publications for Featured section (logos from public/publications) - order: AP, Yahoo, NBC, CBS, Fox, ABC
 const publications = [
-    { src: "/publications/ABC.webp", alt: "NBC" },
-    { src: "/publications/AP.webp", alt: "BH" },
-    { src: "/publications/CBS.webp", alt: "Fox" },
-    { src: "/publications/FOX.webp", alt: "NYT" },
-    { src: "/publications/YF.webp", alt: "WSJ" },
-    { src: "/publications/NBC.svg", alt: "Bloomberg" },
+    { src: "/publications/AP.webp", alt: "AP" },
+    { src: "/publications/YF.webp", alt: "Yahoo Finance" },
+    { src: "/publications/NBC.svg", alt: "NBC News" },
+    { src: "/publications/CBS.webp", alt: "CBS" },
+    { src: "/publications/FOX.webp", alt: "Fox News" },
+    { src: "/publications/ABC.webp", alt: "ABC News" },
 ];
 
 // Protection Built For data
@@ -146,9 +146,6 @@ export default function HomePage() {
         }
     }, []);
 
-    // Featured In carousel refs (container + second set position for perfect loop)
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const secondSetRef = useRef<HTMLDivElement>(null);
 
     // Wave animates on every load/reload
     const [isWaveAnimated] = useState(true);
@@ -354,55 +351,6 @@ export default function HomePage() {
         };
     }, [screenIndex]);
 
-    // Featured In - Smooth infinite carousel (resets when second set reaches start position)
-    useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        const secondSetEl = secondSetRef.current;
-        if (!scrollContainer) return;
-
-        let scrollAmount = 0;
-        const scrollSpeed = 0.5; // Smooth, not too fast
-        let animationFrameId: number | null = null;
-        let resetPoint = 0;
-        let isRunning = true;
-
-        const scroll = () => {
-            animationFrameId = requestAnimationFrame(scroll);
-            if (!scrollContainer || !isRunning) return;
-
-            // Measure where second set starts (accounts for gap + first set width)
-            if (resetPoint === 0 && secondSetEl?.offsetLeft) {
-                resetPoint = secondSetEl.offsetLeft;
-            }
-            if (resetPoint === 0) return;
-
-            scrollAmount += scrollSpeed;
-            // Reset when we've scrolled to where set 2 starts (showing set 2 = showing set 1)
-            if (scrollAmount >= resetPoint) {
-                scrollAmount -= resetPoint;
-            }
-            scrollContainer.scrollLeft = scrollAmount;
-        };
-
-        const startScroll = () => {
-            if (secondSetEl?.offsetLeft) {
-                resetPoint = secondSetEl.offsetLeft;
-                isRunning = true;
-                animationFrameId = requestAnimationFrame(scroll);
-            } else {
-                setTimeout(startScroll, 100);
-            }
-        };
-
-        const initTimeout = setTimeout(startScroll, 500);
-
-        return () => {
-            isRunning = false;
-            if (animationFrameId != null) cancelAnimationFrame(animationFrameId);
-            clearTimeout(initTimeout);
-        };
-    }, []);
-
     // Handle video modal
     useEffect(() => {
         if (!isVideoOpen && videoRef.current) {
@@ -455,7 +403,7 @@ export default function HomePage() {
 
                             <p className="text-sm sm:text-[17px] leading-[1.5] sm:leading-[1.45] text-gray-400"
                             >
-                                On everyday smartphones for outdoor events, guard teams, ERs, and schools. Privacy first. On device detection. No audio stored or transmitted.
+                                On everyday smartphones for outdoor events, guard teams, healthcare, and schools. Privacy first. On-device detection. No audio stored or transmitted.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-3 mt-2 sm:mt-[18px] justify-start">
@@ -662,87 +610,74 @@ export default function HomePage() {
                                 />
                             </div>
 
-                            {/* Robust escalation card - matches screenshot design */}
-                            <div
-                                className="relative rounded-2xl overflow-hidden bg-[#f3f5f9] p-4 sm:p-4 reveal-up shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
-                                style={{
-                                    border: '1px solid #E5E5E7',
-                                    animationDelay: '0.2s',
-                                }}
-                            >
-                                <h2 className="text-xl sm:text-3xl font-extrabold leading-tight m-0 mb-2" style={{ color: '#1D1D1F' }}>
-                                    Robust escalation
-                                </h2>
-                                <p className="text-md sm:text-xl font-extrabold m-0 mb-2" style={{ color: '#006dff' }}>
-                                    AI + human verified
-                                </p>
-                                <p className="text-sm sm:text-base leading-relaxed m-0 mb-1" style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                    Escalate confidence from AI detection to a confirmed alert, without slowing response.
-                                </p>
-                                <div className="flex flex-col lg:flex-row items-stretch gap-4 w-full">
-                                    {/* Two cards group - stacked on small, side-by-side on md+ */}
-                                    <div className="flex flex-col md:flex-row gap-4 flex-1 min-w-0 w-full">
-                                        {/* Level 1/2 - Human verified */}
-                                        <div
-                                            className="rounded-xl p-3 sm:p-5 border bg-[#eceef2] flex gap-4 sm:gap-6 flex-1 min-w-0 w-full md:w-auto"
-                                            style={{ borderColor: '#0b0f1a1f' }}
-                                        >
-                                            <div className="sm:shrink-0">
-                                                <span className="inline-block px-2 sm:px-4 py-2 rounded-full text-xs sm:text-md font-bold mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
-                                                    Level 1/2
-                                                </span>
-                                            </div>
-                                            <div className="min-w-0">
-                                                <h4 className="text-base font-bold leading-tight m-0 mb-2" style={{ color: '#1D1D1F' }}>
-                                                    Human verified
-                                                </h4>
-                                                <p className="text-sm leading-relaxed" style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                                    AI flags and prompts a quick check. A tap confirms and escalates.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        {/* Level 3 - Multi phone corroborated */}
-                                        <div
-                                            className="rounded-xl p-3 sm:p-5 border bg-[#eceef2] flex gap-4 sm:gap-6 flex-1 min-w-0 w-full md:w-auto"
-                                            style={{ borderColor: '#0b0f1a1f' }}
-                                        >
-                                            <div className="shrink-0">
-                                                <span className="inline-block px-2 sm:px-4 py-2 rounded-full text-xs sm:text-md font-bold mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
-                                                    Level 3
-                                                </span>
-                                            </div>
-                                            <div className="min-w-0">
-                                                <h4 className="text-base font-bold leading-tight m-0 mb-2" style={{ color: '#1D1D1F' }}>
-                                                    Multi phone corroborated
-                                                </h4>
-                                                <p className="text-sm leading-relaxed" style={{ color: 'rgba(29,29,31,0.65)' }}>
-                                                    2+ phones corroborate and escalate automatically.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="w-full sm:w-auto lg:flex lg:justify-center">
-                                        {/* More details - centered below on small, same row on lg+ */}
-                                        <Link
-                                            href="/technology"
-                                            className="inline-flex items-center justify-center gap-2 px-5 py-3 lg:py-7 rounded-full font-semibold text-sm border-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shrink-0 sm:self-center  sm:w-auto lg:mx-0"
-                                            style={{ borderColor: '#006dff', color: '#006dff' }}
-                                        >
-                                            More details
-                                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                <polyline points="12 5 19 12 12 19"></polyline>
-                                            </svg>
-                                        </Link>
-                                    </div>
+                            {/* Three cards - responsive for all screens */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full reveal-up" style={{ animationDelay: '0.2s' }}>
+                                {/* Card 1 - Robust escalation */}
+                                <div
+                                    className="rounded-2xl p-3 sm:p-4 md:p-5 border min-w-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+                                    style={{ background: '#f3f5f9', borderColor: '#E5E5E7' }}
+                                >
+                                    <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
+                                        Robust escalation
+                                    </span>
+                                    <h4 className="text-base sm:text-lg lg:text-xl font-bold leading-tight m-0 mb-1.5 sm:mb-2" style={{ color: '#006dff' }}>
+                                        AI + human verified
+                                    </h4>
+                                    <p className="text-xs sm:text-sm leading-relaxed m-0" style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                        Move from AI detection to a confirmed alert fast without slowing response.
+                                    </p>
                                 </div>
+                                {/* Card 2 - Level 1 and 2 */}
+                                <div
+                                    className="rounded-2xl p-3 sm:p-4 md:p-5 border min-w-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+                                    style={{ background: '#f3f5f9', borderColor: '#E5E5E7' }}
+                                >
+                                    <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
+                                        Level 1 and 2
+                                    </span>
+                                    <h4 className="text-base sm:text-lg lg:text-xl font-bold leading-tight m-0 mb-1.5 sm:mb-2" style={{ color: '#1D1D1F' }}>
+                                        Human verified
+                                    </h4>
+                                    <p className="text-xs sm:text-sm leading-relaxed m-0" style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                        AI flags it. One tap confirms and escalates.
+                                    </p>
+                                </div>
+                                {/* Card 3 - Level 3 */}
+                                <div
+                                    className="rounded-2xl p-3 sm:p-4 md:p-5 border min-w-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:col-span-2 lg:col-span-1"
+                                    style={{ background: '#f3f5f9', borderColor: '#E5E5E7' }}
+                                >
+                                    <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
+                                        Level 3
+                                    </span>
+                                    <h4 className="text-base sm:text-lg lg:text-xl font-bold leading-tight m-0 mb-1.5 sm:mb-2" style={{ color: '#1D1D1F' }}>
+                                        MultiPhone AI Collaborated
+                                    </h4>
+                                    <p className="text-xs sm:text-sm leading-relaxed m-0" style={{ color: 'rgba(29,29,31,0.65)' }}>
+                                        Two or more phones corroborate and escalate automatically.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* More details button - responsive: full width on mobile, right aligned on sm+ */}
+                            <div className="flex justify-center sm:justify-end mt-3 sm:mt-4 reveal-up" style={{ animationDelay: '0.25s' }}>
+                                <Link
+                                    href="/technology"
+                                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                                    style={{ background: '#006dff', color: '#fff' }}
+                                >
+                                    More details
+                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </ScrollReveal>
             </section>
 
-            {/* Section 3: Industries - Black */}
+            {/* Section 3: Solution - Black */}
             <section id="solutions" className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115] scroll-mt-20">
                 <ScrollReveal>
                     <div className="max-w-[1800px] mx-auto">
@@ -831,7 +766,7 @@ export default function HomePage() {
                                     <div className="mb-4">
                                         <div
                                             className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                            style={{ background: '#FC45A6' }}
+                                            style={{ background: '#006dff' }}
                                         >
                                             <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -863,7 +798,7 @@ export default function HomePage() {
                                     <div className="mb-4">
                                         <div
                                             className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                            style={{ background: '#FC45A6' }}
+                                            style={{ background: '#006dff' }}
                                         >
                                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M13 2H11V11H2V13H11V22H13V13H22V11H13V2Z" fill="white" />
@@ -1027,14 +962,14 @@ export default function HomePage() {
                             {/* Left: Text Content - fade in up */}
                             <div className="space-y-4 lg:space-y-4 xl:space-y-6 reveal-up" style={{ animationDelay: '0.1s' }}>
                                 {/* Title */}
-                                <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-2 lg:mb-3 xl:mb-4">
+                                <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-2">
                                     <span style={{ color: '#FFFFFF' }}>SplitSec Grid<span style={{ color: '#2563eb' }}>Mapper</span></span>
 
                                 </h2>
 
                                 {/* Main Description */}
-                                <p className="text-base sm:text-lg lg:text-base xl:text-lg leading-relaxed m-0"
-                                    style={{ color: '#FFFFFF' }}>
+                                <p className="text-base sm:text-lg lg:text-base xl:text-lg leading-relaxed m-0 text-gray-400"
+                                    >
                                     Plan gunshot detection coverage for your site in seconds. Draw a monitoring perimeter, get a recommended phone count and zone spacing, then pilot with PerimeterPAK.
                                 </p>
 
@@ -1046,7 +981,6 @@ export default function HomePage() {
                                         <div className="text-[15px] sm:text-base m-0 leading-relaxed"
                                             style={{ color: '#FFFFFF' }}>
                                             <span className="font-bold" style={{ color: '#FFFFFF' }}>Draw your monitoring perimeter</span>
-                                            <p className="text-md text-gray-400 m-0 mt-1">Inside the perimeter, phones listen for gunshot like audio patterns</p>
                                         </div>
                                     </div>
 
@@ -1056,7 +990,6 @@ export default function HomePage() {
                                         <div className="text-[15px] sm:text-base m-0 leading-relaxed"
                                             style={{ color: '#FFFFFF' }}>
                                             <span className="font-bold" style={{ color: '#FFFFFF' }}>Get phone count and zone spacing</span>
-                                            <p className="text-md text-gray-400 m-0 mt-1">Recommended device count and zone spacing based on footprint and terrain</p>
                                         </div>
                                     </div>
 
@@ -1066,7 +999,6 @@ export default function HomePage() {
                                         <div className="text-[15px] sm:text-base m-0 leading-relaxed"
                                             style={{ color: '#FFFFFF' }}>
                                             <span className="font-bold" style={{ color: '#FFFFFF' }}>Pilot fast with PerimeterPAK</span>
-                                            <p className="text-md text-gray-400 m-0 mt-1">Buy, pilot, or rent PerimeterPAKs (10, 20, etc.) to roll out coverage quickly</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1102,80 +1034,41 @@ export default function HomePage() {
             </section>
 
             {/* Section 6: Featured In - White */}
-            <section className="w-full py-10 sm:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 bg-white">
+            <section className="w-full py-8 sm:py-10 lg:py-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 bg-white">
                 <ScrollReveal>
-                    <div className="max-w-[1800px] mx-auto ">
-                        {/* Outer wrapper: soft pink/purple gradient background */}
-                        <div
-                            className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 min-h-[200px]  "
-                            style={{
-                                background: 'white',
-                            }}
-                        >
-                            {/* Header - fade in up */}
-                            <div className="items-baseline justify-between gap-4 mb-4 sm:mb-5 flex-wrap reveal-up" style={{ animationDelay: '0.1s' }}>
-                                <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0"
-                                >
-                                    Featured
+                    <div className="max-w-[1800px] mx-auto">
+                        <div className="rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 min-h-0" style={{ background: 'white' }}>
+                            {/* Header */}
+                            <div className="mb-4 sm:mb-6 lg:mb-8 reveal-up" style={{ animationDelay: '0.1s' }}>
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold leading-tight m-0 text-neutral-900">
+                                    Featured in
                                 </h2>
-                                <p className="text-md ">
+                                <p className="text-sm sm:text-base md:text-lg text-neutral-600 mt-1">
                                     As seen on major news outlets
                                 </p>
                             </div>
 
-                            {/* Carousel - fade in up */}
-                            <div className="relative overflow-hidden py-1 reveal-up" style={{ animationDelay: '0.2s' }}>
-                                <div
-                                    ref={scrollRef}
-                                    className="flex gap-5 overflow-x-scroll py-4 px-2 rounded-2xl bg-neutral-100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-                                    style={{
-                                        scrollBehavior: 'auto',
-                                        pointerEvents: 'auto',
-                                        willChange: 'scroll-position',
-                                        overflowX: 'scroll',
-                                        overflowY: 'hidden'
-                                    }}
-                                >
-                                    {/* First set */}
-                                    <div className="flex gap-5 shrink-0">
-                                        {publications.map((pub) => (
-                                            <div
-                                                key={`a-${pub.src}`}
-                                                className="flex items-center justify-center px-8 sm:px-20 py-4 sm:py-5 rounded-full border border-neutral-200 bg-white text-neutral-800 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] select-none h-[72px] sm:h-[88px] min-w-[180px] sm:min-w-[210px]"
-                                            >
-                                                <Image
-                                                    src={pub.src}
-                                                    alt={pub.alt}
-                                                    width={120}
-                                                    height={40}
-                                                    className="object-contain w-auto sm:w-20 h-8 sm:h-20"
-                                                />
-                                            </div>
-                                        ))}
+                            {/* Static 2x3 grid - uniform card size, responsive */}
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 reveal-up" style={{ animationDelay: '0.2s' }}>
+                                {publications.map((pub) => (
+                                    <div
+                                        key={pub.src}
+                                        className="flex items-center justify-center rounded-xl sm:rounded-2xl lg:rounded-3xl border border-neutral-200 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] h-[64px] sm:h-[72px] md:h-[80px] lg:h-[88px] w-full min-w-0"
+                                    >
+                                        <Image
+                                            src={pub.src}
+                                            alt={pub.alt}
+                                            width={120}
+                                            height={40}
+                                            className="object-contain w-auto max-w-[100px] sm:max-w-[120px] md:max-w-[140px] lg:max-w-[150px] h-6 sm:h-8 md:h-12"
+                                        />
                                     </div>
-                                    {/* Second set - identical (reset to 0 when this reaches viewport start) */}
-                                    <div ref={secondSetRef} className="flex gap-5 shrink-0">
-                                        {publications.map((pub) => (
-                                            <div
-                                                key={`b-${pub.src}`}
-                                                className="flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 rounded-full border border-neutral-200 bg-white text-neutral-800 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] select-none h-[72px] sm:h-[88px] min-w-[180px] sm:min-w-[210px]"
-                                            >
-                                                <Image
-                                                    src={pub.src}
-                                                    alt={pub.alt}
-                                                    width={120}
-                                                    height={40}
-                                                    className="object-contain w-auto sm:w-20 h-8 sm:h-20"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </ScrollReveal>
-            </section >
+            </section>
         </div >
     );
 }
