@@ -8,26 +8,26 @@ export default function Technology() {
                 className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 pt-24 sm:pt-24 lg:pt-28 pb-10 bg-[#0f1115]"
             >
                 <div className="w-full max-w-[1800px] mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-4 sm:gap-6 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-4 sm:gap-6 items-stretch">
                         {/* Left: Text Content */}
-                        <div>
-                            <p className="text-xs uppercase tracking-[0.16em] mb-3 font-bold m-0" style={{ color: 'rgba(243,246,255,0.60)' }}>
+                        <div className="flex flex-col">
+                            <p className="text-xs uppercase tracking-[0.16em] mb-4 font-bold m-0" style={{ color: 'rgba(243,246,255,0.60)' }}>
                                 How it works
                             </p>
                             {/* <h1 className="text-[clamp(26px,6.5vw,64px)] sm:text-[clamp(34px,5.2vw,64px)] font-bold leading-[1.1] sm:leading-[1.04] tracking-[-0.04em] m-0 mb-3 sm:mb-3.5 max-w-[20ch]" style={{ color: '#E9ECF8' }}>
                                 From first acoustic signature to a confirmed alert in seconds
                             </h1> */}
 
-                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,3.7vw,64px)] lg:text-[clamp(40px,3.2vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em]"
+                            <h1 className="text-[clamp(26px,5.5vw,64px)] sm:text-[clamp(32px,3.7vw,64px)] lg:text-[clamp(40px,3.2vw,64px)] font-bold leading-[1.1] sm:leading-[1.06] tracking-[-0.04em] m-0 mb-5"
                                 style={{ color: '#E9ECF8' }}>
-                                From first acoustic signature to a confirmed alert in seconds
+                                From acoustic signature to confirmed alerts in seconds
                             </h1>
-                            <p className="text-sm sm:text-[17px] text-gray-400 leading-[1.5] sm:leading-[1.45] m-0 mb-4 sm:mb-5 max-w-[56ch]" >
-                                On everyday smartphones for outdoor events, guard teams, ERs, and schools. Privacy first. On device detection. No audio stored or transmitted.
+                            <p className="text-sm sm:text-[17px] text-gray-400 leading-[1.5] sm:leading-[1.45] m-0 mb-6 max-w-[56ch]" >
+                                Trained on powerful computers. Deployed on the phone. Detection works without internet.
                             </p>
 
                             {/* Key Outcomes */}
-                            <div className="flex gap-3 sm:gap-4 flex-wrap items-center mt-3 sm:mt-4 mb-3">
+                            <div className="flex gap-3 sm:gap-4 flex-wrap items-center mt-2 mb-6">
                                 <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
                                     <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
                                         style={{
@@ -39,7 +39,21 @@ export default function Technology() {
                                             <path d="M20 6L9 17l-5-5" />
                                         </svg>
                                     </span>
-                                    <span>Fewer false alerts</span>
+                                    <span>Evidence-based</span>
+                                </div>
+                                <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
+                                    <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
+                                        style={{
+                                            background: '#ff3dab ',
+                                            boxShadow: '0 14px 28px rgba(0,0,0,0.22)',
+                                            border: '1px solid rgba(255,255,255,0.14)'
+                                        }}>
+                                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                            <circle cx="12" cy="7" r="4" />
+                                        </svg>
+                                    </span>
+                                    <span>Human-verified</span>
                                 </div>
                                 <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
                                     <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
@@ -49,30 +63,13 @@ export default function Technology() {
                                             border: '1px solid rgba(255,255,255,0.14)'
                                         }}>
                                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M13 2L3 14h7l-1 8 12-14h-7l1-6z" />
-                                        </svg>
-                                    </span>
-                                    <span>Faster escalation</span>
-                                </div>
-                                <div className="flex items-center gap-2.5 font-extrabold text-[13px]" style={{ color: 'rgba(243,246,255,0.88)', letterSpacing: '0.01em' }}>
-                                    <span className="w-[22px] h-[22px] rounded-lg flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#ff3dab',
-                                            boxShadow: '0 14px 28px rgba(0,0,0,0.22)',
-                                            border: '1px solid rgba(255,255,255,0.14)'
-                                        }}>
-                                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4z" />
                                             <path d="M9 12l2 2 4-5" />
                                         </svg>
                                     </span>
-                                    <span>Privacy first</span>
+                                    <span>Privacy-first</span>
                                 </div>
                             </div>
-
-                            <p className="text-xs font-extrabold mt-2.5 mb-4" style={{ color: 'rgba(243,246,255,0.60)' }}>
-                                Pilot readiness, pricing, and setup in one call.
-                            </p>
 
                             <div className="flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center">
                                 <a href="/schedule-demo"
@@ -86,20 +83,13 @@ export default function Technology() {
                                     <span>Book 15 min walkthrough</span>
                                     <span className="opacity-95">→</span>
                                 </a>
-                                <a href="#privacy-workflow"
-                                    className="font-extrabold text-sm"
-                                    style={{ color: 'rgba(243,246,255,0.72)' }}>
-                                    Jump to privacy
-                                </a>
                             </div>
                         </div>
 
                         {/* Right: Video Card */}
-                        <div className="rounded-[20px] "
-                        >
+                        <div className="rounded-[20px] h-full flex flex-col min-h-0">
                             <video
-                                className="w-full block rounded-[16px] sm:rounded-[24px] bg-black"
-                                style={{ aspectRatio: '16/9', objectFit: 'contain' }}
+                                className="w-full flex-1 min-h-0 block rounded-[16px] sm:rounded-[24px] object-cover"
                                 src="/HowItWorks/viet-video.mp4"
                                 title="Viet walkthrough - Model flow and escalation"
                                 controls
@@ -118,619 +108,123 @@ export default function Technology() {
                 </div>
             </section>
 
-            {/* Section 2: Privacy and Workflow - White (same pattern as Home) */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white" id="privacy-workflow">
-                <div className="w-full max-w-[1800px] mx-auto">
-                    <div
-                        style={{ background: '#ffffff', borderColor: 'rgba(26,26,26,0.10)' }}>
-                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(26,26,26,0.55)' }}>
-                            Privacy and workflow
-                        </p>
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#1F2937' }}>
-                            High on privacy, clear on what happens
-                        </h2>
-                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(29,29,31,0.65)' }}>
-                            SplitSec is designed to make decisions on the phone. By default, audio is not stored or uploaded.
-                            If you opt in to help improve the model, sharing is limited to a short, anonymized clip.
-                        </p>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
-                            {/* Privacy Promise Panel */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[32px] p-4 sm:p-4.5 flex flex-col"
-                                style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
-                                }}>
-                                <h3 className="text-base font-extrabold mb-2.5 m-0" style={{ letterSpacing: '-0.01em', color: '#111' }}>
-                                    Privacy promise
-                                </h3>
-                                <p className="text-sm leading-[1.55] m-0 mb-3.5" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                    No one listens in, SplitSec does not have access to your conversations during normal operation.
-                                </p>
-
-                                <div className="grid gap-2.5">
-                                    <div className="flex gap-3 items-start p-3 rounded-2xl border"
-                                        style={{
-                                            background: 'rgba(26,26,26,0.03)',
-                                            borderColor: 'rgba(26,26,26,0.08)'
-                                        }}>
-                                        <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                                            style={{
-                                                background: '#006eff',
-                                                boxShadow: '0 10px 22px rgba(0,0,0,0.14)',
-                                                border: '1px solid rgba(255,255,255,0.22)',
-                                                color: '#fff'
-                                            }}>
-                                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <b className="block text-sm mb-0.5" style={{ color: '#111' }}>No one listens in</b>
-                                            <span className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                SplitSec does not receive or store your conversations during normal operation.
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-3 items-start p-3 rounded-2xl border"
-                                        style={{
-                                            background: 'rgba(26,26,26,0.03)',
-                                            borderColor: 'rgba(26,26,26,0.08)'
-                                        }}>
-                                        <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                                            style={{
-                                                background: '#ff3dab',
-                                                boxShadow: '0 10px 22px rgba(0,0,0,0.14)',
-                                                border: '1px solid rgba(255,255,255,0.22)',
-                                                color: '#fff'
-                                            }}>
-                                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <b className="block text-sm mb-0.5" style={{ color: '#111' }}>Rolling four second buffer</b>
-                                            <span className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                Audio is processed in a rolling four second window and overwritten continuously on device.
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-3 items-start p-3 rounded-2xl border"
-                                        style={{
-                                            background: 'rgba(26,26,26,0.03)',
-                                            borderColor: 'rgba(26,26,26,0.08)'
-                                        }}>
-                                        <div className="w-[30px] h-[30px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                                            style={{
-                                                background: '#ff3dab',
-                                                boxShadow: '0 10px 22px rgba(0,0,0,0.14)',
-                                                border: '1px solid rgba(255,255,255,0.22)',
-                                                color: '#fff'
-                                            }}>
-                                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
-                                                <path d="M20 6L9 17l-5-5" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <b className="block text-sm mb-0.5" style={{ color: '#111' }}>Optional model improvement</b>
-                                            <span className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                If you opt in, only that short, anonymized four second clip can be shared for improvement.
-                                            </span>
-                                        </div>
-                                    </div>
+            {/* Section 2: Privacy - paper/white, matches HTML */}
+            <section className="w-full bg-white px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 pt-24 sm:pt-16 lg:pt-10 pb-10" id="privacy-workflow">
+                <div className="max-w-[1800px] mx-auto">
+                    <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: "rgba(26,26,26,0.55)" }}>
+                        Privacy
+                    </p>
+                    <h2 className="text-[clamp(26px,3.2vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] m-0" style={{ color: "#1A1A1A" }}>
+                        Audio stays on the phone by default
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        {/* Feature Card 1: Privacy promise */}
+                        <div className="rounded-[32px] p-6 border border-[rgba(26,26,26,0.10)] shadow-[0_10px_24px_rgba(0,0,0,0.10)]"
+                            style={{ background: "#F7F9FF" }}>
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="w-12 h-12 rounded-[18px] flex items-center justify-center shrink-0 bg-[#006DFF] shadow-[0_14px_28px_rgba(0,109,255,0.18)]">
+                                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4z" />
+                                        <path d="M9 12l2 2 4-5" />
+                                    </svg>
                                 </div>
-
-                                <p className="text-sm font-extrabold leading-[1.5] mt-3.5" style={{ color: 'rgba(26,26,26,0.62)' }}>
-                                    By default, SplitSec uses sound only to make a decision locally. Any sharing is optional and user initiated.
-                                </p>
-                            </div>
-
-                            {/* Workflow Panel */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[32px] p-4 sm:p-4.5 flex flex-col"
-                                style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
-                                }}>
-                                <h3 className="text-base font-extrabold mb-2.5 m-0" style={{ letterSpacing: '-0.01em', color: '#111' }}>
-                                    What happens in the background
-                                </h3>
-                                <p className="text-sm leading-[1.55] m-0 mb-3.5" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                    Four stages keep the workflow simple and consistent for teams and events.
-                                </p>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
-                                    {/* Listen locally */}
-                                    <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
-                                        <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                            style={{
-                                                background: '#006eff',
-                                                boxShadow: '0 14px 28px rgba(0,109,255,0.18)'
-                                            }}>
-                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
-                                                style={{ filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.18))' }}>
-                                                <path d="M12 14a3 3 0 0 0 3-3V7a3 3 0 0 0-6 0v4a3 3 0 0 0 3 3z" />
-                                                <path d="M19 11a7 7 0 0 1-14 0" />
-                                                <path d="M12 18v3" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Listen locally</p>
-                                            <p className="text-sm leading-[1.45] m-0" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                Capture and overwrite audio in a rolling buffer. Nothing is uploaded by default.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Recognize */}
-                                    <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
-                                        <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                            style={{
-                                                background: '#ff3dab',
-                                                boxShadow: '0 14px 28px rgba(255,63,166,0.16)'
-                                            }}>
-                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
-                                                style={{ filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.18))' }}>
-                                                <path d="M8 6h8" />
-                                                <path d="M8 10h8" />
-                                                <path d="M8 14h5" />
-                                                <path d="M6 4h12v16H6z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Recognize</p>
-                                            <p className="text-sm leading-[1.45] m-0" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                On device AI scores the acoustic signature in seconds and filters common loud noises.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Build confidence */}
-                                    <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
-                                        <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                            style={{
-                                                background: '#006eff',
-                                                boxShadow: '0 14px 28px rgba(0,0,0,0.14)'
-                                            }}>
-                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
-                                                style={{ filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.18))' }}>
-                                                <path d="M12 3v10" />
-                                                <path d="M7 8l5-5 5 5" />
-                                                <path d="M6 21h12" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Build confidence</p>
-                                            <p className="text-sm leading-[1.45] m-0" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                Escalate only when evidence stacks, user corroboration or multi phone detection.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Alert the right people */}
-                                    <div className="rounded-[18px] p-3 sm:p-3.5 border flex gap-3 items-start min-h-[100px] sm:min-h-[110px]" style={{ background: 'rgba(26,26,26,0.03)', borderColor: 'rgba(26,26,26,0.08)' }}>
-                                        <div className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                            style={{
-                                                background: '#ff3dab',
-                                                boxShadow: '0 14px 28px rgba(255,63,166,0.16)'
-                                            }}>
-                                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
-                                                style={{ filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.18))' }}>
-                                                <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
-                                                <path d="M13.7 21a2 2 0 0 1-3.4 0" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Alert the right people</p>
-                                            <p className="text-sm leading-[1.45] m-0" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                                When criteria are met, responders receive real time alerts with helpful context.
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div className="min-w-0 flex-1">
+                                    <h3 className="text-lg font-bold m-0 tracking-[-0.01em] leading-tight" style={{ color: "#111" }}>Privacy Promise</h3>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Section 3: Smart Escalation - Black (same pattern as Home) */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-[#0f1115]" id="smart-escalation">
-                <div className="w-full max-w-[1800px] mx-auto">
-                    <div
-                    >
-                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(243,246,255,0.60)' }}>
-                            Smart escalation
-                        </p>
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#E9ECF8' }}>
-                            L1, L2, L3 escalation that reduces false positives
-                        </h2>
-                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(233,236,248,0.88)' }}>
-                            The goal is simple, move fast without noisy alerts. SplitSec starts conservative, then escalates as evidence stacks.
-                        </p>
-
-                        {/* L1, L2, L3 Cards - dark theme */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mt-4 sm:mt-6">
-                            {/* L1 Detected */}
-                            <div className="rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5 border"
-                                style={{
-                                    background: 'rgba(255,255,255,0.06)',
-                                    borderColor: 'rgba(255,255,255,0.12)',
-                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
-                                }}>
-                                <div className="flex gap-3 items-start mb-3">
-                                    <div className="w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 16px 34px rgba(0,109,255,0.18)'
-                                        }}>
-                                        <svg className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.9" strokeLinecap="round" strokeLinejoin="round"
-                                            style={{ filter: 'drop-shadow(0 10px 16px rgba(0,0,0,0.18))' }}>
-                                            <path d="M3 12c2.2 0 2.2-6 4.4-6S9.6 18 11.8 18 14 6 16.2 6 18.4 12 20.6 12H21" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-base font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L1 Detected</h3>
-                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>Single phone, not corroborated</div>
-                                    </div>
-                                </div>
-                                <ul className="m-0 mt-3 pl-4.5 text-sm leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>
-                                    <li className="my-1.5">One phone flags a gunshot candidate event</li>
-                                    <li className="my-1.5">User can corroborate or dismiss with one tap</li>
-                                    <li className="my-1.5">No outbound alert by default</li>
-                                </ul>
-                            </div>
-
-                            {/* L2 Corroborated */}
-                            <div className="rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5 border"
-                                style={{
-                                    background: 'rgba(255,255,255,0.06)',
-                                    borderColor: 'rgba(255,255,255,0.12)',
-                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
-                                }}>
-                                <div className="flex gap-3 items-start mb-3">
-                                    <div className="w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#ff3dab',
-                                            boxShadow: '0 16px 34px rgba(255,63,166,0.16)'
-                                        }}>
-                                        <svg className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.9" strokeLinecap="round" strokeLinejoin="round"
-                                            style={{ filter: 'drop-shadow(0 10px 16px rgba(0,0,0,0.18))' }}>
-                                            <path d="M20 6L9 17l-5-5" />
-                                            <path d="M21 12a9 9 0 1 1-6.2-8.6" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-base font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L2 Corroborated</h3>
-                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>User confirms they heard it</div>
-                                    </div>
-                                </div>
-                                <ul className="m-0 mt-3 pl-4.5 text-sm leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>
-                                    <li className="my-1.5">User corroboration increases confidence</li>
-                                    <li className="my-1.5">System prepares notifications and context</li>
-                                    <li className="my-1.5">Admins see time, approximate location, device status</li>
-                                </ul>
-                            </div>
-
-                            {/* L3 Confirmed */}
-                            <div className="rounded-2xl sm:rounded-[28px] p-4 sm:p-4.5 border"
-                                style={{
-                                    background: 'rgba(255,255,255,0.06)',
-                                    borderColor: 'rgba(255,255,255,0.12)',
-                                    boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
-                                }}>
-                                <div className="flex gap-3 items-start mb-3">
-                                    <div className="w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[14px] sm:rounded-[18px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 16px 34px rgba(0,0,0,0.14)'
-                                        }}>
-                                        <svg className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.9" strokeLinecap="round" strokeLinejoin="round"
-                                            style={{ filter: 'drop-shadow(0 10px 16px rgba(0,0,0,0.18))' }}>
-                                            <path d="M12 4l8 4-8 4-8-4 8-4z" />
-                                            <path d="M4 12l8 4 8-4" />
-                                            <path d="M4 16l8 4 8-4" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-base font-extrabold m-0" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>L3 Confirmed</h3>
-                                        <div className="text-xs font-extrabold mt-0.5" style={{ color: 'rgba(243,246,255,0.62)' }}>Two phones report in a tight window</div>
-                                    </div>
-                                </div>
-                                <ul className="m-0 mt-3 pl-4.5 text-sm leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>
-                                    <li className="my-1.5">Multi phone confirmation triggers a confirmed alert</li>
-                                    <li className="my-1.5">Alerts go to configured recipients and roles</li>
-                                    <li className="my-1.5">Clear prompts help teams coordinate in the first minutes</li>
-                                </ul>
-                            </div>
+                            <ul className="m-0 pl-0 list-none text-lg space-y-2.5 leading-[1.6]" style={{ color: "rgba(26,26,26,0.75)" }}>
+                                <li className="flex gap-2.5">
+                                    <span className="text-[#006DFF] mt-0.5 shrink-0">•</span>
+                                    <span>No one listens in</span>
+                                </li>
+                                <li className="flex gap-2.5">
+                                    <span className="text-[#006DFF] mt-0.5 shrink-0">•</span>
+                                    <span>Detection runs locally on the phone</span>
+                                </li>
+                                <li className="flex gap-2.5">
+                                    <span className="text-[#006DFF] mt-0.5 shrink-0">•</span>
+                                    <span>No continuous recording or audio streaming</span>
+                                </li>
+                                <li className="flex gap-2.5">
+                                    <span className="text-[#006DFF] mt-0.5 shrink-0">•</span>
+                                    <span>Incident clips saved for audit only when your organization enables it</span>
+                                </li>
+                            </ul>
                         </div>
 
-                        {/* Pilot Card - dark theme */}
-                        <div className="rounded-[32px] p-4.5 mt-5.5 border"
-                            style={{
-                                background: 'rgba(255,255,255,0.06)',
-                                borderColor: 'rgba(255,255,255,0.12)',
-                                boxShadow: '0 18px 46px rgba(0,0,0,0.18)'
-                            }}>
-                            <div className="flex justify-between gap-4 flex-wrap items-start mb-3.5">
-                                <div>
-                                    <div className="text-xs uppercase tracking-[0.16em] font-extrabold mb-1.5" style={{ color: 'rgba(243,246,255,0.60)' }}>Pilot in 14 days</div>
-                                    <div className="text-base font-extrabold mb-1.5" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Low effort, measurable results</div>
-                                    <div className="text-sm max-w-[62ch] leading-[1.45]" style={{ color: 'rgba(233,236,248,0.88)' }}>Deploy, measure, and decide with clean pilot metrics.</div>
+                        {/* Feature Card 2: On-device detection */}
+                        <div className="rounded-[32px] p-6 border border-[rgba(26,26,26,0.10)] shadow-[0_10px_24px_rgba(0,0,0,0.10)]"
+                            style={{ background: "#F7F9FF" }}>
+                            <div className="flex items-start gap-4 mb-4">
+                                <div className="w-12 h-12 rounded-[18px] flex items-center justify-center shrink-0 bg-[#006DFF] shadow-[0_14px_28px_rgba(0,109,255,0.18)]">
+                                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.96)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <circle cx="12" cy="12" r="5" />
+                                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                                    </svg>
                                 </div>
-                                <div className="flex gap-3 flex-wrap items-center">
-                                    <a href="/schedule-demo"
-                                        className="inline-flex items-center justify-center gap-2.5 px-3.5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-300 hover:brightness-105 w-full sm:w-auto min-h-[44px] sm:min-h-0"
-                                        style={{
-                                            border: '1px solid rgba(0,109,255,0.30)',
-                                            background: '#006DFF',
-                                            color: '#fff',
-                                            boxShadow: '0 16px 35px rgba(0,109,255,0.20)'
-                                        }}>
-                                        <span>Book 15 min walkthrough</span>
-                                        <span className="opacity-95">→</span>
-                                    </a>
+                                <div className="min-w-0 flex-1">
+                                    <h3 className="text-lg font-bold m-0 tracking-[-0.01em] leading-tight" style={{ color: "#111" }}>On-Device Detection</h3>
+                                    <p className="text-sm m-0 mt-0.5 font-medium" style={{ color: "rgba(26,26,26,0.55)" }}>Policy-controlled uploads only</p>
                                 </div>
                             </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3.5">
-                                <div className="flex gap-3 items-start p-3 rounded-[18px] border min-h-[70px]"
-                                    style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
-                                    }}>
-                                    <div className="w-[34px] h-[34px] rounded-[14px] flex items-center justify-center font-black text-white flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 14px 28px rgba(0,0,0,0.10)'
-                                        }}>1</div>
-                                    <div>
-                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Deploy</b>
-                                        <span className="text-sm leading-[1.45] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Phones or preconfigured kit</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-3 items-start p-3 rounded-[18px] border min-h-[70px]"
-                                    style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
-                                    }}>
-                                    <div className="w-[34px] h-[34px] rounded-[14px] flex items-center justify-center font-black text-white flex-shrink-0"
-                                        style={{
-                                            background: '#ff3dab',
-                                            boxShadow: '0 14px 28px rgba(0,0,0,0.10)'
-                                        }}>2</div>
-                                    <div>
-                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Measure</b>
-                                        <span className="text-sm leading-[1.45] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Detection, false alerts, uptime</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-3 items-start p-3 rounded-[18px] border min-h-[70px]"
-                                    style={{
-                                        background: 'rgba(0,0,0,0.16)',
-                                        borderColor: 'rgba(255,255,255,0.10)'
-                                    }}>
-                                    <div className="w-[34px] h-[34px] rounded-[14px] flex items-center justify-center font-black text-white flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 14px 28px rgba(0,0,0,0.10)'
-                                        }}>3</div>
-                                    <div>
-                                        <b className="block text-sm" style={{ letterSpacing: '-0.01em', color: '#E9ECF8' }}>Decide</b>
-                                        <span className="text-sm leading-[1.45] block mt-0.5" style={{ color: 'rgba(233,236,248,0.88)' }}>Report and next steps</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <p className="text-xs font-extrabold mt-3" style={{ color: 'rgba(243,246,255,0.62)' }}>
-                                No spam. We respond within 1 business day.
+                            <p className="m-0 text-lg leading-[1.6] font-normal" style={{ color: "rgba(26,26,26,0.75)" }}>
+                                SplitSec detects gunshots on your phone, not in the cloud. We never continuously record or stream audio. If your organization enables it, incident clips may be uploaded for audit. False-alert clips are anonymized to improve accuracy. We do not sell data or track people.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Section 4: Behind the Scenes - White (same pattern as Home) */}
-            <section className="w-full py-10 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 bg-white" id="behind-the-scenes">
-                <div className="w-full max-w-[1800px] mx-auto">
-                    <div
-                    >
-                        <p className="text-xs uppercase tracking-[0.16em] mb-2.5 font-bold m-0" style={{ color: 'rgba(26,26,26,0.55)' }}>
-                            Behind the scenes
+            {/* Section 3: Behind the Scenes Engineering - bse, matches HTML */}
+            <section className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 pt-20 sm:pt-24 lg:pt-16 pb-16 sm:pb-20" id="smart-escalation"
+                style={{ background: "#F2F4F7", color: "#0B0F1A" }}>
+                <div className="max-w-[1800px] mx-auto">
+                    <div className="mb-8 sm:mb-10">
+                        <p className="text-xs uppercase tracking-[0.16em] mb-2 font-bold m-0" style={{ color: "rgba(15,23,42,0.58)" }}>
+                            Behind the Scenes Engineering
                         </p>
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight m-0 mb-3 sm:mb-4" style={{ color: '#1F2937' }}>
-                            Compact intelligence, designed for fast decisions
+                        <h2 className="text-[clamp(26px,3.2vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] m-0" style={{ color: "#0B0F1A" }}>
+                            Inspired by how the human brain works
                         </h2>
-                        <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed m-0 mb-4 sm:mb-6" style={{ color: 'rgba(29,29,31,0.65)' }}>
-                            Training happens offline. A compact model runs on the phone in real time, even when connectivity is limited.
-                        </p>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
-                            {/* What you get - light theme */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-5 lg:p-6.5 flex flex-col h-full"
-                                style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
-                                }}>
-                                <h3 className="text-base font-extrabold m-0 mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What you get</h3>
-
-                                <div className="flex gap-3.5 p-4 rounded-[18px] border mb-3"
-                                    style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
-                                    }}>
-                                    <div className="w-[40px] h-[40px] rounded-[14px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 16px 34px rgba(0,109,255,0.18)',
-                                            border: '1px solid rgba(255,255,255,0.22)',
-                                            color: '#fff'
-                                        }}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M13 2L3 14h7l-1 8 12-14h-7l1-6z" />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+                        <div className="space-y-5">
+                            <p className="m-0 text-lg leading-[1.65] max-w-[38ch]" style={{ color: "rgba(15,23,42,0.68)" }}>
+                                SplitSec AI learns sound patterns the way people recognize a familiar song or voice.
+                            </p>
+                            <p className="m-0 text-lg leading-[1.65] max-w-[38ch]" style={{ color: "rgba(15,23,42,0.68)" }}>
+                                We train our models on thousands of real-world examples using high-powered computers, then store a compact version—the brains and memory—directly on your phone. Fast gunshot detection, even offline, with privacy by design.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="grid gap-4">
+                                <div className="flex gap-4 items-center min-h-[62px] rounded-full px-5 py-4 border border-[rgba(15,23,42,0.12)] shadow-[0_6px_14px_rgba(15,23,42,0.06)] bg-white">
+                                    <span className="w-[34px] h-[34px] shrink-0 flex items-center justify-center text-[#3C7BEA]" aria-hidden>
+                                        <svg className="w-[34px] h-[34px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M9.8 20h4.4" />
+                                            <path d="M10.6 17.5h2.8" />
+                                            <path d="M8.5 14.8c-1.6-1-2.6-2.8-2.6-4.8A6.1 6.1 0 0 1 12 3.9a6.1 6.1 0 0 1 6.1 6.1c0 2-1 3.8-2.6 4.8-.7.5-1.1 1.2-1.1 2h-4.8c0-.8-.4-1.5-1.1-2z" />
                                         </svg>
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Fast, quiet detection</div>
-                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Runs in the background and surfaces only high signal events.</div>
-                                    </div>
+                                    </span>
+                                    <b className="text-base sm:text-lg tracking-[-0.01em] leading-snug" style={{ color: "#0B0F1A" }}>Inspired by how the human brain works</b>
                                 </div>
-
-                                <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
-                                    style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
-                                    }}>
-                                    <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#ff3dab',
-                                            boxShadow: '0 16px 34px rgba(255,63,166,0.16)',
-                                            border: '1px solid rgba(255,255,255,0.22)',
-                                            color: '#fff'
-                                        }}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M4 6h16" />
-                                            <path d="M7 12h10" />
-                                            <path d="M10 18h4" />
+                                <div className="flex gap-4 items-center min-h-[62px] rounded-full px-5 py-4 border border-[rgba(15,23,42,0.12)] shadow-[0_6px_14px_rgba(15,23,42,0.06)] bg-white">
+                                    <span className="w-[34px] h-[34px] shrink-0 flex items-center justify-center text-[#e73a99]" aria-hidden>
+                                        <svg className="w-[34px] h-[34px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                                            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
                                         </svg>
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Lower false alerts</div>
-                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Escalates based on evidence, corroboration, and multi phone confirmation.</div>
-                                    </div>
+                                    </span>
+                                    <b className="text-base sm:text-lg tracking-[-0.01em] leading-snug" style={{ color: "#0B0F1A" }}>Trained on thousands of sounds</b>
                                 </div>
-
-                                <div className="flex gap-3.5 p-4 rounded-[18px] border mb-3"
-                                    style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
-                                    }}>
-                                    <div className="w-[40px] h-[40px] rounded-[14px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 16px 34px rgba(0,0,0,0.14)',
-                                            border: '1px solid rgba(255,255,255,0.22)',
-                                            color: '#fff'
-                                        }}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                            <path d="M19.4 15a7.6 7.6 0 0 0 0-6l2-1-2-3-2.1.9a8 8 0 0 0-1.6-1L16 2h-4l-.7 2.9a8 8 0 0 0-1.6 1L7.6 5 6 8l2 1a7.6 7.6 0 0 0 0 6l-2 1 1.6 3 2.1-.9a8 8 0 0 0 1.6 1L12 22h4l.7-2.9a8 8 0 0 0 1.6-1l2.1.9 2-3-2-1z" />
+                                <div className="flex gap-4 items-center min-h-[62px] rounded-full px-5 py-4 border border-[rgba(15,23,42,0.12)] shadow-[0_6px_14px_rgba(15,23,42,0.06)] bg-white">
+                                    <span className="w-[34px] h-[34px] shrink-0 flex items-center justify-center text-[#3C7BEA]" aria-hidden>
+                                        <svg className="w-[34px] h-[34px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                                            <circle cx="12" cy="12" r="9" />
+                                            <path d="M8 12l2.3 2.3L16 8.6" />
                                         </svg>
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Operational coverage</div>
-                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Health signals like battery, connectivity, and armed status help maintain coverage.</div>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center mt-4 sm:mt-4.5">
-                                    <a href="/schedule-demo"
-                                        className="inline-flex items-center justify-center gap-2.5 px-3.5 py-2.5 rounded-full font-extrabold text-sm transition-all duration-300 hover:brightness-105 w-full sm:w-auto"
-                                        style={{
-                                            border: '1px solid rgba(0,109,255,0.30)',
-                                            background: '#006DFF',
-                                            color: '#fff',
-                                            boxShadow: '0 16px 35px rgba(0,109,255,0.20)'
-                                        }}>
-                                        <span>Book 15 min walkthrough</span>
-                                        <span className="opacity-95">→</span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            {/* What makes it work - light theme */}
-                            <div className="bg-white border rounded-2xl sm:rounded-[28px] p-4 sm:p-5 lg:p-6.5 flex flex-col h-full"
-                                style={{
-                                    borderColor: 'rgba(26,26,26,0.12)',
-                                    boxShadow: '0 10px 24px rgba(0,0,0,0.10)'
-                                }}>
-                                <h3 className="text-base font-extrabold m-0 mb-3 sm:mb-3.5" style={{ letterSpacing: '-0.01em', color: '#111' }}>What makes it work</h3>
-
-                                <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
-                                    style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
-                                    }}>
-                                    <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 16px 34px rgba(0,109,255,0.18)',
-                                            border: '1px solid rgba(255,255,255,0.22)',
-                                            color: '#fff'
-                                        }}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4z" />
-                                            <path d="M9 12l2 2 4-5" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Privacy first architecture</div>
-                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>On device decisions with minimal data movement and explicit opt in controls.</div>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
-                                    style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
-                                    }}>
-                                    <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#ff3dab',
-                                            boxShadow: '0 16px 34px rgba(255,63,166,0.16)',
-                                            border: '1px solid rgba(255,255,255,0.22)',
-                                            color: '#fff'
-                                        }}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M12 4l8 4-8 4-8-4 8-4z" />
-                                            <path d="M4 12l8 4 8-4" />
-                                            <path d="M4 16l8 4 8-4" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Escalation by evidence</div>
-                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Confidence rises through corroboration, and multi phone confirmation triggers a confirmed alert.</div>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-3 sm:gap-3.5 p-3 sm:p-4 rounded-[16px] sm:rounded-[18px] border mb-2.5 sm:mb-3"
-                                    style={{
-                                        background: 'rgba(26,26,26,0.03)',
-                                        borderColor: 'rgba(26,26,26,0.08)'
-                                    }}>
-                                    <div className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-[12px] sm:rounded-[14px] flex items-center justify-center flex-shrink-0"
-                                        style={{
-                                            background: '#006eff',
-                                            boxShadow: '0 16px 34px rgba(0,0,0,0.14)',
-                                            border: '1px solid rgba(255,255,255,0.22)',
-                                            color: '#fff'
-                                        }}>
-                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M9 9h6v6H9z" />
-                                            <path d="M4 9h2" />
-                                            <path d="M4 12h2" />
-                                            <path d="M4 15h2" />
-                                            <path d="M18 9h2" />
-                                            <path d="M18 12h2" />
-                                            <path d="M18 15h2" />
-                                            <path d="M9 4v2" />
-                                            <path d="M12 4v2" />
-                                            <path d="M15 4v2" />
-                                            <path d="M9 18v2" />
-                                            <path d="M12 18v2" />
-                                            <path d="M15 18v2" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold m-0 mb-1 text-sm" style={{ color: '#111' }}>Compact model on the phone</div>
-                                        <div className="text-sm leading-[1.45]" style={{ color: 'rgba(26,26,26,0.70)' }}>Efficient runtime keeps detection latency low and supports continuous coverage.</div>
-                                    </div>
-                                </div>
-
-                                <div className="text-sm leading-[1.45] mt-2.5" style={{ color: 'rgba(26,26,26,0.70)' }}>
-                                    For deployments, you can use individual staff phones or preconfigured kits. Teams can tune sensitivity for the environment and role.
+                                    </span>
+                                    <b className="text-base sm:text-lg tracking-[-0.01em] leading-snug" style={{ color: "#0B0F1A" }}>Compact AI runs on your phone</b>
                                 </div>
                             </div>
                         </div>

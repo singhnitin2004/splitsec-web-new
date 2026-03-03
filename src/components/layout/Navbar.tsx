@@ -75,7 +75,7 @@ export default function Navbar() {
                 />
             )}
             <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-xl border-b" style={{
-                background: 'rgba(7,10,18,0.58)',
+                background: '#141824',
                 borderColor: 'rgba(233,236,248,0.08)'
             }}>
                 <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-26">
@@ -190,7 +190,7 @@ export default function Navbar() {
                                 )}
                             </div>
                             <Link
-                                href="/schedule-demo"
+                                href="/pricing"
                                 style={{ color: pathname === "/schedule-demo" ? 'rgba(80,140,255,0.92)' : 'rgba(233,236,248,0.78)' }}
                                 className="text-sm font-bold transition-colors hover:opacity-80"
                             >
@@ -354,7 +354,7 @@ export default function Navbar() {
                             </div>
 
                             <Link
-                                href="/schedule-demo"
+                                href="/pricing"
                                 onClick={closeMobileMenu}
                                 className={`block text-sm font-bold transition-colors py-3 px-2 rounded-lg active:bg-slate-800/30 touch-manipulation ${pathname === "/schedule-demo"
                                     ? "text-blue-400 bg-slate-800/50"

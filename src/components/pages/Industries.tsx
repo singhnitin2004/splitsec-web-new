@@ -171,9 +171,9 @@ export default function IndustriesPage() {
                     className="absolute -top-16 -right-16 sm:-top-20 sm:-right-20 w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] opacity-55 rotate-18 pointer-events-none"
                   />
                   <div
-                    className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-xl sm:rounded-[20px] flex items-center justify-center shrink-0 border-2 shadow-[0_16px_34px_rgba(0,0,0,0.24)]"
+                    className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-lg sm:rounded-[20px] flex items-center justify-center shrink-0  "
                     style={{
-                      borderColor: t.iconColor === "pink" ? "#FF3FA6" : t.iconColor === "blue" ? "#006DFF" : "#0F1115",
+                      background: "#006DFF",
                     }}
                   >
                     {t.icon === "outdoor" && (
@@ -418,9 +418,9 @@ export default function IndustriesPage() {
               </div>
               <div className="mt-2.5 sm:mt-3 grid gap-2 sm:gap-2.5">
                 {[
-                  { b: "Weekly summary", s: "Median alert latency: 6.2 seconds from detection to responder notification." },
-                  { b: "Signal quality", s: "False-alert rate remained low with corroboration and multi-device confirmation." },
-                  { b: "Coverage status", s: "Armed time, battery health, and connectivity trends exported in one report." },
+                  { b: "Weekly summary", s: "Average response time, % enrolled, average daily coverage." },
+                  { b: "Incident summary", s: "None." },
+                  { b: "Coverage status", s: "Armed time and battery health." },
                 ].map((n, i) => (
                   <div
                     key={i}

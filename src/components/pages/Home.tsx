@@ -620,8 +620,8 @@ export default function HomePage() {
                                     <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
                                         Robust escalation
                                     </span>
-                                    <h4 className="text-base sm:text-lg lg:text-xl font-bold leading-tight m-0 mb-1.5 sm:mb-2" style={{ color: '#006dff' }}>
-                                        AI + human verified
+                                    <h4 className="text-base sm:text-2xl  font-bold leading-tight m-0 mb-1.5 sm:mb-2 text-[#000000]">
+                                        AI <span className="text-[#006dff]">+</span> human verified
                                     </h4>
                                     <p className="text-xs sm:text-sm leading-relaxed m-0" style={{ color: 'rgba(29,29,31,0.65)' }}>
                                         Move from AI detection to a confirmed alert fast without slowing response.
@@ -635,7 +635,7 @@ export default function HomePage() {
                                     <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
                                         Level 1 and 2
                                     </span>
-                                    <h4 className="text-base sm:text-lg lg:text-xl font-bold leading-tight m-0 mb-1.5 sm:mb-2" style={{ color: '#1D1D1F' }}>
+                                    <h4 className="text-base sm:text-2xl  font-bold leading-tight m-0 mb-1.5 sm:mb-2 text-[#000000]">
                                         Human verified
                                     </h4>
                                     <p className="text-xs sm:text-sm leading-relaxed m-0" style={{ color: 'rgba(29,29,31,0.65)' }}>
@@ -650,7 +650,7 @@ export default function HomePage() {
                                     <span className="inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold mb-2 sm:mb-3" style={{ background: '#d9dbe0', color: 'rgba(29,29,31,0.65)' }}>
                                         Level 3
                                     </span>
-                                    <h4 className="text-base sm:text-lg lg:text-xl font-bold leading-tight m-0 mb-1.5 sm:mb-2" style={{ color: '#1D1D1F' }}>
+                                    <h4 className="text-base sm:text-2xl  font-bold leading-tight m-0 mb-1.5 sm:mb-2 text-[#000000]">
                                         MultiPhone AI Collaborated
                                     </h4>
                                     <p className="text-xs sm:text-sm leading-relaxed m-0" style={{ color: 'rgba(29,29,31,0.65)' }}>
@@ -969,7 +969,7 @@ export default function HomePage() {
 
                                 {/* Main Description */}
                                 <p className="text-base sm:text-lg lg:text-base xl:text-lg leading-relaxed m-0 text-gray-400"
-                                    >
+                                >
                                     Plan gunshot detection coverage for your site in seconds. Draw a monitoring perimeter, get a recommended phone count and zone spacing, then pilot with PerimeterPAK.
                                 </p>
 
